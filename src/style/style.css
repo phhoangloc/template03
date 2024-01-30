@@ -309,12 +309,18 @@ div {
 .admin .admin_main .admin_main_right .edit_item .pictureBox .title .upload_button div {
   width: 30px;
   height: 30px;
-  margin: 3px;
+  margin: 8px;
 }
 
 .admin .admin_main .admin_main_right .edit_item .pictureBox .title .upload_button div svg {
   width: 30px;
   height: 30px;
+}
+
+.admin .admin_main .admin_main_right .edit_item .pictureBox .title svg {
+  width: 30px;
+  height: 30px;
+  margin: auto 0 auto auto;
 }
 
 .admin .admin_main .admin_main_right .edit_item .pictureBox .viewImg {
@@ -329,14 +335,18 @@ div {
 
 .admin .admin_main .admin_main_right .edit_item .pictureBox .viewImg .imgItem img {
   width: 100%;
+  height: auto;
   margin-right: 0;
 }
 
 .admin .admin_main .admin_main_right .edit_item .pictureBox .viewImg .imgItem svg {
+  height: 15px;
+  width: 15px;
   position: absolute;
   top: 0;
   right: 0;
   border: 1px solid;
+  background-color: white;
 }
 
 .admin .admin_main .admin_main_right .edit_item .pictureBox .viewImg .imgItem svg:hover {

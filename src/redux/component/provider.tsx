@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { setUser } from '../reducer/UserReduce'
 import { setLoading } from '../reducer/LoadingReducer'
 import Loading from '@/app/loading'
+import axios from 'axios'
 type Props = {
     children: React.ReactNode
 }
@@ -25,22 +26,20 @@ const Provider = ({ children }: Props) => {
 
     const checkLogin = async () => {
         setLoading(true)
-        await fetch(process.env.server_url + "myuser", {
+        const result = await axios.get(process.env.server_url + "myuser", {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': localStorage && localStorage.token
             },
-            method: 'GET',
         })
-            .then((res) => res.json())
-            .then((data) => {
-                setLoading(false)
-                if (data.success) {
-                    store.dispatch(setUser(data.data))
-                } else {
-                    store.dispatch(setUser({}))
-                }
-            })
+        if (result.data.success) {
+            setLoading(false)
+            store.dispatch(setUser(result.data.data))
+        } else {
+            setLoading(false)
+            store.dispatch(setUser({}))
+        }
+
     }
 
     useEffect(() => {
