@@ -297,6 +297,30 @@ div {
     }
 }
 
+.home_product {
+    .home_product_main {
+        display: flex;
+        flex-wrap: wrap;
+
+        .item {
+            height: 250px;
+            aspect-ratio: 4/3;
+            text-align: center;
+            border: 1px solid #888;
+
+            .image {
+                height: 75%;
+
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+
+        }
+    }
+}
+
 .admin {
     background-color: whitesmoke;
     padding-top: 5px;

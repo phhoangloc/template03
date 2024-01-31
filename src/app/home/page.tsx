@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main>
       <Cover list={list} />
-      <div className="home_produc">
+      <div className="home_product">
         <div className="home_product_header">
           header
         </div>
