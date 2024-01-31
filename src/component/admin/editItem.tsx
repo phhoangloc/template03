@@ -23,6 +23,7 @@ const EditItem = ({ archive, slug }: Props) => {
     const [brand, setBrand] = useState<string>("")
     const [price, setPrice] = useState<string>("")
     const [detail, setDetail] = useState<string>("")
+    const [detailIn, setDetailIn] = useState<string>("")
     const [imgs, setImg] = useState<string[]>([])
 
     const [imgPres, setImgPres] = useState<any>([])
@@ -58,7 +59,7 @@ const EditItem = ({ archive, slug }: Props) => {
     const save = async (data: any, slug: string, imgNames: any) => {
 
         const body = {
-            slug: data.currentslug,
+            slug: data.slug,
             img: imgNames,
             name: data.name,
             brand: data.brand,
@@ -106,7 +107,7 @@ const EditItem = ({ archive, slug }: Props) => {
                 setName(result.data.data[0].name)
                 setBrand(result.data.data[0].brand)
                 setPrice(result.data.data[0].price)
-                setDetail(result.data.data[0].detail)
+                setDetailIn(result.data.data[0].detail)
                 setImgPres(result.data.data[0].img)
                 setImgNames(result.data.data[0].img)
             }
@@ -116,7 +117,6 @@ const EditItem = ({ archive, slug }: Props) => {
     useEffect(() => {
         getItem(slug)
     }, [slug])
-
 
     const getFile = async (e: any) => {
 
@@ -138,7 +138,6 @@ const EditItem = ({ archive, slug }: Props) => {
         setImgNames(imgNames && imgNames.filter((item: any, index: number) => index !== i))
     }
 
-    console.log(imgPres)
     const preImg = (imgs: any) => {
         setViewImg(
             imgs.length ?
@@ -157,9 +156,11 @@ const EditItem = ({ archive, slug }: Props) => {
         preImg(imgPres)
     }, [imgPres])
 
+    console.log(detail)
     return (
         <div className="edit_item">
             {slug === "new_" ? <h2>create watch</h2> : <h2>update watch</h2>}
+            <a href={"/home/" + archive + "/" + currentslug} target='_blank'><Button name='preview' onClick={() => { }} /></a>
             <Input name="slug" value={currentslug} onChange={v => setCurrentSlug(v)} />
             <Input name="name" value={name} onChange={v => setName(v)} />
             <Input name="brand" value={brand} onChange={v => setBrand(v)} />
@@ -171,19 +172,14 @@ const EditItem = ({ archive, slug }: Props) => {
                     {loading ? <SyncIcon /> : <CheckIcon onClick={() => uploadImage(imgFiles)} />}
                 </div>
                 <div className="viewImg">{viewImg}</div>
-                {/* <div className="viewImg">
-                    {
-                        imgs.map((img, index) =>
-                            <div className="imgItem" key={index}>
-                                <Image key={index} src={process.env.google_url + img} width={100} height={100} alt='fromgg' />
-                                <CloseIcon onClick={() => getIndexImg(index)} />
-                            </div>)
-                    }</div> */}
             </div>
-            <TextArea name="detail" value={detail} onChange={v => setDetail(v)} />
+            <TextArea name="detail" value={detailIn} onChange={v => setDetail(v)} />
             <Button name={slug === "new_" ? "create" : "save"} onClick={() => save({ slug: currentslug, name, brand, price, detail }, slug, imgNames)} />
         </div>
     )
 }
 
 export default EditItem
+
+//
+

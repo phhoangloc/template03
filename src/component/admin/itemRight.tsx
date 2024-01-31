@@ -1,9 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from 'next/navigation';
-import { Dashboard } from '@mui/icons-material';
+import PreviewIcon from '@mui/icons-material/Preview';
 type Props = {
     archive: string
 }
@@ -35,6 +34,11 @@ const ItemRight = ({ archive }: Props) => {
 
     const toPage = useRouter()
 
+    const deleteItem = (id: string) => {
+        console.log(id)
+    }
+
+
     return (
         <div className='item_right'>
             {
@@ -44,7 +48,8 @@ const ItemRight = ({ archive }: Props) => {
                             onClick={() => toPage.push("/admin/" + archive + "/" + item._id)}>
                             <p>{item.username || item.name}</p>
                             <div className="icon" >
-                                <DeleteIcon />
+                                <a href={"/home/" + archive + "/" + item.slug} target='_blank'><PreviewIcon /></a>
+                                <DeleteIcon onClick={() => deleteItem(item._id)} />
                             </div>
                         </div>)
                     : null

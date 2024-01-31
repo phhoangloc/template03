@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./style.css"
 type Props = {
     onChange: (e: string) => void,
@@ -11,9 +11,11 @@ const TextArea = ({ onChange, name, value }: Props) => {
 
     const [focus, setFocus] = useState<boolean>(false)
 
-    if (value === "") {
-        inputRef.current ? inputRef.current.innerHTML = "" : null
-    }
+    useEffect(() => {
+        inputRef.current ? inputRef.current.innerHTML = value : null
+    }, [value])
+
+
     return (
         <div className={`inputA ${focus || inputRef.current?.innerHTML ? "inputA_focus" : ""}`}>
             <p className={`name ${focus || inputRef.current?.innerHTML ? "name_focus" : ""}`} >{name}</p>

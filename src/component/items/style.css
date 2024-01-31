@@ -23,7 +23,7 @@
   height: 100%;
   text-align: left;
   transition: all 0.5s;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inputA .input_box::-webkit-scrollbar {

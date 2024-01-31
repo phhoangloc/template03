@@ -1,6 +1,8 @@
 import Provider from "@/redux/component/provider"
 import Header from "@/component/admin/header"
 import Mainleft from "@/component/admin/mainleft"
+import "../../style/style.css"
+
 export const metadata = {
   title: {
     template: '%s | Admin',

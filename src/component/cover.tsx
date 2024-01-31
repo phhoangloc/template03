@@ -1,28 +1,15 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 
-type Props = {}
+type Props = {
+    list: {
+        file: string
+    }[]
+}
 
-const Cover = (props: Props) => {
+const Cover = ({ list }: Props) => {
 
     const videoRef = useRef<any>()
-    const list = [
-        {
-            file: "video/casio.mp4",
-        },
-        {
-            file: "video/rolex.mp4",
-        },
-        {
-            file: "video/orient.mp4",
-        },
-        {
-            file: "video/citizen.mp4",
-        },
-        {
-            file: "video/ck.mp4",
-        },
-    ]
 
     const [i, setI] = useState<number>(0)
 
@@ -32,7 +19,7 @@ const Cover = (props: Props) => {
 
     return (
         <div className='cover'>
-            <video ref={videoRef} autoPlay playsInline muted
+            <video ref={videoRef} playsInline muted
                 onEnded={() => i === list.length - 1 ? setI(0) : setI(prev => prev + 1)} />
         </div>
     )
