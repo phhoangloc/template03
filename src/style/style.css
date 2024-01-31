@@ -242,6 +242,12 @@ div {
   height: 100vh;
 }
 
+.provider {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+}
+
 .header {
   height: 100px;
   display: flex;
@@ -470,7 +476,7 @@ div {
 }
 
 .home_item .home_item_main .home_item_main_right .detail p span {
-  font-family: inherit !important;
+  font-family: '__Inter_e66fe9' !important;
 }
 
 .home_item .home_item_main .home_item_main_right::-webkit-scrollbar {

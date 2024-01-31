@@ -174,7 +174,7 @@ const EditItem = ({ archive, slug }: Props) => {
                 <div className="viewImg">{viewImg}</div>
             </div>
             <TextArea name="detail" value={detailIn} onChange={v => setDetail(v)} />
-            <Button name={slug === "new_" ? "create" : "save"} onClick={() => save({ slug: currentslug, name, brand, price, detail }, slug, imgNames)} />
+            <Button name={slug === "new_" ? "create" : "save"} onClick={() => save({ slug: currentslug, name, brand, price, detail: detail || detailIn }, slug, imgNames)} />
         </div>
     )
 }

@@ -27,6 +27,13 @@ div {
     height: 100vh;
 }
 
+.provider {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+
+}
+
 .header {
     height: 100px;
     display: flex;
@@ -258,7 +265,7 @@ div {
                     line-height: 1.75;
 
                     span {
-                        font-family: inherit !important
+                        font-family: '__Inter_e66fe9' !important;
                     }
                 }
             }
