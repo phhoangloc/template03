@@ -3,7 +3,7 @@ import "../style/style.css"
 import { Inter } from 'next/font/google'
 
 export const metadata: Metadata = {
-  title: "Clock",
+  title: "Locand",
   icons: {
     icon: 'icon/icon.png',
   }

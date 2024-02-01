@@ -32,11 +32,7 @@ const Mainleft = ({ menus }: Props) => {
     return (
         <div className={`admin_main_left ${currentMenu ? "open_width_menu" : ""}`}>
             {currentMenu ? <CloseIcon onClick={() => store.dispatch(setMenu(false))} /> : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
-
             <div className="profile">
-                <div className="pic">
-                    {/* <Image src={process.env.google_url + currentUser.infor.avata} width={200} height={200} alt='avata' /> */}
-                </div>
                 <h2 className="username">{currentUser.username}</h2>
             </div>
             <div className="admin_menu">

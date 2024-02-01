@@ -12,11 +12,9 @@ type Props = {
 
 const Provider = ({ children }: Props) => {
 
-    const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
     const [currentUpdate, setCurrentUpdate] = useState<number>(store.getState().update)
 
     const update = () => {
-        store.subscribe(() => setCurrentTheme(store.getState().theme))
         store.subscribe(() => setCurrentUpdate(store.getState().update))
     }
 
@@ -49,7 +47,7 @@ const Provider = ({ children }: Props) => {
     return (
         loading ?
             <Loading /> :
-            <div className={`provider ${currentTheme ? "light" : "dark"}`}>{children}</div>
+            <div className={`provider`}>{children}</div>
     )
 }
 

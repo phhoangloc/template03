@@ -21,7 +21,7 @@ const Item = ({ item }: Props) => {
                         </div>
                         <div className="images">
                             {item.img && item.img.map((image: string, index: number) =>
-                                <div className={`circle ${j == index ? "select" : ""}`} key={index} onClick={() => { setJ(index) }}>
+                                <div className={`circle ${j == index ? "select_img" : ""}`} key={index} onClick={() => { setJ(index) }}>
                                     <Image src={process.env.google_url + image} width={50} height={50} alt='itemimage' />
                                 </div>
                             )}

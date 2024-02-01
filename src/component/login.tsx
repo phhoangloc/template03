@@ -15,7 +15,7 @@ const Login = () => {
             localStorage.token = "Bearer " + result.data.data.token
             setUsername("")
             setPassword("")
-            // toPage.refresh()
+            toPage.refresh()
             // store.dispatch(setRefresh())
         } else {
             alert(result.data.message)
@@ -27,6 +27,7 @@ const Login = () => {
             <Input name='username' value={username} onChange={(data) => setUsername(data)} />
             <Input type='password' name='password' value={password} onChange={(data) => setPassword(data)} />
             <Button onClick={() => login({ username, password })} name="Log in" />
+            <p className="link" onClick={() => toPage.push("/home/signup")}>sign up</p>
         </div>
     )
 }

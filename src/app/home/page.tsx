@@ -1,7 +1,8 @@
 'use client'
-import Cover from "@/component/cover";
+import Cover from "@/component/home/cover";
+import HomeProduct from "@/component/home/homeProduct";
 import axios from "axios";
-import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
 
   const [items, setItems] = useState<any>([])
   const getItem = async () => {
-    const result = await axios.get(process.env.server_url + "watch")
+    const result = await axios.get(process.env.server_url + "watch?skip=0&limit=20")
     if (result.data.success) {
       setItems(result.data.data)
     }
@@ -36,33 +37,11 @@ export default function Home() {
     getItem()
   }, [])
 
-  console.log(items)
   return (
     <main>
       <Cover list={list} />
-      <div className="home_product">
-        <div className="home_product_header">
-          header
-        </div>
-        <div className="home_product_main">
-          {
-            items.map((item: any, index: number) =>
-              <div className="item" key={index}>
-                <div className="image">
-                  {item.img[0] ? <Image src={process.env.google_url + item.img[0]} width={100} height={100} alt="img" /> : null}
-                </div>
-                <div className="title">
-                  <p>{item.name}</p>
-                  <h4>{item.price}</h4>
-                </div>
-              </div>
-            )
-          }
-        </div>
-        <div className="home_product_footer">
-          footer
-        </div>
-      </div>
+      <HomeProduct product_name="ĐỒNG HỒ" items={items} />
+      <p className="seemore"><Link href={"/home/watch"}>see more...</Link></p>
     </main>
   );
 }

@@ -1,7 +1,9 @@
 :root {
-    --main: #0066ff;
-    --light: #e6f5ff;
-    --dark: #000f1a;
+    --main: #00aaff;
+    --light: #e6f7ff;
+    --mainlight: #80d4ff;
+    --dark: #005580;
+    --maindark: #00111a;
 }
 
 @import "./grid.scss";
@@ -27,11 +29,20 @@ div {
     height: 100vh;
 }
 
+.light {
+    background-color: var(--light);
+    color: black;
+}
+
+.dark {
+    background-color: var(--dark);
+    color: white;
+}
+
 .provider {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-
 }
 
 .header {
@@ -75,6 +86,21 @@ div {
         top: 25px;
         cursor: pointer
     }
+
+    h2 {
+        margin: 50px 0 0;
+        padding: 15px 10px;
+    }
+
+    h3 {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    h3:hover {
+        color: white;
+        background-color: var(--dark);
+    }
 }
 
 .menu_open {
@@ -115,6 +141,7 @@ div {
             left: 0%;
             height: 20%;
             overflow: hidden;
+            background-color: inherit;
 
             .circle {
                 margin: auto 5px;
@@ -124,6 +151,8 @@ div {
                 border-radius: 5px;
                 box-shadow: 2px 5px 10px -5px #888;
                 transition: all 0.5s;
+                background-color: white;
+                text-align: center;
 
                 img {
                     width: auto;
@@ -132,7 +161,7 @@ div {
                 }
             }
 
-            .select {
+            .select_img {
                 box-shadow: 2px 5px 15px -5px #888;
                 border: 1px solid #888;
                 height: 95%;
@@ -195,13 +224,12 @@ div {
                 img {
                     width: auto;
                     height: 80%;
-                    margin: 10% 0;
                 }
             }
 
             .images {
                 height: 20%;
-                width: max-content;
+                width: 100%;
                 overflow: scroll;
                 display: flex;
 
@@ -219,7 +247,7 @@ div {
 
                 }
 
-                .select {
+                .select_img {
                     animation: animationin 0.25s forwards;
                     box-shadow: 2px 5px 15px -5px #888;
                     border: 1px solid #888;
@@ -237,6 +265,7 @@ div {
             padding: 5%;
             height: 100%;
             border-left: 1px solid #eee;
+            margin: 0 10px;
 
             h3 {
                 text-align: center;
@@ -285,6 +314,23 @@ div {
     height: 500px;
     box-shadow: 5px 5px 20px -5px #888;
     border-radius: 5px;
+
+    .link {
+        font-size: 0.9rem;
+        opacity: 0.5;
+        cursor: pointer;
+        color: var(--dark);
+    }
+
+    .link:hover {
+        opacity: 0.75;
+    }
+
+    .warn {
+        color: red;
+        font-size: 0.6rem;
+        font-weight: 500;
+    }
 }
 
 .cover {
@@ -305,15 +351,32 @@ div {
 }
 
 .home_product {
+    width: 100%;
+    max-width: 1200px;
+    padding: 50px 0 5px;
+    margin: auto;
+
+    .home_product_header {
+        text-align: center;
+
+        h1 {
+            height: 50px;
+            line-height: 50px;
+        }
+    }
+
     .home_product_main {
-        display: flex;
-        flex-wrap: wrap;
+        margin-top: 25px;
 
         .item {
-            height: 250px;
-            aspect-ratio: 4/3;
+            aspect-ratio: 1;
             text-align: center;
-            border: 1px solid #888;
+            margin: 10px;
+            box-shadow: 0px 2.5px 10px -2.5px #888;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.5s;
+            border-radius: 5px;
 
             .image {
                 height: 75%;
@@ -324,13 +387,30 @@ div {
                 }
             }
 
+            .title {
+                height: 25%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                opacity: 0.75;
+                font-size: 0.9rem;
+
+                h4 {
+                    color: red;
+                }
+            }
+
+        }
+
+        .item:hover {
+            box-shadow: 0px 2.5px 10px -1px #888;
+            transform: scale(1.025);
         }
     }
 }
 
 .admin {
-    background-color: whitesmoke;
-    padding-top: 5px;
+    padding: 5px 0;
 
     .admin_header {
         height: 30px;
@@ -383,6 +463,7 @@ div {
             .profile {
                 width: 375px;
                 text-align: center;
+                margin-top: 25px;
 
                 h2 {
                     width: 375px;
@@ -421,6 +502,7 @@ div {
                 }
 
                 p:hover {
+                    background: rgba($color: white, $alpha: 0.1);
                     box-shadow: 0px 1px 10px -5px #888
                 }
             }
@@ -590,4 +672,71 @@ div {
         }
     }
 
+}
+
+.home_archive {
+
+    .home_archive_tool {
+        max-width: 1200px;
+        margin: auto;
+        position: relative;
+        display: flex;
+
+        .select {
+            position: relative;
+        }
+
+        .input {
+            margin: 0 10px;
+            box-shadow: 1px 5px 10px -5px #888;
+        }
+    }
+
+    .home_item {
+        .home_item_main {
+            height: max-content;
+
+            @media (min-width:768px) {
+
+                height: calc(100vh - 100px);
+                margin-top: 0;
+            }
+        }
+
+        .home_item_main_left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .show {
+                height: max-content;
+
+                video {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .pagination {
+        display: flex;
+        max-width: max-content;
+        margin: auto;
+
+        p {
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+        }
+    }
+}
+
+.seemore {
+    max-width: 1200px;
+    text-align: right;
+    margin: auto;
+    cursor: pointer;
+    font-size: 0.75rem;
 }

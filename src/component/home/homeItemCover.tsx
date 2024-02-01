@@ -15,7 +15,7 @@ const HomeItemCover = ({ item }: Props) => {
             </div>
             <div className="button">
                 {item.img && item.img.slice(0, 5).map((image: string, index: number) =>
-                    <div className={`circle ${i == index ? "select" : ""}`} key={index} onClick={() => { setI(index) }}>
+                    <div className={`circle ${i == index ? "select_img" : ""}`} key={index} onClick={() => { setI(index) }}>
                         <Image src={process.env.google_url + image} width={50} height={50} alt='itemimage' />
                     </div>
                 )}

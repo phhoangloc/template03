@@ -31,7 +31,7 @@ export default function RootLayout({
   ]
   return (
     <Provider>
-      <div className='admin'>
+      <div className='admin light'>
         <Header />
         <div className='admin_main'>
           <Mainleft menus={menus} />

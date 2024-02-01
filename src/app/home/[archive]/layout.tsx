@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: {
-      template: '%s | Clock',
+      template: '%s | Locand',
       default: capitalizeFirstLetter(params.archive), // a default is required when creating a template
     },
     icons: {

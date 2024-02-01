@@ -33,7 +33,6 @@ const page = ({ params }: Props) => {
     }
     return <NotFound />
 
-
 }
 
 export default page
