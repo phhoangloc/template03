@@ -18,8 +18,16 @@
   margin: 0;
 }
 
+.xs3 {
+  width: calc(25% - 20px);
+}
+
 .xs6 {
   width: calc(50% - 20px);
+}
+
+.xs9 {
+  width: calc(75% - 20px);
 }
 
 .xs12 {
@@ -237,6 +245,10 @@ div {
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 .center {
   display: flex;
   flex-direction: column;
@@ -259,6 +271,49 @@ div {
   width: 100%;
   max-width: 1600px;
   margin: auto;
+  position: relative;
+  min-height: 100vh;
+}
+
+.provider .notice {
+  position: absolute;
+  z-index: 11;
+  background-color: white;
+  min-height: 30px;
+  padding: 5px 0;
+  width: 100%;
+  box-shadow: 0px 5px 10px -5px #888;
+  transform: translateY(-50px);
+  transition: all 0.5s;
+  text-align: center;
+  color: white;
+}
+
+.provider .alert {
+  position: absolute;
+  z-index: 11;
+  padding: 5px 0;
+  width: 100%;
+  box-shadow: 0px 5px 10px -5px #888;
+  transform: translateY(-100%);
+  transition: all 0.5s;
+  text-align: center;
+  color: white;
+}
+
+.provider .alert .box {
+  display: flex;
+  width: max-content;
+  margin: auto;
+}
+
+.provider .alert .box .button {
+  margin: 10px 5px;
+}
+
+.provider .alert_open,
+.provider .notice_open {
+  transform: translateY(0px);
 }
 
 .header {
@@ -937,4 +992,28 @@ div {
   margin: auto;
   cursor: pointer;
   font-size: 0.75rem;
+}
+
+.dividers {
+  z-index: 9;
+}
+
+.profile {
+  display: flex;
+}
+
+.profile .profileLeft {
+  margin: auto;
+}
+
+.profile .profileLeft .dividers {
+  position: relative;
+  width: 100%;
+  top: 0;
+  transform: unset;
+  box-shadow: none;
+}
+
+.profile .profileLeft .dividers .divider {
+  width: 100%;
 }

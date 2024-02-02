@@ -1,22 +1,28 @@
-import NotFound from '@/app/not-found'
-import React from 'react'
-import ItemRight from './itemRight'
+'use client'
 
+import React, { useState } from 'react'
+import store from '@/redux/store'
 type Props = {
-    archive: string
+    children: React.ReactNode
 }
 
-const Mainright = ({ archive }: Props) => {
+const Mainright = ({ children }: Props) => {
+    const [currentUser, setCurrentUser] = useState<any>(store.getState().user)
+    const [currentMenu, setCurrentMenu] = useState<any>(store.getState().menu)
 
-
-    switch (archive) {
-        case "dashboard":
-        case "watch":
-        case "user":
-            return <ItemRight archive={archive} />
-        default:
-            return <NotFound />
+    const update = () => {
+        store.subscribe(() => setCurrentUser(store.getState().user))
+        store.subscribe(() => setCurrentMenu(store.getState().menu))
     }
+
+    update()
+
+    return (
+        <div className={`admin_main_right ${currentMenu ? "" : "admin_main_right_open"}`}>
+            {children}
+        </div>
+    )
+
 }
 
 export default Mainright

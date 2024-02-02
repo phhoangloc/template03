@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "../../style/style.css"
-import { Inter } from 'next/font/google'
 import Header from "@/component/home/header";
 import Menu from "@/component/home/menu";
 import Provider from "@/redux/component/provider";
@@ -15,12 +14,7 @@ export const metadata: Metadata = {
   }
 }
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-export default function RootLayout({
+export default function Home({
   children,
 }: Readonly<{
   children: React.ReactNode;

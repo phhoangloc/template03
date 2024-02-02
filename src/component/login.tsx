@@ -4,21 +4,35 @@ import Button from './items/button'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import store from '@/redux/store'
-const Login = () => {
+import { setRefresh } from '@/redux/reducer/RefreshReducer'
+import { setNotice } from '@/redux/reducer/noticeReducer'
+type Props = {
+    archive: string
+}
+const Login = ({ archive }: Props) => {
+
     const toPage = useRouter()
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
     const login = async (body: { username: string, password: string }) => {
+
         const result = await axios.post(process.env.server_url + "login", body)
         if (result.data.success) {
             localStorage.token = "Bearer " + result.data.data.token
             setUsername("")
             setPassword("")
-            toPage.refresh()
-            // store.dispatch(setRefresh())
+            toPage.push("/" + archive)
+            store.dispatch(setRefresh())
+            store.dispatch(setNotice({ success: result.data.success, open: true, msg: result.data.message }))
+            setTimeout(() => {
+                store.dispatch(setNotice({ success: result.data.success, open: false, msg: "" }))
+            }, 3000)
         } else {
-            alert(result.data.message)
+            store.dispatch(setNotice({ success: result.data.success, open: true, msg: result.data.message }))
+            setTimeout(() => {
+                store.dispatch(setNotice({ success: result.data.success, open: false, msg: "" }))
+            }, 3000)
         }
     }
     return (

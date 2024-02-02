@@ -59,7 +59,7 @@ const EditUser = ({ archive, slug }: Props) => {
 
     return (
         <div className="edit_item">
-            <h2>create watch</h2>
+            <h2>create user</h2>
             <Input name="username" value={username} onChange={v => setUsername(v)} />
         </div>
     )

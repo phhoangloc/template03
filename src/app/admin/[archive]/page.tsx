@@ -9,6 +9,8 @@ import Input from '@/component/items/input';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from 'next/navigation';
+import ItemRight from '@/component/admin/itemRight';
+import NotFound from '@/app/not-found';
 
 type Props = {
     params: { archive: string }
@@ -24,6 +26,7 @@ const Page = ({ params }: Props) => {
     }
 
     update()
+
     const [search, setSearch] = useState<string>("")
     const toPage = useRouter()
 
@@ -31,16 +34,23 @@ const Page = ({ params }: Props) => {
         !currentUser.length && currentUser.position !== "admin" && toPage.push("/admin")
     }, [currentUser])
 
-    return (
-        <div className={`admin_main_right ${currentMenu ? "" : "admin_main_right_open"}`}>
-            <div className="right_header">
-                {currentMenu ? "" : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
-                <AddIcon onClick={() => toPage.push("/admin/" + params.archive + "/new_")} />
-                <Input name={<SearchIcon />} value={search} onChange={v => setSearch(v)} />
-            </div>
-            <Mainright archive={params.archive} />
-        </div>
-    )
+    switch (params.archive) {
+        case "dashboard":
+        case "watch":
+        case "user":
+            return (
+                <>
+                    <div className="right_header">
+                        {currentMenu ? "" : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
+                        <AddIcon onClick={() => toPage.push("/admin/" + params.archive + "/new_")} />
+                        <Input name={<SearchIcon />} value={search} onChange={v => setSearch(v)} />
+                    </div>
+                    <ItemRight archive={params.archive} />
+                </>
+            )
+        default:
+            return <NotFound />
+    }
 }
 
 export default Page

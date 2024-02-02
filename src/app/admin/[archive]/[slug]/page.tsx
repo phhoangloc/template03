@@ -33,7 +33,7 @@ const Page = ({ params }: Props) => {
     const toPage = useRouter()
 
     return (
-        <div className={`admin_main_right  ${currentMenu ? "" : "admin_main_right_open"}`}>
+        <>
             <div className="right_header">
                 {currentMenu ? "" : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
                 <AddIcon onClick={() => toPage.push("/admin/" + params.archive + "/new_")} />
@@ -42,7 +42,7 @@ const Page = ({ params }: Props) => {
                 <EditItem archive={params.archive} slug={params.slug} /> :
                 <EditUser archive="user" slug={params.slug} />
             }
-        </div>
+        </>
     )
 }
 

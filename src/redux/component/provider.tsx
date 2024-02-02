@@ -6,16 +6,19 @@ import { setUser } from '../reducer/UserReduce'
 import { setLoading } from '../reducer/LoadingReducer'
 import Loading from '@/app/loading'
 import axios from 'axios'
+import NoticeModal from '@/component/noticeModal'
+import { setRefresh } from '../reducer/RefreshReducer'
+import AlertModal from '@/component/alertModal'
 type Props = {
     children: React.ReactNode
 }
 
 const Provider = ({ children }: Props) => {
 
-    const [currentUpdate, setCurrentUpdate] = useState<number>(store.getState().update)
+    const [number, setCurrentNumber] = useState<number>(store.getState().refresh)
 
     const update = () => {
-        store.subscribe(() => setCurrentUpdate(store.getState().update))
+        store.subscribe(() => setCurrentNumber(store.getState().refresh))
     }
 
     update()
@@ -42,12 +45,17 @@ const Provider = ({ children }: Props) => {
 
     useEffect(() => {
         checkLogin()
-    }, [currentUpdate])
+    }, [number])
 
     return (
         loading ?
             <Loading /> :
-            <div className={`provider`}>{children}</div>
+            <div className={`provider`}>
+                <NoticeModal />
+                <AlertModal />
+                {children}
+                <button onClick={() => store.dispatch(setRefresh())}></button>
+            </div>
     )
 }
 

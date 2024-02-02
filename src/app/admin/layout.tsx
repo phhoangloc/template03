@@ -2,6 +2,7 @@ import Provider from "@/redux/component/provider"
 import Header from "@/component/admin/header"
 import Mainleft from "@/component/admin/mainleft"
 import "../../style/style.css"
+import Mainright from "@/component/admin/mainright"
 
 export const metadata = {
   title: {
@@ -35,7 +36,7 @@ export default function RootLayout({
         <Header />
         <div className='admin_main'>
           <Mainleft menus={menus} />
-          {children}
+          <Mainright children={children} />
         </div>
       </div>
     </Provider>
