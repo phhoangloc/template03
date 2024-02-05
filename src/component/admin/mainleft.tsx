@@ -1,15 +1,10 @@
 'use client'
 import React, { useState } from 'react'
-import Link from 'next/link'
 import store from '@/redux/store'
-import Image from 'next/image'
-import CloseIcon from '@mui/icons-material/Close';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useRouter } from 'next/navigation'
-import { setMenu } from '@/redux/reducer/MenuReducer';
-
+import PersonIcon from '@mui/icons-material/Person';
 type Props = {
-    menus: { name: string, link: string }[]
+    menus: { icon: React.ReactNode, name: string, link: string }[]
 }
 
 const Mainleft = ({ menus }: Props) => {
@@ -31,13 +26,12 @@ const Mainleft = ({ menus }: Props) => {
 
     return (
         <div className={`admin_main_left ${currentMenu ? "open_width_menu" : ""}`}>
-            {currentMenu ? <CloseIcon onClick={() => store.dispatch(setMenu(false))} /> : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
-            <div className="profile">
-                <h2 className="username">{currentUser.username}</h2>
-            </div>
             <div className="admin_menu">
                 {menus.map((menu, item) =>
-                    <p className={`${archive === menu.name ? "p_plus" : ""}`} key={item} onClick={() => { setArchive(menu.name); toPage.push("/admin" + menu.link) }}>{menu.name}</p>)}
+                    <p className={`${archive === menu.name ? "p_plus" : ""}`} key={item} onClick={() => { setArchive(menu.name); toPage.push("/admin" + menu.link) }}>
+                        {menu.icon}
+                        <span>{menu.name}</span>
+                    </p>)}
             </div>
         </div>
     )

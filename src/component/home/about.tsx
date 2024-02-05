@@ -7,7 +7,7 @@ const About = (props: Props) => {
         <div className="home_archive">
             <Page archive="Giới thiệu về chúng tôi" detail={
                 <p><br></br>
-                    Cửa hàng đồng hồ X, chuyên kinh doanh trực tuyến và nhập khẩu đồng hồ từ Nhật Bản,
+                    Cửa hàng đồng hồ Lockand...Watch, chuyên kinh doanh trực tuyến và nhập khẩu đồng hồ từ Nhật Bản,
                     là điểm đến tuyệt vời cho những người yêu thích nghệ thuật và chất lượng của thế giới đồng hồ Nhật Bản.
                     Chúng tôi tự hào là đại diện cho sự tinh tế và sự chăm sóc đặc biệt
                     trong việc mang đến những chiếc đồng hồ vô cùng độc đáo và cao cấp.<br></br>

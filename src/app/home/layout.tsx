@@ -6,8 +6,8 @@ import Provider from "@/redux/component/provider";
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Locand',
-    default: 'Locand', // a default is required when creating a template
+    template: '%s | Lockand',
+    default: 'Lockand', // a default is required when creating a template
   },
   icons: {
     icon: 'icon/icon.png',

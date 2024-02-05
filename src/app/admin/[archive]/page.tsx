@@ -36,12 +36,17 @@ const Page = ({ params }: Props) => {
 
     switch (params.archive) {
         case "dashboard":
+            return (
+                <>
+                    <h1>DASHBOARD</h1>
+                </>
+            )
         case "watch":
         case "user":
             return (
                 <>
+                    <h1>{params.archive.toLocaleUpperCase()}</h1>
                     <div className="right_header">
-                        {currentMenu ? "" : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
                         <AddIcon onClick={() => toPage.push("/admin/" + params.archive + "/new_")} />
                         <Input name={<SearchIcon />} value={search} onChange={v => setSearch(v)} />
                     </div>

@@ -1,16 +1,14 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import store from '@/redux/store'
-import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import MenuIcon from '@mui/icons-material/Menu';
-import Input from '@/component/items/input';
 import { setMenu } from '@/redux/reducer/MenuReducer';
-import { useRouter } from 'next/navigation';
-import TextArea from '@/component/items/textarea';
-import Button from '@/component/items/button';
+import { useRouter } from 'next/navigation'
 import EditItem from '@/component/admin/editItem';
 import EditUser from '@/component/admin/editUser';
+import CloseIcon from '@mui/icons-material/Close';
+import NotFound from '@/app/not-found';
 type Props = {
     params: { archive: string, slug: string }
 }
@@ -32,18 +30,15 @@ const Page = ({ params }: Props) => {
 
     const toPage = useRouter()
 
-    return (
-        <>
-            <div className="right_header">
-                {currentMenu ? "" : <MenuIcon onClick={() => store.dispatch(setMenu(true))} />}
-                <AddIcon onClick={() => toPage.push("/admin/" + params.archive + "/new_")} />
-            </div>
-            {params.archive !== "user" ?
-                <EditItem archive={params.archive} slug={params.slug} /> :
-                <EditUser archive="user" slug={params.slug} />
-            }
-        </>
-    )
+    switch (params.archive) {
+        case "watch":
+            return <EditItem archive={params.archive} slug={params.slug} />
+        case "user":
+            return <EditUser archive="user" slug={params.slug} />
+
+    }
+
+    return <NotFound />
 }
 
 export default Page

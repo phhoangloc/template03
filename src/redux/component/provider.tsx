@@ -54,7 +54,6 @@ const Provider = ({ children }: Props) => {
                 <NoticeModal />
                 <AlertModal />
                 {children}
-                <button onClick={() => store.dispatch(setRefresh())}></button>
             </div>
     )
 }

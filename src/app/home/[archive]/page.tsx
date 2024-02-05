@@ -21,8 +21,6 @@ const page = ({ params }: Props) => {
             return <Login archive={"home"} />
         case "signup":
             return <Signup />
-        // case "profile":
-        //     return <Profile />
     }
     return (
         <NotFound />

@@ -119,7 +119,6 @@ const EditItem = ({ archive, slug }: Props) => {
     }, [slug])
 
     const getFile = async (e: any) => {
-
         var files = e.target.files;
         const arrFiles: File[] = Object.values(files)
         arrFiles.map((file: File, index: number) => {
