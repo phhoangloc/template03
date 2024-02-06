@@ -21,6 +21,20 @@ div {
     box-sizing: border-box;
 }
 
+.provider::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent
+}
+
+.provider::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    opacity: 0.5;
+    width: 90%;
+}
+
 .center {
     display: flex;
     flex-direction: column;
@@ -48,7 +62,7 @@ div {
     overflow-x: hidden;
 
     .notice {
-        position: absolute;
+        position: fixed;
         z-index: 11;
         background-color: white;
         min-height: 30px;
@@ -62,7 +76,7 @@ div {
     }
 
     .alert {
-        position: absolute;
+        position: fixed;
         z-index: 11;
         padding: 5px 0;
         width: 100%;
@@ -96,12 +110,23 @@ div {
     svg {
         width: 30px;
         height: 30px;
-        margin: auto 10px;
+        margin: auto 5px;
         cursor: pointer
     }
 
+    svg:hover {
+        color: var(--main);
+    }
+
+    img {
+        margin: auto 5px;
+        cursor: pointer;
+        border-radius: 50px;
+        border: 1px solid var(--mainlight);
+    }
+
     h1 {
-        font-size: 50px;
+        font-size: 30px;
         line-height: 100px;
         margin: auto;
     }
@@ -121,6 +146,7 @@ div {
     transform: translateX(-120%);
     padding: 25px;
     z-index: 10;
+    color: var(--dark);
 
     svg {
         position: absolute;
@@ -421,6 +447,7 @@ div {
             cursor: pointer;
             transition: all 0.5s;
             border-radius: 5px;
+            background: white;
 
             .image {
                 height: 75%;
@@ -452,8 +479,6 @@ div {
         }
     }
 }
-
-
 
 .home_archive {
 
@@ -488,6 +513,7 @@ div {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin: auto;
 
             .show {
                 height: max-content;
@@ -524,6 +550,186 @@ div {
 
 .dividers {
     z-index: 9;
+    color: var(--dark);
+}
+
+.profile {
+
+    .profileLeft {
+        height: calc(100vh - 100px);
+        margin: 0 auto;
+
+        .dividers {
+            position: inherit;
+            margin-top: 5px;
+            width: 100%;
+            transform: unset;
+            box-shadow: none;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+
+            .divider {
+                width: 98%;
+                margin: 1%;
+                text-align: left;
+                border-radius: 5px;
+
+            }
+        }
+    }
+
+    .profileRight {
+        margin: 0 auto;
+        padding: 5px;
+        height: max-content;
+
+        .item {
+            min-height: 200vh;
+            padding: 5px;
+            box-shadow: 0px 2px 15px -5px #888;
+            background-color: white;
+            color: var(--dark);
+            border-radius: 5px;
+            position: relative;
+
+            .input {
+                margin: 5px auto;
+                max-width: inherit;
+                width: 90%;
+                border: 2px solid #ccc;
+                height: 60px;
+            }
+
+            .pictureBox {
+                width: 90%;
+                margin: auto;
+                text-align: left;
+
+                .title {
+                    display: flex;
+                    margin: 25px 0;
+
+                    svg {
+                        width: 25px;
+                        height: 25px;
+                        margin-left: 5px;
+                    }
+                }
+
+                .viewImg {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+            }
+
+            .inputA {
+                width: 90%;
+                margin: auto;
+                padding: 50px 0;
+            }
+
+            .input_focus {
+                border: 2px solid var(--dark);
+
+                input {
+
+                    color: var(--dark);
+                }
+            }
+
+            .cover {
+                width: 100%;
+                height: 200px;
+                border-radius: 5px;
+                position: relative;
+                overflow: hidden;
+
+            }
+
+            .usernameandavata {
+                width: max-content;
+                display: flex;
+                position: absolute;
+                top: 150px;
+                left: 5%;
+                z-index: 2;
+
+                .avata {
+                    width: 150px;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    .UploadPicture {
+                        width: 100%;
+                        height: 100%;
+
+                        img {
+                            min-width: inherit;
+                            transform: none;
+                            width: 100%;
+                            height: auto
+                        }
+
+                        .tool {
+                            right: 12.5%;
+                            bottom: 12.5%;
+                        }
+                    }
+                }
+
+                .title {
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    height: max-content;
+                    margin: auto auto 10px 10px;
+                    line-height: 0.75;
+
+                    span {
+                        font-weight: 400;
+                        font-size: 0.9rem;
+                        opacity: 0.5;
+                    }
+                }
+            }
+
+            .infomation {
+                margin-top: 150px;
+
+                .input {
+
+                    .name_focus {
+                        transform: translateY(5px);
+                    }
+                }
+
+                .select {
+                    margin: 15px 0;
+                    position: relative;
+                    left: 5%;
+                }
+
+                .active {
+                    width: 90%;
+                    margin: auto;
+                    height: 60px;
+                    line-height: 60px;
+                    text-align: left;
+                    position: relative;
+
+                    svg {
+                        position: absolute;
+                        top: 17.5px;
+                        left: 60px;
+                    }
+                }
+            }
+        }
+    }
+
+
+
 }
 
 .admin {
@@ -658,7 +864,7 @@ div {
                 background-color: white;
                 border-radius: 5px;
                 padding: 5px;
-                height: 100%;
+                min-height: 100%;
                 position: relative;
 
                 .input {
@@ -713,30 +919,10 @@ div {
                     position: relative;
                     overflow: hidden;
 
-                    img {
-                        width: 100%;
-                        height: auto;
-                    }
-
-                    .cover_img {
-                        background-color: whitesmoke;
-                        height: 100%;
-
-                        .upload_button {
-                            margin: auto;
-                        }
-
-                        svg {
-                            margin: auto;
-                            width: 50px;
-                            height: 50px;
-                        }
-                    }
-
                 }
 
                 .usernameandavata {
-                    width: 90%;
+                    width: max-content;
                     display: flex;
                     position: absolute;
                     top: 150px;
@@ -747,7 +933,24 @@ div {
                         width: 150px;
                         aspect-ratio: 1;
                         border-radius: 50%;
-                        background-color: var(--mainlight);
+                        overflow: hidden;
+
+                        .UploadPicture {
+                            width: 100%;
+                            height: 100%;
+
+                            img {
+                                min-width: inherit;
+                                transform: none;
+                                width: 100%;
+                                height: auto
+                            }
+
+                            .tool {
+                                right: 12.5%;
+                                bottom: 12.5%;
+                            }
+                        }
                     }
 
                     .title {
@@ -761,6 +964,38 @@ div {
                             font-weight: 400;
                             font-size: 0.9rem;
                             opacity: 0.5;
+                        }
+                    }
+                }
+
+                .infomation {
+                    margin-top: 150px;
+
+                    .input {
+
+                        .name_focus {
+                            transform: translateY(5px);
+                        }
+                    }
+
+                    .select {
+                        margin: 15px 0;
+                        position: relative;
+                        left: 5%;
+                    }
+
+                    .active {
+                        width: 90%;
+                        margin: auto;
+                        height: 60px;
+                        line-height: 60px;
+                        text-align: left;
+                        position: relative;
+
+                        svg {
+                            position: absolute;
+                            top: 17.5px;
+                            left: 60px;
                         }
                     }
                 }

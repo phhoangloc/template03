@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import "./style.css"
+import '../style/style.css'
 type Props = {
     open?: boolean,
     func?: (e: string) => void,

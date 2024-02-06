@@ -15,7 +15,7 @@ const AlertModal = () => {
     update()
 
     return (
-        <div style={{ backgroundColor: "green" }} className={`alert ${alert.open ? "alert_open" : ""}`}>
+        <div style={{ backgroundColor: "#005580" }} className={`alert ${alert.open ? "alert_open" : ""}`}>
             {alert.msg}
             <div className="box">
                 <Button name='yes' onClick={() => store.dispatch(setAlert({ value: true, open: false, msg: "" }))} />

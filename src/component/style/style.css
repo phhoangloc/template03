@@ -202,3 +202,38 @@
 .deviders_open {
   transform: translateX(0%);
 }
+
+.UploadPicture {
+  position: relative;
+  height: 100%;
+}
+
+.UploadPicture img {
+  width: 100%;
+  height: auto;
+  min-width: 768px;
+  transform: translateY(-192px);
+}
+
+.UploadPicture .nopicture {
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+}
+
+.UploadPicture .tool {
+  position: absolute;
+  bottom: 5px;
+  width: max-content;
+  right: 5px;
+}
+
+.UploadPicture .tool svg {
+  cursor: pointer;
+  opacity: 0.25;
+}
+
+.UploadPicture .tool svg:hover {
+  color: var(--main);
+  opacity: 1;
+}

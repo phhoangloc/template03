@@ -8,16 +8,17 @@ const ProfileLeft = (props: Props) => {
 
     const toPage = useRouter()
     const menus = [
+
         {
-            name: "profile",
-            link: "/home/profile/"
-        },
-        {
-            name: "cart",
+            name: "giỏ hàng",
             link: "/home/profile/cart"
         },
         {
-            name: "setting",
+            name: "thông tin người dùng",
+            link: "/home/profile/"
+        },
+        {
+            name: "cài đặt",
             link: "/home/profile/setting"
         },
     ]

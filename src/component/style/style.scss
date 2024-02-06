@@ -207,3 +207,39 @@
 .deviders_open {
     transform: translateX(0%);
 }
+
+//assets
+.UploadPicture {
+    position: relative;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: auto;
+        min-width: 768px;
+        transform: translateY(-(768px / 4));
+    }
+
+    .nopicture {
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+    }
+
+    .tool {
+        position: absolute;
+        bottom: 5px;
+        width: max-content;
+        right: 5px;
+
+        svg {
+            cursor: pointer;
+            opacity: 0.25;
+        }
+
+        svg:hover {
+            color: var(--main);
+            opacity: 1
+        }
+    }
+}

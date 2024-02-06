@@ -245,6 +245,20 @@ div {
   box-sizing: border-box;
 }
 
+.provider::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+.provider::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+  opacity: 0.5;
+  width: 90%;
+}
+
 .center {
   display: flex;
   flex-direction: column;
@@ -273,7 +287,7 @@ div {
 }
 
 .provider .notice {
-  position: absolute;
+  position: fixed;
   z-index: 11;
   background-color: white;
   min-height: 30px;
@@ -287,7 +301,7 @@ div {
 }
 
 .provider .alert {
-  position: absolute;
+  position: fixed;
   z-index: 11;
   padding: 5px 0;
   width: 100%;
@@ -321,12 +335,23 @@ div {
 .header svg {
   width: 30px;
   height: 30px;
-  margin: auto 10px;
+  margin: auto 5px;
   cursor: pointer;
 }
 
+.header svg:hover {
+  color: var(--main);
+}
+
+.header img {
+  margin: auto 5px;
+  cursor: pointer;
+  border-radius: 50px;
+  border: 1px solid var(--mainlight);
+}
+
 .header h1 {
-  font-size: 50px;
+  font-size: 30px;
   line-height: 100px;
   margin: auto;
 }
@@ -345,6 +370,7 @@ div {
   transform: translateX(-120%);
   padding: 25px;
   z-index: 10;
+  color: var(--dark);
 }
 
 .menu svg {
@@ -640,6 +666,7 @@ div {
   cursor: pointer;
   transition: all 0.5s;
   border-radius: 5px;
+  background: white;
 }
 
 .home_product .home_product_main .item .image {
@@ -700,6 +727,7 @@ div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: auto;
 }
 
 .home_archive .home_item .home_item_main_left .show {
@@ -734,6 +762,174 @@ div {
 
 .dividers {
   z-index: 9;
+  color: var(--dark);
+}
+
+.profile .profileLeft {
+  height: calc(100vh - 100px);
+  margin: 0 auto;
+}
+
+.profile .profileLeft .dividers {
+  position: inherit;
+  margin-top: 5px;
+  width: 100%;
+  transform: unset;
+  box-shadow: none;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.profile .profileLeft .dividers .divider {
+  width: 98%;
+  margin: 1%;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.profile .profileRight {
+  margin: 0 auto;
+  padding: 5px;
+  height: max-content;
+}
+
+.profile .profileRight .item {
+  min-height: 200vh;
+  padding: 5px;
+  box-shadow: 0px 2px 15px -5px #888;
+  background-color: white;
+  color: var(--dark);
+  border-radius: 5px;
+  position: relative;
+}
+
+.profile .profileRight .item .input {
+  margin: 5px auto;
+  max-width: inherit;
+  width: 90%;
+  border: 2px solid #ccc;
+  height: 60px;
+}
+
+.profile .profileRight .item .pictureBox {
+  width: 90%;
+  margin: auto;
+  text-align: left;
+}
+
+.profile .profileRight .item .pictureBox .title {
+  display: flex;
+  margin: 25px 0;
+}
+
+.profile .profileRight .item .pictureBox .title svg {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+.profile .profileRight .item .pictureBox .viewImg {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile .profileRight .item .inputA {
+  width: 90%;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.profile .profileRight .item .input_focus {
+  border: 2px solid var(--dark);
+}
+
+.profile .profileRight .item .input_focus input {
+  color: var(--dark);
+}
+
+.profile .profileRight .item .cover {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile .profileRight .item .usernameandavata {
+  width: max-content;
+  display: flex;
+  position: absolute;
+  top: 150px;
+  left: 5%;
+  z-index: 2;
+}
+
+.profile .profileRight .item .usernameandavata .avata {
+  width: 150px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile .profileRight .item .usernameandavata .avata .UploadPicture {
+  width: 100%;
+  height: 100%;
+}
+
+.profile .profileRight .item .usernameandavata .avata .UploadPicture img {
+  min-width: inherit;
+  transform: none;
+  width: 100%;
+  height: auto;
+}
+
+.profile .profileRight .item .usernameandavata .avata .UploadPicture .tool {
+  right: 12.5%;
+  bottom: 12.5%;
+}
+
+.profile .profileRight .item .usernameandavata .title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  height: max-content;
+  margin: auto auto 10px 10px;
+  line-height: 0.75;
+}
+
+.profile .profileRight .item .usernameandavata .title span {
+  font-weight: 400;
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+.profile .profileRight .item .infomation {
+  margin-top: 150px;
+}
+
+.profile .profileRight .item .infomation .input .name_focus {
+  transform: translateY(5px);
+}
+
+.profile .profileRight .item .infomation .select {
+  margin: 15px 0;
+  position: relative;
+  left: 5%;
+}
+
+.profile .profileRight .item .infomation .active {
+  width: 90%;
+  margin: auto;
+  height: 60px;
+  line-height: 60px;
+  text-align: left;
+  position: relative;
+}
+
+.profile .profileRight .item .infomation .active svg {
+  position: absolute;
+  top: 17.5px;
+  left: 60px;
 }
 
 .admin {
@@ -872,7 +1068,7 @@ div {
   background-color: white;
   border-radius: 5px;
   padding: 5px;
-  height: 100%;
+  min-height: 100%;
   position: relative;
 }
 
@@ -928,28 +1124,8 @@ div {
   overflow: hidden;
 }
 
-.admin .admin_main .admin_main_right .edit_item .cover img {
-  width: 100%;
-  height: auto;
-}
-
-.admin .admin_main .admin_main_right .edit_item .cover .cover_img {
-  background-color: whitesmoke;
-  height: 100%;
-}
-
-.admin .admin_main .admin_main_right .edit_item .cover .cover_img .upload_button {
-  margin: auto;
-}
-
-.admin .admin_main .admin_main_right .edit_item .cover .cover_img svg {
-  margin: auto;
-  width: 50px;
-  height: 50px;
-}
-
 .admin .admin_main .admin_main_right .edit_item .usernameandavata {
-  width: 90%;
+  width: max-content;
   display: flex;
   position: absolute;
   top: 150px;
@@ -961,7 +1137,24 @@ div {
   width: 150px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: var(--mainlight);
+  overflow: hidden;
+}
+
+.admin .admin_main .admin_main_right .edit_item .usernameandavata .avata .UploadPicture {
+  width: 100%;
+  height: 100%;
+}
+
+.admin .admin_main .admin_main_right .edit_item .usernameandavata .avata .UploadPicture img {
+  min-width: inherit;
+  transform: none;
+  width: 100%;
+  height: auto;
+}
+
+.admin .admin_main .admin_main_right .edit_item .usernameandavata .avata .UploadPicture .tool {
+  right: 12.5%;
+  bottom: 12.5%;
 }
 
 .admin .admin_main .admin_main_right .edit_item .usernameandavata .title {
@@ -976,6 +1169,35 @@ div {
   font-weight: 400;
   font-size: 0.9rem;
   opacity: 0.5;
+}
+
+.admin .admin_main .admin_main_right .edit_item .infomation {
+  margin-top: 150px;
+}
+
+.admin .admin_main .admin_main_right .edit_item .infomation .input .name_focus {
+  transform: translateY(5px);
+}
+
+.admin .admin_main .admin_main_right .edit_item .infomation .select {
+  margin: 15px 0;
+  position: relative;
+  left: 5%;
+}
+
+.admin .admin_main .admin_main_right .edit_item .infomation .active {
+  width: 90%;
+  margin: auto;
+  height: 60px;
+  line-height: 60px;
+  text-align: left;
+  position: relative;
+}
+
+.admin .admin_main .admin_main_right .edit_item .infomation .active svg {
+  position: absolute;
+  top: 17.5px;
+  left: 60px;
 }
 
 .admin .admin_main .open_width_menu {

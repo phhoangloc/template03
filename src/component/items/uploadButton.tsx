@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-
+import '../style/style.css'
 type Props = {
     icon: React.ReactNode | string;
     sx?: string

@@ -13,7 +13,7 @@ const NoticeModal = () => {
     update()
 
     return (
-        <div style={notice.success ? { backgroundColor: "blue" } : { backgroundColor: "red" }} className={`notice ${notice.open ? "notice_open" : ""}`}>{notice.msg}</div>
+        <div style={notice.success ? { backgroundColor: "#005580" } : { backgroundColor: "red" }} className={`notice ${notice.open ? "notice_open" : ""}`}>{notice.msg}</div>
     )
 }
 

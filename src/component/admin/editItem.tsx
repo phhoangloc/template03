@@ -155,7 +155,6 @@ const EditItem = ({ archive, slug }: Props) => {
         preImg(imgPres)
     }, [imgPres])
 
-    console.log(detail)
     return (
         <div className="edit_item">
             {slug === "new_" ? <h2>create watch</h2> : <h2>update watch</h2>}

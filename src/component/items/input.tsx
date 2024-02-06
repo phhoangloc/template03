@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import "./style.css"
+import '../style/style.css'
 type Props = {
     onChange: (e: string) => void,
     name: React.ReactNode,

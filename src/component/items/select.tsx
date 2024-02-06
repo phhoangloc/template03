@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import './style.css'
+import '../style/style.css'
 type Props = {
     name: string,
     options: string[],
@@ -23,7 +23,7 @@ const Select = ({ name, options, onChange }: Props) => {
                 <KeyboardArrowDownIcon onClick={() => setOptionOn(!optionOn)} />
             </div>
             <div className={`select_option ${optionOn ? "select_option_on" : ""}`}>
-                <div className='select_option_item' onClick={() => { setValue(""), setOptionOn(false) }}>ALL</div>
+                <div className='select_option_item' onClick={() => { setValue(""), setOptionOn(false) }}>{name}</div>
                 {options.map((opt, index) =>
                     <div className='select_option_item' key={index} onClick={() => { setValue(opt), setOptionOn(false) }}>{opt}</div>)}
             </div>
