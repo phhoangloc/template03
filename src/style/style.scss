@@ -54,8 +54,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main_light {
-    background-color: var(--mainlight);
-    color: white;
+    background-color: white;
+    color: var(--maindark);
 }
 
 .main_dark {
@@ -79,7 +79,7 @@ body::-webkit-scrollbar-thumb {
         padding: 5px 0;
         width: 100%;
         box-shadow: 0px 5px 10px -5px #888;
-        transform: translateY(-50px);
+        transform: translateY(-150%);
         transition: all 0.5s;
         text-align: center;
         color: white;
@@ -91,7 +91,7 @@ body::-webkit-scrollbar-thumb {
         padding: 5px 0;
         width: 100%;
         box-shadow: 0px 5px 10px -5px #888;
-        transform: translateY(-100%);
+        transform: translateY(-150%);
         transition: all 0.5s;
         text-align: center;
         color: white;
@@ -143,20 +143,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 .menu {
-    position: absolute;
-    top: 5px;
-    left: 5px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
     width: 365px;
     overflow: hidden;
-    height: calc(100vh - 10px);
+    height: calc(100vh);
     transition: all 0.5s;
-    background-color: white;
-    box-shadow: 1px 5px 20px -5px #888;
+    box-shadow: 1px 0px 10px -5px #888;
     border-radius: 5px;
     transform: translateX(-120%);
     padding: 25px;
     z-index: 10;
-    color: var(--dark);
 
     svg {
         position: absolute;
@@ -179,7 +177,7 @@ body::-webkit-scrollbar-thumb {
 
     h3:hover {
         color: white;
-        background-color: var(--dark);
+        background-color: var(--main);
     }
 }
 
@@ -344,7 +342,7 @@ body::-webkit-scrollbar-thumb {
             overflow-x: hidden;
             padding: 5%;
             height: 100%;
-            border-left: 1px solid #eee;
+            border-left: 1px solid;
             margin: 0 10px;
 
             h3 {
@@ -395,6 +393,7 @@ body::-webkit-scrollbar-thumb {
     box-shadow: 5px 5px 20px -5px #888;
     border-radius: 5px;
     background-color: white;
+    color: var(--dark);
 
     .link {
         font-size: 0.9rem;

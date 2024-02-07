@@ -4,9 +4,8 @@ const nextConfig = {
         domains: ['drive.google.com'],
         remotePatterns: [
             {
-                protocol: 'http',
-                hostname: 'localhost',
-                port: '4000',
+                protocol: 'https',
+                hostname: 'https://be-mywatch.vercel.app'
             },
             {
                 protocol: 'https',
@@ -16,7 +15,7 @@ const nextConfig = {
     },
 
     env: {
-        server_url: "http://localhost:4000/",
+        server_url: "https://be-mywatch.vercel.app/",
         google_url: "https://drive.google.com/uc?id="
     }
 };

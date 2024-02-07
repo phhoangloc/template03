@@ -7,9 +7,11 @@ import { useRouter } from 'next/navigation';
 
 const Menu = () => {
 
+    const [currentTheme, setCurrentTheme] = useState<{}>(store.getState().theme)
     const [currentMenu, setCurrentMenu] = useState<{}>(store.getState().menu)
 
     const update = () => {
+        store.subscribe(() => setCurrentTheme(store.getState().theme))
         store.subscribe(() => setCurrentMenu(store.getState().menu))
     }
 
@@ -33,7 +35,7 @@ const Menu = () => {
     ]
 
     return (
-        <div className={`menu ${currentMenu ? "menu_open" : ""}`}>
+        <div className={`menu ${currentMenu ? "menu_open" : ""} ${currentTheme ? "main_light" : "main_dark"}`}>
             <CloseIcon onClick={() => store.dispatch(setMenu(false))} />
             <h2>Menu</h2>
             {menus.map((item, index) =>
