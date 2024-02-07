@@ -4,6 +4,10 @@
   flex-wrap: wrap;
 }
 
+.grid_box div {
+  margin: auto;
+}
+
 .xs0 {
   width: 0%;
   overflow: hidden;

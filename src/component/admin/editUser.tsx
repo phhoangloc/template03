@@ -10,6 +10,7 @@ import Input from '../items/input';
 import Select from '../items/select';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import TextArea from '../items/textarea';
 type Props = {
     archive: string,
     slug: string
@@ -24,13 +25,14 @@ const EditUser = ({ archive, slug }: Props) => {
     const [currentslug, setCurrentSlug] = useState<string>("")
 
     const [username, setUsername] = useState<string>("")
-    const [password, setPassword] = useState<string>("")
     const [email, setEmail] = useState<string>("")
     const [fullname, setFullname] = useState<string>("")
     const [phone, setPhone] = useState<string>("")
     const [address, setAddress] = useState<string>("")
     const [position, setPosition] = useState<string>("")
     const [active, setActive] = useState<boolean>(false)
+    const [intro, setIntro] = useState<string>("")
+    const [introIn, setIntroIn] = useState<string>("")
 
     const toPage = useRouter()
     const [background, setBackground] = useState<{ name: string }[]>([])
@@ -48,7 +50,6 @@ const EditUser = ({ archive, slug }: Props) => {
             if (result.data.success) {
                 setCurrentSlug(result.data.data[0].slug)
                 setUsername(result.data.data[0].username)
-                setPassword(result.data.data[0].password)
                 setPosition(result.data.data[0].position)
                 setEmail(result.data.data[0].email)
                 setBackground(result.data.data[0].infor.background)
@@ -57,6 +58,7 @@ const EditUser = ({ archive, slug }: Props) => {
                 setPhone(result.data.data[0].infor.phone)
                 setAddress(result.data.data[0].infor.address)
                 setActive(result.data.data[0].active)
+                setIntroIn(result.data.data[0].intro)
             }
         }
     }
@@ -71,8 +73,8 @@ const EditUser = ({ archive, slug }: Props) => {
             username,
             position,
             email,
-            password,
             active,
+            intro,
             infor: {
                 background,
                 avata,
@@ -81,6 +83,7 @@ const EditUser = ({ archive, slug }: Props) => {
                 phone
             }
         }
+
         const result = await axios.put(process.env.server_url + `admin/${archive}?id=${slug}`, body, {
             headers: {
                 'Content-Type': 'application/json',
@@ -117,9 +120,6 @@ const EditUser = ({ archive, slug }: Props) => {
                     <Input name="email" value={email} onChange={(e) => setEmail(e)} />
                 </div>
                 <div className="xs12 sm6">
-                    <Input type='password' name="new password" value={password} onChange={(e) => setPassword(e)} />
-                </div>
-                <div className="xs12 sm6">
                     <Input name="fullname" value={fullname} onChange={(e) => setFullname(e)} />
                 </div>
                 <div className="xs12 sm6">
@@ -128,8 +128,11 @@ const EditUser = ({ archive, slug }: Props) => {
                 <div className="xs12 sm6">
                     <Input name="phone" value={phone} onChange={(e) => setPhone(e)} />
                 </div>
-                <div className="xs12 sm6 ">
+                <div className="xs12">
                     <p className='active'>active: {active ? <CheckBoxIcon onClick={() => setActive(!active)} /> : <CheckBoxOutlineBlankIcon onClick={() => setActive(!active)} />}</p>
+                </div>
+                <div className="xs12">
+                    <TextArea name="intro" value={introIn} onChange={(e) => setIntro(e)} />
                 </div>
 
             </div>

@@ -3,17 +3,19 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import UploadPicture from '@/component/assets/uploadPicture'
+import Table from '@/component/assets/table'
+import Image from 'next/image'
 const page = () => {
+    const toPage = useRouter()
     const [username, setUsername] = useState<string>("")
-    const [password, setPassword] = useState<string>("")
     const [email, setEmail] = useState<string>("")
     const [fullname, setFullname] = useState<string>("")
     const [phone, setPhone] = useState<string>("")
     const [address, setAddress] = useState<string>("")
     const [position, setPosition] = useState<string>("")
     const [active, setActive] = useState<boolean>(false)
+    const [intro, setIntro] = useState<string>("")
 
-    const toPage = useRouter()
     const [background, setBackground] = useState<{ name: string }[]>([])
     const [avata, setAvata] = useState<{ name: string }[]>([])
 
@@ -24,10 +26,9 @@ const page = () => {
                 'Authorization': localStorage && localStorage.token
             },
         })
+        console.log(result)
         if (result.data.success) {
-            // setCurrentSlug(result.data.data[0].slug)
             setUsername(result.data.data.username)
-            setPassword(result.data.data.password)
             setPosition(result.data.data.position)
             setEmail(result.data.data.email)
             setBackground(result.data.data.infor.background)
@@ -36,6 +37,7 @@ const page = () => {
             setPhone(result.data.data.infor.phone)
             setAddress(result.data.data.infor.address)
             setActive(result.data.data.active)
+            setIntro(result.data.data.intro)
         }
     }
 
@@ -43,18 +45,63 @@ const page = () => {
         getItem()
     }, [])
 
+    const dataInTable = {
+        username,
+        email,
+        position,
+        fullname,
+        address,
+        phone,
+        active,
+    }
+
     return (
-        <div className='item'>
-            <div className='cover'>
-                <UploadPicture src={background.length ? process.env.google_url + background[background.length - 1].name : undefined} updatePicture={(e) => setBackground(prev => [...prev, { name: e }])} />
-            </div>
-            <div className="usernameandavata">
-                <div className="avata">
-                    <UploadPicture src={avata.length ? process.env.google_url + avata[avata.length - 1].name : undefined} updatePicture={(e) => setAvata(prev => [...prev, { name: e }])} />
+        <>
+            <div className='profile_user'>
+                <div className='cover'>
+                    <UploadPicture src={background.length ? process.env.google_url + background[background.length - 1].name : undefined} updatePicture={(e) => setBackground(prev => [...prev, { name: e }])} />
                 </div>
-                <div className="title">{username}<br></br><span>{position}</span></div>
+                <div className="usernameandavata">
+                    <div className="avata">
+                        <UploadPicture src={avata.length ? process.env.google_url + avata[avata.length - 1].name : undefined} updatePicture={(e) => setAvata(prev => [...prev, { name: e }])} />
+                    </div>
+                    <div className="title">{username}<br></br><span>{position}</span></div>
+                </div>
             </div>
-        </div>
+            <div className="information">
+                <div className="intro">
+                    <div className="info_header">Intro</div>
+                    <div className="info_content" dangerouslySetInnerHTML={{ __html: intro }}></div>
+                </div>
+                <div className="myimage">
+                    <div className="info_header">Picture</div>
+                    <div className="info_content">
+                        <div className="infor_cover">
+                            <h4>cover</h4>
+                            <div className="picture_box grid_box">
+                                {background && background.map((item, index) =>
+                                    <div className='pic xs6 sm4 ' key={index}>
+                                        <Image src={process.env.google_url + item.name} width={200} height={200} alt='cover' />
+                                    </div>)}
+                            </div>
+                        </div>
+                        <div className="infor_cover">
+                            <h4>avata</h4>
+                            <div className="picture_box grid_box">
+                                {avata && avata.map((item, index) =>
+                                    <div className='pic xs6 sm4 ' key={index}>
+                                        <Image src={process.env.google_url + item.name} width={200} height={200} alt='cover' />
+                                    </div>)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="myinfo">
+                    <div className="info_header">Personal Information</div>
+                    <div className="info_content"><Table datas={Object.entries(dataInTable)} /></div>
+                </div>
+            </div>
+        </>
     )
 }
 

@@ -24,7 +24,7 @@ const EditItem = ({ archive, slug }: Props) => {
     const [price, setPrice] = useState<string>("")
     const [detail, setDetail] = useState<string>("")
     const [detailIn, setDetailIn] = useState<string>("")
-    const [imgs, setImg] = useState<string[]>([])
+
 
     const [imgPres, setImgPres] = useState<any>([])
     const [imgFiles, setImgFiles] = useState<File[]>([])

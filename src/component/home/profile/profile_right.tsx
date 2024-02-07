@@ -6,7 +6,7 @@ type Props = {
 
 const ProfileRight = ({ children }: Props) => {
     return (
-        <div className='profileRight xs9'>{children}</div>
+        <div className='profileRight'>{children}</div>
     )
 }
 

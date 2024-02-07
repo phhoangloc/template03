@@ -111,6 +111,7 @@
   position: absolute;
   transition: all 5s;
   box-shadow: 1px 5px 10px -5px #888;
+  background-color: white;
 }
 
 .select .select_value {
@@ -236,4 +237,35 @@
 .UploadPicture .tool svg:hover {
   color: var(--main);
   opacity: 1;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: auto;
+}
+
+.table tbody {
+  width: 100%;
+}
+
+.table tr {
+  width: 100%;
+}
+
+.table tr td {
+  height: 40px;
+  padding: 0 5px;
+}
+
+.table tr td:nth-child(1) {
+  font-weight: 500;
+  width: max-content;
+}
+
+.table tr td:nth-child(2) p {
+  margin: auto;
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

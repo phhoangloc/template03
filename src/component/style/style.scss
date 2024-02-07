@@ -114,6 +114,7 @@
     position: absolute;
     transition: all 5s;
     box-shadow: 1px 5px 10px -5px #888;
+    background-color: white;
 
     .select_value {
         width: 100%;
@@ -240,6 +241,41 @@
         svg:hover {
             color: var(--main);
             opacity: 1
+        }
+    }
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+
+    tbody {
+        width: 100%;
+    }
+
+    tr {
+        width: 100%;
+
+
+        td {
+            height: 40px;
+            padding: 0 5px;
+        }
+
+        td:nth-child(1) {
+            font-weight: 500;
+            width: max-content;
+        }
+
+
+        td:nth-child(2) {
+            p {
+                margin: auto;
+                width: 85%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
 }

@@ -12,6 +12,10 @@
   flex-wrap: wrap;
 }
 
+.grid_box div {
+  margin: auto;
+}
+
 .xs0 {
   width: 0%;
   overflow: hidden;
@@ -273,6 +277,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark {
+  background-color: var(--maindark);
+  color: white;
+}
+
+.main_light {
+  background-color: var(--mainlight);
+  color: white;
+}
+
+.main_dark {
   background-color: var(--dark);
   color: white;
 }
@@ -599,6 +613,7 @@ body::-webkit-scrollbar-thumb {
   height: 500px;
   box-shadow: 5px 5px 20px -5px #888;
   border-radius: 5px;
+  background-color: white;
 }
 
 .login .link {
@@ -765,90 +780,81 @@ body::-webkit-scrollbar-thumb {
   color: var(--dark);
 }
 
+.profile {
+  color: var(--maindark);
+}
+
 .profile .profileLeft {
-  height: calc(100vh - 100px);
-  margin: 0 auto;
+  height: calc(100vh - 110px);
+  margin: 5px auto 0;
+  overflow: scroll;
+  width: 50px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .profile .profileLeft .dividers {
   position: inherit;
-  margin-top: 5px;
   width: 100%;
   transform: unset;
   box-shadow: none;
-  background-color: white;
   padding: 5px;
   border-radius: 5px;
+  top: 0px;
 }
 
 .profile .profileLeft .dividers .divider {
-  width: 98%;
-  margin: 1%;
+  width: 100%;
   text-align: left;
   border-radius: 5px;
+  text-align: center;
+}
+
+.profile .profileLeft .dividers .divider svg {
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.profile .profileLeft .dividers .divider span {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .profile .profileLeft {
+    width: 250px;
+  }
+  .profile .profileLeft .dividers .divider {
+    display: flex;
+  }
+  .profile .profileLeft .dividers .divider span {
+    display: block;
+    padding: 0 5px;
+  }
+}
+
+.profile .profileLeft::-webkit-scrollbar {
+  display: none;
 }
 
 .profile .profileRight {
   margin: 0 auto;
   padding: 5px;
   height: max-content;
+  width: calc(100% - 60px);
 }
 
-.profile .profileRight .item {
-  min-height: 200vh;
+.profile .profileRight .profile_user {
   padding: 5px;
   box-shadow: 0px 2px 15px -5px #888;
   background-color: white;
   color: var(--dark);
   border-radius: 5px;
   position: relative;
+  height: 350px;
 }
 
-.profile .profileRight .item .input {
-  margin: 5px auto;
-  max-width: inherit;
-  width: 90%;
-  border: 2px solid #ccc;
-  height: 60px;
-}
-
-.profile .profileRight .item .pictureBox {
-  width: 90%;
-  margin: auto;
-  text-align: left;
-}
-
-.profile .profileRight .item .pictureBox .title {
-  display: flex;
-  margin: 25px 0;
-}
-
-.profile .profileRight .item .pictureBox .title svg {
-  width: 25px;
-  height: 25px;
-  margin-left: 5px;
-}
-
-.profile .profileRight .item .pictureBox .viewImg {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.profile .profileRight .item .inputA {
-  width: 90%;
-  margin: auto;
-  padding: 50px 0;
-}
-
-.profile .profileRight .item .input_focus {
-  border: 2px solid var(--dark);
-}
-
-.profile .profileRight .item .input_focus input {
-  color: var(--dark);
-}
-
-.profile .profileRight .item .cover {
+.profile .profileRight .profile_user .cover {
   width: 100%;
   height: 200px;
   border-radius: 5px;
@@ -856,7 +862,7 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
 }
 
-.profile .profileRight .item .usernameandavata {
+.profile .profileRight .profile_user .usernameandavata {
   width: max-content;
   display: flex;
   position: absolute;
@@ -865,31 +871,31 @@ body::-webkit-scrollbar-thumb {
   z-index: 2;
 }
 
-.profile .profileRight .item .usernameandavata .avata {
+.profile .profileRight .profile_user .usernameandavata .avata {
   width: 150px;
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.profile .profileRight .item .usernameandavata .avata .UploadPicture {
+.profile .profileRight .profile_user .usernameandavata .avata .UploadPicture {
   width: 100%;
   height: 100%;
 }
 
-.profile .profileRight .item .usernameandavata .avata .UploadPicture img {
+.profile .profileRight .profile_user .usernameandavata .avata .UploadPicture img {
   min-width: inherit;
   transform: none;
   width: 100%;
   height: auto;
 }
 
-.profile .profileRight .item .usernameandavata .avata .UploadPicture .tool {
+.profile .profileRight .profile_user .usernameandavata .avata .UploadPicture .tool {
   right: 12.5%;
   bottom: 12.5%;
 }
 
-.profile .profileRight .item .usernameandavata .title {
+.profile .profileRight .profile_user .usernameandavata .title {
   font-weight: bold;
   font-size: 1.5rem;
   height: max-content;
@@ -897,39 +903,71 @@ body::-webkit-scrollbar-thumb {
   line-height: 0.75;
 }
 
-.profile .profileRight .item .usernameandavata .title span {
+.profile .profileRight .profile_user .usernameandavata .title span {
   font-weight: 400;
   font-size: 0.9rem;
   opacity: 0.5;
 }
 
-.profile .profileRight .item .infomation {
-  margin-top: 150px;
+.profile .profileRight .information {
+  margin-top: 10px;
 }
 
-.profile .profileRight .item .infomation .input .name_focus {
-  transform: translateY(5px);
+.profile .profileRight .information .intro,
+.profile .profileRight .information .myimage,
+.profile .profileRight .information .myinfo {
+  box-shadow: 0px 2px 15px -5px #888;
+  background-color: white;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.profile .profileRight .item .infomation .select {
-  margin: 15px 0;
-  position: relative;
-  left: 5%;
+.profile .profileRight .information .intro .info_header,
+.profile .profileRight .information .myimage .info_header,
+.profile .profileRight .information .myinfo .info_header {
+  font-weight: 600;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border-bottom: 1px solid #ccc;
 }
 
-.profile .profileRight .item .infomation .active {
-  width: 90%;
-  margin: auto;
-  height: 60px;
-  line-height: 60px;
-  text-align: left;
-  position: relative;
+.profile .profileRight .information .intro .info_content,
+.profile .profileRight .information .myimage .info_content,
+.profile .profileRight .information .myinfo .info_content {
+  padding: 10px;
+  line-height: 1.75;
 }
 
-.profile .profileRight .item .infomation .active svg {
-  position: absolute;
-  top: 17.5px;
-  left: 60px;
+.profile .profileRight .information .intro .info_content h4,
+.profile .profileRight .information .myimage .info_content h4,
+.profile .profileRight .information .myinfo .info_content h4 {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.profile .profileRight .information .intro .info_content .pic,
+.profile .profileRight .information .myimage .info_content .pic,
+.profile .profileRight .information .myinfo .info_content .pic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile .profileRight .information .intro .info_content .pic img,
+.profile .profileRight .information .myimage .info_content .pic img,
+.profile .profileRight .information .myinfo .info_content .pic img {
+  width: auto;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .profile .profileRight {
+    width: calc(100% - 260px);
+  }
 }
 
 .admin {
@@ -1082,7 +1120,7 @@ body::-webkit-scrollbar-thumb {
 
 .admin .admin_main .admin_main_right .edit_item .pictureBox {
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
   text-align: left;
 }
 
@@ -1104,15 +1142,18 @@ body::-webkit-scrollbar-thumb {
 
 .admin .admin_main .admin_main_right .edit_item .inputA {
   width: 90%;
-  margin: auto;
-  padding: 50px 0;
+  margin: 25px auto 0;
+  padding: 50px 5%;
+  border: 2px solid #ccc;
 }
 
-.admin .admin_main .admin_main_right .edit_item .input_focus {
+.admin .admin_main .admin_main_right .edit_item .input_focus,
+.admin .admin_main .admin_main_right .edit_item .inputA_focus {
   border: 2px solid var(--dark);
 }
 
-.admin .admin_main .admin_main_right .edit_item .input_focus input {
+.admin .admin_main .admin_main_right .edit_item .input_focus input,
+.admin .admin_main .admin_main_right .edit_item .inputA_focus input {
   color: var(--dark);
 }
 
@@ -1177,6 +1218,10 @@ body::-webkit-scrollbar-thumb {
 
 .admin .admin_main .admin_main_right .edit_item .infomation .input .name_focus {
   transform: translateY(5px);
+}
+
+.admin .admin_main .admin_main_right .edit_item .infomation .inputA {
+  width: 95%;
 }
 
 .admin .admin_main .admin_main_right .edit_item .infomation .select {

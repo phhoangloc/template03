@@ -49,6 +49,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark {
+    background-color: var(--maindark);
+    color: white;
+}
+
+.main_light {
+    background-color: var(--mainlight);
+    color: white;
+}
+
+.main_dark {
     background-color: var(--dark);
     color: white;
 }
@@ -384,6 +394,7 @@ body::-webkit-scrollbar-thumb {
     height: 500px;
     box-shadow: 5px 5px 20px -5px #888;
     border-radius: 5px;
+    background-color: white;
 
     .link {
         font-size: 0.9rem;
@@ -554,89 +565,79 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile {
+    color: var(--maindark);
 
     .profileLeft {
-        height: calc(100vh - 100px);
-        margin: 0 auto;
+        height: calc(100vh - 110px);
+        margin: 5px auto 0;
+        overflow: scroll;
+        width: 50px;
+        background-color: white;
+        border-radius: 5px;
 
         .dividers {
             position: inherit;
-            margin-top: 5px;
             width: 100%;
             transform: unset;
             box-shadow: none;
-            background-color: white;
             padding: 5px;
             border-radius: 5px;
+            top: 0px;
 
             .divider {
-                width: 98%;
-                margin: 1%;
+                width: 100%;
                 text-align: left;
                 border-radius: 5px;
+                text-align: center;
 
+                svg {
+                    width: 30px;
+                    height: 30px;
+                    margin-top: 5px;
+                }
+
+                span {
+                    display: none;
+                }
+            }
+
+
+        }
+
+        @media (min-width:768px) {
+            width: 250px;
+
+            .dividers {
+                .divider {
+                    display: flex;
+
+                    span {
+                        display: block;
+                        padding: 0 5px
+                    }
+                }
             }
         }
+    }
+
+    .profileLeft::-webkit-scrollbar {
+        display: none;
     }
 
     .profileRight {
         margin: 0 auto;
         padding: 5px;
         height: max-content;
+        width: calc(100% - 60px);
 
-        .item {
-            min-height: 200vh;
+        .profile_user {
             padding: 5px;
             box-shadow: 0px 2px 15px -5px #888;
             background-color: white;
             color: var(--dark);
             border-radius: 5px;
             position: relative;
-
-            .input {
-                margin: 5px auto;
-                max-width: inherit;
-                width: 90%;
-                border: 2px solid #ccc;
-                height: 60px;
-            }
-
-            .pictureBox {
-                width: 90%;
-                margin: auto;
-                text-align: left;
-
-                .title {
-                    display: flex;
-                    margin: 25px 0;
-
-                    svg {
-                        width: 25px;
-                        height: 25px;
-                        margin-left: 5px;
-                    }
-                }
-
-                .viewImg {
-                    display: flex;
-                    flex-wrap: wrap;
-                }
-            }
-
-            .inputA {
-                width: 90%;
-                margin: auto;
-                padding: 50px 0;
-            }
-
-            .input_focus {
-                border: 2px solid var(--dark);
-
-                input {
-
-                    color: var(--dark);
-                }
-            }
+            height: 350px;
 
             .cover {
                 width: 100%;
@@ -694,41 +695,58 @@ body::-webkit-scrollbar-thumb {
                 }
             }
 
-            .infomation {
-                margin-top: 150px;
+        }
 
-                .input {
+        .information {
+            margin-top: 10px;
 
-                    .name_focus {
-                        transform: translateY(5px);
+            .intro,
+            .myimage,
+            .myinfo {
+                box-shadow: 0px 2px 15px -5px #888;
+                background-color: white;
+                padding: 5px;
+                margin: 5px 0;
+                border-radius: 5px;
+                overflow: hidden;
+
+                .info_header {
+                    font-weight: 600;
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 0 10px;
+                    border-bottom: 1px solid #ccc;
+                }
+
+                .info_content {
+                    padding: 10px;
+                    line-height: 1.75;
+
+                    h4 {
+                        margin-bottom: 5px;
+                        font-weight: 500;
                     }
-                }
 
-                .select {
-                    margin: 15px 0;
-                    position: relative;
-                    left: 5%;
-                }
+                    .pic {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        overflow: hidden;
 
-                .active {
-                    width: 90%;
-                    margin: auto;
-                    height: 60px;
-                    line-height: 60px;
-                    text-align: left;
-                    position: relative;
-
-                    svg {
-                        position: absolute;
-                        top: 17.5px;
-                        left: 60px;
+                        img {
+                            width: auto;
+                            height: 100%;
+                        }
                     }
                 }
             }
         }
+
+        @media (min-width:768px) {
+            width: calc(100% - 260px);
+
+        }
     }
-
-
 
 }
 
@@ -877,7 +895,7 @@ body::-webkit-scrollbar-thumb {
 
                 .pictureBox {
                     width: 90%;
-                    margin: auto;
+                    margin: 0 auto;
                     text-align: left;
 
                     .title {
@@ -899,11 +917,13 @@ body::-webkit-scrollbar-thumb {
 
                 .inputA {
                     width: 90%;
-                    margin: auto;
-                    padding: 50px 0;
+                    margin: 25px auto 0;
+                    padding: 50px 5%;
+                    border: 2px solid #ccc;
                 }
 
-                .input_focus {
+                .input_focus,
+                .inputA_focus {
                     border: 2px solid var(--dark);
 
                     input {
@@ -976,6 +996,10 @@ body::-webkit-scrollbar-thumb {
                         .name_focus {
                             transform: translateY(5px);
                         }
+                    }
+
+                    .inputA {
+                        width: 95%;
                     }
 
                     .select {
