@@ -1,3 +1,5 @@
+import NotFound from '@/app/not-found'
+import Feed from '@/component/home/profile/pages/feed'
 import React from 'react'
 
 type Props = {
@@ -5,9 +7,11 @@ type Props = {
 }
 
 const page = ({ params }: Props) => {
-    return (
-        <div className='item'>{params.slug}</div>
-    )
+    switch (params.slug) {
+        case "feed":
+            return <Feed />
+    }
+    return <NotFound />
 }
 
 export default page

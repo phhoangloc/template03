@@ -49,7 +49,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark {
-    background-color: var(--maindark);
+    background-color: black;
     color: white;
 }
 
@@ -59,7 +59,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main_dark {
-    background-color: var(--dark);
+    background-color: var(--maindark);
     color: white;
 }
 
@@ -132,7 +132,6 @@ body::-webkit-scrollbar-thumb {
         margin: auto 5px;
         cursor: pointer;
         border-radius: 50px;
-        border: 1px solid var(--mainlight);
     }
 
     h1 {
@@ -560,18 +559,15 @@ body::-webkit-scrollbar-thumb {
 
 .dividers {
     z-index: 9;
-    color: var(--dark);
 }
 
 .profile {
-    color: var(--maindark);
 
     .profileLeft {
         height: calc(100vh - 110px);
         margin: 5px auto 0;
         overflow: scroll;
         width: 50px;
-        background-color: white;
         border-radius: 5px;
 
         .dividers {
@@ -629,113 +625,206 @@ body::-webkit-scrollbar-thumb {
         height: max-content;
         width: calc(100% - 60px);
 
-        .profile_user {
-            padding: 5px;
-            box-shadow: 0px 2px 15px -5px #888;
-            background-color: white;
-            color: var(--dark);
-            border-radius: 5px;
-            position: relative;
-            height: 350px;
-
-            .cover {
-                width: 100%;
-                height: 200px;
+        .myinfo {
+            .profile_user {
+                padding: 5px;
                 border-radius: 5px;
                 position: relative;
-                overflow: hidden;
+                height: 350px;
 
-            }
 
-            .usernameandavata {
-                width: max-content;
-                display: flex;
-                position: absolute;
-                top: 150px;
-                left: 5%;
-                z-index: 2;
-
-                .avata {
-                    width: 150px;
-                    aspect-ratio: 1;
-                    border-radius: 50%;
+                .cover {
+                    width: 100%;
+                    height: 200px;
+                    border-radius: 5px;
+                    position: relative;
                     overflow: hidden;
 
-                    .UploadPicture {
-                        width: 100%;
-                        height: 100%;
+                }
 
-                        img {
-                            min-width: inherit;
-                            transform: none;
+                .usernameandavata {
+                    width: max-content;
+                    display: flex;
+                    position: absolute;
+                    top: 150px;
+                    left: 5%;
+                    z-index: 2;
+
+                    .avata {
+                        width: 150px;
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+                        overflow: hidden;
+
+                        .UploadPicture {
                             width: 100%;
-                            height: auto
-                        }
+                            height: 100%;
 
-                        .tool {
-                            right: 12.5%;
-                            bottom: 12.5%;
+                            img {
+                                min-width: inherit;
+                                transform: none;
+                                width: 100%;
+                                height: auto
+                            }
+
+                            .tool {
+                                right: 12.5%;
+                                bottom: 12.5%;
+                            }
+                        }
+                    }
+
+                    .title {
+                        font-weight: bold;
+                        font-size: 1.5rem;
+                        height: max-content;
+                        margin: auto auto 10px 10px;
+                        line-height: 0.75;
+
+                        span {
+                            font-weight: 400;
+                            font-size: 0.9rem;
+                            opacity: 0.5;
                         }
                     }
                 }
 
-                .title {
-                    font-weight: bold;
-                    font-size: 1.5rem;
-                    height: max-content;
-                    margin: auto auto 10px 10px;
-                    line-height: 0.75;
+            }
 
-                    span {
-                        font-weight: 400;
-                        font-size: 0.9rem;
-                        opacity: 0.5;
+            .information {
+                margin-top: 10px;
+
+                .intro,
+                .myimage,
+                .myinfo {
+                    padding: 5px;
+                    margin: 5px 0;
+                    border-radius: 5px;
+                    overflow: hidden;
+
+                    .info_header {
+                        font-weight: 600;
+                        height: 30px;
+                        line-height: 30px;
+                        padding: 0 10px;
+                        border-bottom: 1px solid #ccc;
+                    }
+
+                    .info_content {
+                        padding: 10px;
+                        line-height: 1.75;
+
+                        p {
+                            background-color: inherit !important;
+
+                            span {
+                                color: inherit !important;
+                                font-family: inherit !important;
+                            }
+                        }
+
+                        h4 {
+                            margin-bottom: 5px;
+                            font-weight: 500;
+                        }
+
+                        .pic {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            overflow: hidden;
+
+                            img {
+                                width: auto;
+                                height: 100%;
+                            }
+                        }
                     }
                 }
             }
-
         }
 
-        .information {
-            margin-top: 10px;
+        .feed {
+            width: 100%;
+            max-width: 675px;
+            margin: auto;
 
-            .intro,
-            .myimage,
-            .myinfo {
-                box-shadow: 0px 2px 15px -5px #888;
-                background-color: white;
+            .new_feed {
                 padding: 5px;
-                margin: 5px 0;
                 border-radius: 5px;
-                overflow: hidden;
 
-                .info_header {
-                    font-weight: 600;
-                    height: 30px;
-                    line-height: 30px;
-                    padding: 0 10px;
-                    border-bottom: 1px solid #ccc;
+                .inputA {
+                    height: 100px;
+                    margin-bottom: 5px;
+                    border-radius: 5px;
+                    padding: 30px 5% 5px;
                 }
 
-                .info_content {
-                    padding: 10px;
-                    line-height: 1.75;
+                .tool {
+                    border-top: 1px solid #ccc;
+                    padding: 5px;
+                    width: 90%;
+                    margin: auto;
 
-                    h4 {
-                        margin-bottom: 5px;
-                        font-weight: 500;
+                    .button {
+                        margin: auto 0 auto auto;
                     }
+                }
 
-                    .pic {
+
+            }
+
+            .feed_option {
+                display: flex;
+                width: 100%;
+                margin-top: 25px;
+
+                p {
+                    width: max-content;
+                    opacity: 0.5;
+                    cursor: pointer;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    padding: 5px 10px;
+
+                }
+
+                .pSelect {
+                    opacity: 1;
+                }
+            }
+
+            .item_feeds {
+                .item_feed::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .item_feed {
+                    margin: 5px 0;
+                    padding: 5px 5%;
+                    min-height: 150px;
+                    max-height: 450px;
+                    overflow: scroll;
+                    border-radius: 5px;
+
+                    .item_feed_header {
+                        height: 30px;
+                        line-height: 30px;
                         display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        overflow: hidden;
+                        font-weight: 500;
 
                         img {
-                            width: auto;
-                            height: 100%;
+                            padding: 2.5px;
+                            border-radius: 50%;
+                            box-shadow: 0px 0px 1px #888;
+                            margin-right: 5px;
                         }
+                    }
+
+                    .item_feed_detail {
+                        padding: 0 0 0 35px;
+                        font-size: 0.9rem;
                     }
                 }
             }
@@ -743,7 +832,6 @@ body::-webkit-scrollbar-thumb {
 
         @media (min-width:768px) {
             width: calc(100% - 260px);
-
         }
     }
 

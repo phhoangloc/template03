@@ -3,7 +3,7 @@
     width: 100%;
     height: 300px;
     padding: 50px 25px 25px;
-    color: var(--dark);
+    transition: all 0.5s;
 
     .name {
         position: absolute;
@@ -186,7 +186,7 @@
     width: max-content;
     height: max-content;
     right: 10px;
-    box-shadow: -1px 5px 10px -1px #888;
+    box-shadow: 1px 1px 5px -1px #888;
     transform: translateX(150%);
     transition: all 0.25s;
 
@@ -197,7 +197,6 @@
         text-align: center;
         padding: 0 5px;
         cursor: pointer;
-        background-color: white
     }
 
     .divider:hover {

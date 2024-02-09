@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['drive.google.com'],
+        // domains: ['drive.google.com'],
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: 'https://be-mywatch.vercel.app'
+                protocol: 'http',
+                hostname: 'localhost',
+                port: "4000"
             },
             {
                 protocol: 'https',
@@ -15,7 +16,7 @@ const nextConfig = {
     },
 
     env: {
-        server_url: "https://be-mywatch.vercel.app/",
+        server_url: "http://localhost:4000/",
         google_url: "https://drive.google.com/uc?id="
     }
 };

@@ -12,9 +12,8 @@ const TextArea = ({ onChange, name, value }: Props) => {
     const [focus, setFocus] = useState<boolean>(false)
 
     useEffect(() => {
-        inputRef.current ? inputRef.current.innerHTML = value : null
+        value === "" && inputRef.current ? inputRef.current.innerHTML = value : null
     }, [value])
-
 
     return (
         <div className={`inputA ${focus || inputRef.current?.innerHTML ? "inputA_focus" : ""}`}>

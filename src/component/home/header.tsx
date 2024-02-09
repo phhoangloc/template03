@@ -78,7 +78,9 @@ const Header = (props: Props) => {
             <MenuIcon onClick={() => store.dispatch(setMenu(true))} />
             <h1><Link href={"/home"}>Locand</Link></h1>
             {currentUser && currentUser._id ?
-                <><Image src={process.env.google_url + currentUser?.infor?.avata[currentUser?.infor?.avata?.length - 1].name} width={30} height={30} alt='pic' priority={true} onClick={() => setAccBox(!accBox)} /><Divider list={isLoginList} func={(l) => doFunction(l)} open={accBox} /></> :
+                <><Image src={process.env.google_url + currentUser?.infor?.avata[currentUser?.infor?.avata?.length - 1].name} width={30} height={30} alt='pic' priority={true} onClick={() => setAccBox(!accBox)} />
+                    <Divider list={isLoginList} func={(l) => doFunction(l)} open={accBox} />
+                </> :
                 <><PersonIcon onClick={() => setAccBox(!accBox)} /><Divider list={isntLoginList} func={(l) => doFunction(l)} open={accBox} /></>
             }
             <ShoppingCartIcon />

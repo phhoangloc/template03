@@ -7,11 +7,22 @@ import PersonIcon from '@mui/icons-material/Person';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import MessageIcon from '@mui/icons-material/Message';
 import FeedIcon from '@mui/icons-material/Feed';
+import { useState, useEffect } from 'react';
+import store from '@/redux/store';
+store
 type Props = {}
 
 const ProfileLeft = (props: Props) => {
 
     const toPage = useRouter()
+    const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
+
+    const update = () => {
+        store.subscribe(() => setCurrentTheme(store.getState().theme))
+    }
+
+    update()
+
     const menus = [
         {
             icon: <PersonIcon />,
@@ -40,7 +51,7 @@ const ProfileLeft = (props: Props) => {
         },
     ]
     return (
-        <div className='profileLeft'>
+        <div className={`profileLeft`}>
             <Divider list={menus} func={(l) => toPage.push(l)} />
         </div>
     )

@@ -277,7 +277,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark {
-  background-color: var(--maindark);
+  background-color: black;
   color: white;
 }
 
@@ -287,7 +287,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main_dark {
-  background-color: var(--dark);
+  background-color: var(--maindark);
   color: white;
 }
 
@@ -361,7 +361,6 @@ body::-webkit-scrollbar-thumb {
   margin: auto 5px;
   cursor: pointer;
   border-radius: 50px;
-  border: 1px solid var(--mainlight);
 }
 
 .header h1 {
@@ -776,11 +775,6 @@ body::-webkit-scrollbar-thumb {
 
 .dividers {
   z-index: 9;
-  color: var(--dark);
-}
-
-.profile {
-  color: var(--maindark);
 }
 
 .profile .profileLeft {
@@ -788,7 +782,6 @@ body::-webkit-scrollbar-thumb {
   margin: 5px auto 0;
   overflow: scroll;
   width: 50px;
-  background-color: white;
   border-radius: 5px;
 }
 
@@ -843,17 +836,14 @@ body::-webkit-scrollbar-thumb {
   width: calc(100% - 60px);
 }
 
-.profile .profileRight .profile_user {
+.profile .profileRight .myinfo .profile_user {
   padding: 5px;
-  box-shadow: 0px 2px 15px -5px #888;
-  background-color: white;
-  color: var(--dark);
   border-radius: 5px;
   position: relative;
   height: 350px;
 }
 
-.profile .profileRight .profile_user .cover {
+.profile .profileRight .myinfo .profile_user .cover {
   width: 100%;
   height: 200px;
   border-radius: 5px;
@@ -861,7 +851,7 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
 }
 
-.profile .profileRight .profile_user .usernameandavata {
+.profile .profileRight .myinfo .profile_user .usernameandavata {
   width: max-content;
   display: flex;
   position: absolute;
@@ -870,31 +860,31 @@ body::-webkit-scrollbar-thumb {
   z-index: 2;
 }
 
-.profile .profileRight .profile_user .usernameandavata .avata {
+.profile .profileRight .myinfo .profile_user .usernameandavata .avata {
   width: 150px;
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.profile .profileRight .profile_user .usernameandavata .avata .UploadPicture {
+.profile .profileRight .myinfo .profile_user .usernameandavata .avata .UploadPicture {
   width: 100%;
   height: 100%;
 }
 
-.profile .profileRight .profile_user .usernameandavata .avata .UploadPicture img {
+.profile .profileRight .myinfo .profile_user .usernameandavata .avata .UploadPicture img {
   min-width: inherit;
   transform: none;
   width: 100%;
   height: auto;
 }
 
-.profile .profileRight .profile_user .usernameandavata .avata .UploadPicture .tool {
+.profile .profileRight .myinfo .profile_user .usernameandavata .avata .UploadPicture .tool {
   right: 12.5%;
   bottom: 12.5%;
 }
 
-.profile .profileRight .profile_user .usernameandavata .title {
+.profile .profileRight .myinfo .profile_user .usernameandavata .title {
   font-weight: bold;
   font-size: 1.5rem;
   height: max-content;
@@ -902,30 +892,28 @@ body::-webkit-scrollbar-thumb {
   line-height: 0.75;
 }
 
-.profile .profileRight .profile_user .usernameandavata .title span {
+.profile .profileRight .myinfo .profile_user .usernameandavata .title span {
   font-weight: 400;
   font-size: 0.9rem;
   opacity: 0.5;
 }
 
-.profile .profileRight .information {
+.profile .profileRight .myinfo .information {
   margin-top: 10px;
 }
 
-.profile .profileRight .information .intro,
-.profile .profileRight .information .myimage,
-.profile .profileRight .information .myinfo {
-  box-shadow: 0px 2px 15px -5px #888;
-  background-color: white;
+.profile .profileRight .myinfo .information .intro,
+.profile .profileRight .myinfo .information .myimage,
+.profile .profileRight .myinfo .information .myinfo {
   padding: 5px;
   margin: 5px 0;
   border-radius: 5px;
   overflow: hidden;
 }
 
-.profile .profileRight .information .intro .info_header,
-.profile .profileRight .information .myimage .info_header,
-.profile .profileRight .information .myinfo .info_header {
+.profile .profileRight .myinfo .information .intro .info_header,
+.profile .profileRight .myinfo .information .myimage .info_header,
+.profile .profileRight .myinfo .information .myinfo .info_header {
   font-weight: 600;
   height: 30px;
   line-height: 30px;
@@ -933,34 +921,128 @@ body::-webkit-scrollbar-thumb {
   border-bottom: 1px solid #ccc;
 }
 
-.profile .profileRight .information .intro .info_content,
-.profile .profileRight .information .myimage .info_content,
-.profile .profileRight .information .myinfo .info_content {
+.profile .profileRight .myinfo .information .intro .info_content,
+.profile .profileRight .myinfo .information .myimage .info_content,
+.profile .profileRight .myinfo .information .myinfo .info_content {
   padding: 10px;
   line-height: 1.75;
 }
 
-.profile .profileRight .information .intro .info_content h4,
-.profile .profileRight .information .myimage .info_content h4,
-.profile .profileRight .information .myinfo .info_content h4 {
+.profile .profileRight .myinfo .information .intro .info_content p,
+.profile .profileRight .myinfo .information .myimage .info_content p,
+.profile .profileRight .myinfo .information .myinfo .info_content p {
+  background-color: inherit !important;
+}
+
+.profile .profileRight .myinfo .information .intro .info_content p span,
+.profile .profileRight .myinfo .information .myimage .info_content p span,
+.profile .profileRight .myinfo .information .myinfo .info_content p span {
+  color: inherit !important;
+  font-family: inherit !important;
+}
+
+.profile .profileRight .myinfo .information .intro .info_content h4,
+.profile .profileRight .myinfo .information .myimage .info_content h4,
+.profile .profileRight .myinfo .information .myinfo .info_content h4 {
   margin-bottom: 5px;
   font-weight: 500;
 }
 
-.profile .profileRight .information .intro .info_content .pic,
-.profile .profileRight .information .myimage .info_content .pic,
-.profile .profileRight .information .myinfo .info_content .pic {
+.profile .profileRight .myinfo .information .intro .info_content .pic,
+.profile .profileRight .myinfo .information .myimage .info_content .pic,
+.profile .profileRight .myinfo .information .myinfo .info_content .pic {
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
 }
 
-.profile .profileRight .information .intro .info_content .pic img,
-.profile .profileRight .information .myimage .info_content .pic img,
-.profile .profileRight .information .myinfo .info_content .pic img {
+.profile .profileRight .myinfo .information .intro .info_content .pic img,
+.profile .profileRight .myinfo .information .myimage .info_content .pic img,
+.profile .profileRight .myinfo .information .myinfo .info_content .pic img {
   width: auto;
   height: 100%;
+}
+
+.profile .profileRight .feed {
+  width: 100%;
+  max-width: 675px;
+  margin: auto;
+}
+
+.profile .profileRight .feed .new_feed {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.profile .profileRight .feed .new_feed .inputA {
+  height: 100px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 30px 5% 5px;
+}
+
+.profile .profileRight .feed .new_feed .tool {
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  width: 90%;
+  margin: auto;
+}
+
+.profile .profileRight .feed .new_feed .tool .button {
+  margin: auto 0 auto auto;
+}
+
+.profile .profileRight .feed .feed_option {
+  display: flex;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.profile .profileRight .feed .feed_option p {
+  width: max-content;
+  opacity: 0.5;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.profile .profileRight .feed .feed_option .pSelect {
+  opacity: 1;
+}
+
+.profile .profileRight .feed .item_feeds .item_feed::-webkit-scrollbar {
+  display: none;
+}
+
+.profile .profileRight .feed .item_feeds .item_feed {
+  margin: 5px 0;
+  padding: 5px 5%;
+  min-height: 150px;
+  max-height: 450px;
+  overflow: scroll;
+  border-radius: 5px;
+}
+
+.profile .profileRight .feed .item_feeds .item_feed .item_feed_header {
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  font-weight: 500;
+}
+
+.profile .profileRight .feed .item_feeds .item_feed .item_feed_header img {
+  padding: 2.5px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 1px #888;
+  margin-right: 5px;
+}
+
+.profile .profileRight .feed .item_feeds .item_feed .item_feed_detail {
+  padding: 0 0 0 35px;
+  font-size: 0.9rem;
 }
 
 @media (min-width: 768px) {
