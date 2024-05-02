@@ -38,7 +38,7 @@ const Feeds = ({ id, rss, type }: Props) => {
                 <div className='grid_box'>
                     {data.length ?
                         data.map((d: any, i: number) =>
-                            <div className="xs12 sm6 md4" key={i} style={{ margin: " 10px", padding: "5px", boxShadow: "0px 0px 2px #888", borderRadius: "5px" }} >
+                            <div className="xs12 sm6 md4" key={i} style={{ margin: " 10px", padding: "5px", boxShadow: "0px 0px 2px #888", borderRadius: "5px", background: "white" }} >
                                 <Link href={d.link} target="_blank" style={{ color: "inherit", opacity: 0.75, textDecoration: "none" }}>
                                     <div className="title" dangerouslySetInnerHTML={{ __html: d.title }}
                                         style={{ width: "80%", fontWeight: "bold", fontSize: "1.1rem", textWrap: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} />
