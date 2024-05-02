@@ -6,7 +6,6 @@ const parser = new Parser();
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const rssUrl = req.query.rss
-    console.log(rssUrl)
 
     try {
         const feed = await parser.parseURL(rssUrl);

@@ -56,7 +56,7 @@ export default function Home() {
           <SendIcon onClick={() => { setRss(rsslink), setI(-1), setId("") }} style={{ width: "30px", height: "30px", margin: "5px", cursor: "pointer" }} />
         </div>
       </div>
-      <div className="grid_box" style={{ width: "90%", margin: "25px auto", maxWidth: "992px" }}>
+      <div className="grid_box" style={{ width: "90%", margin: "25px auto", maxWidth: "1200px" }}>
         <div className="xs12 sm3"
           style={{ backgroundColor: "white", minHeight: "100px", padding: "5px", border: "1px solid lightgrey", borderRadius: "5px", margin: "10px " }}>
           <h5 style={{ textAlign: "center" }}>キーワード</h5>
@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
                 <div style={{ height: modal ? "50px" : "0px", transition: "all 0.1s", overflow: "hidden", border: "1px solid #eee", padding: "0px 10px", borderRadius: "5px" }}>
                   <code>
-                    {`<iframe scr="${process.env.HOMEPAGE_URL + id}/${type}"></iframe>`}
+                    {`<iframe scr="${process.env.HOMEPAGE_URL + id}/ ${type}"></iframe>`}
                   </code>
                 </div>
               </div> :
