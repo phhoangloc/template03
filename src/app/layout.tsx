@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
+import { Noto_Sans } from 'next/font/google'
 import "../style/style.css"
-import { Inter } from 'next/font/google'
-
 export const metadata: Metadata = {
-  title: "Lockand",
-  icons: {
-    icon: 'icon/icon.png',
-  }
+  title: "ASTEM ALERT",
 }
 
-const inter = Inter({
+const inter = Noto_Sans({
   subsets: ['latin'],
   display: 'swap',
 })
