@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
                 <div style={{ height: modal ? "50px" : "0px", transition: "all 0.1s", overflow: "hidden", border: "1px solid #eee", padding: "0px 10px", borderRadius: "5px" }}>
                   <code>
-                    {`<iframe scr="${process.env.HOMEPAGE_URL + id}/ ${type}"></iframe>`}
+                    {`<iframe scr="${process.env.HOMEPAGE_URL + id}/${type}"></iframe>`}
                   </code>
                 </div>
               </div> :
