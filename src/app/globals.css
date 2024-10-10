@@ -2,26 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  letter-spacing: 0.25px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dangerous_box h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.dangerous_box h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.dangerous_box h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+
+}
+
+.dangerous_box h4 {
+  font-size: 1rem;
+  font-weight: 500;
+
+}
+
+.dangerous_box h5 {
+  font-size: 0.9rem;
+  font-weight: 500;
+
+}
+
+.dangerous_box ul {
+  padding-left: 25px;
+}
+
+.dangerous_box ul li {
+  list-style: disc;
+}
+
+.ani_bottom_to_top {
+  animation: bot_to_top 0.5s;
+}
+
+.scroll_none::-webkit-scrollbar {
+  display: none;
 }
