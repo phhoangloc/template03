@@ -50,6 +50,7 @@ const Cover = (props: Props) => {
             </div>
             <Image src={"/image/cover_01.jpg"} fill className="object-cover" alt="cover" />
             {list[_i]?.img ? <Image src={"/image/" + list[_i].img} fill className="object-cover" alt="cover" /> : null}
+
         </div>
     )
 }
