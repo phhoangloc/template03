@@ -44,8 +44,6 @@ const Cover = (props: Props) => {
                                 <p className='text-sm opacity-75  text-justify'>{li.content}</p>
                             </div>)}
                     </div>
-                    <div className='grid w-1/2 grid-cols-2 gap-4'>
-                    </div>
                 </div>
             </div>
             <Image src={"/image/cover_01.jpg"} fill className="object-cover" alt="cover" />
