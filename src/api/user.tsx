@@ -6,6 +6,7 @@ export type BodyTypeWithPosition = {
     archive?: string,
     id?: string,
     slug?: string,
+    hostId?: string,
     search?: string,
     skip?: number,
     limit?: number,
@@ -29,11 +30,12 @@ export const ApiCheckLogin = async () => {
 
 }
 
-export const ApiItemUser = async ({ position, archive, search, id, slug, sort, skip, limit }: BodyTypeWithPosition) => {
+export const ApiItemUser = async ({ position, archive, hostId, search, id, slug, sort, skip, limit }: BodyTypeWithPosition) => {
     try {
         const result = await axios.get(process.env.api_url + "api/" + position +
             "/" + archive +
             "?archive=" + archive +
+            "&hostId=" + `${hostId ? hostId : ""}` +
             "&search=" + `${search ? search : ""}` +
             "&id=" + `${id ? id : ""}` +
             "&slug=" + `${slug ? slug : ""}` +

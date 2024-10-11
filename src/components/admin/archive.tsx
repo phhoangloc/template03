@@ -307,15 +307,15 @@ export const ArchivePic = ({ edit, defaultlimit, type }: PropsArchivePic) => {
     }, [currentModal.value])
     return (
         <div className='w-full'>
-            <div className="grid grid-cols-12 gap-1">
+            <div className="grid grid-cols-12 gap-4">
                 <div className=' relative col-span-4 md:col-span-3 lg:col-span-2  aspect-square overflow-hidden rounded flex flex-col justify-center text-center cursor-pointer shadow-lg  bg-white dark:bg-slate-800'>
                     {loadingButton ? "LOADING..." :
                         <UploadButton name="ADD IMAGE" func={(e) => { getFile(e), setFile(undefined), setFiles(undefined) }} />}
                 </div>
                 {
                     items.map((item, index) =>
-                        <div key={index} className='col-span-4 md:col-span-3 lg:col-span-2 relative aspect-square sm overflow-hidden rounded cursor-pointer bg-white dark:bg-slate-800' onClick={() => store.dispatch(setModal({ value: "viewimage", open: true, msg: "", data: item }))}>
-                            <Image className='' quality={100} src={process.env.ftp_url + item.name} alt='pic' fill priority style={{ objectFit: "cover" }} />
+                        <div key={index} className='col-span-4 md:col-span-3 lg:col-span-2 relative aspect-square sm overflow-hidden rounded cursor-pointer bg-white dark:bg-slate-800' onClick={() => store.dispatch(setModal({ value: "viewimage_detail", data: item }))}>
+                            <Image className='' quality={100} src={process.env.ftp_url + item.name} alt='pic' fill sizes='100%' priority style={{ objectFit: "cover" }} />
                         </div>
                     )
                 }

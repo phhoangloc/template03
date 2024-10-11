@@ -4,6 +4,7 @@ import LoginCard from '@/components/cards/loginCard'
 import SignupCard from '@/components/cards/signupCard'
 import { Archive, ArchivePic } from '@/components/admin/archive'
 import store from '@/redux/store'
+import SendMailCard from '@/components/cards/sendMailCard'
 
 type Props = {
     params: { archive: string }
@@ -20,6 +21,24 @@ const Page = ({ params }: Props) => {
         update()
     })
     switch (params.archive) {
+        case "login":
+            return (
+                <div className='min-h-full relative flex flex-col justify-center'>
+                    <LoginCard archive='admin' />
+                </div>
+            )
+        case "sendmail":
+            return (
+                <div className='min-h-full relative flex flex-col justify-center'>
+                    <SendMailCard />
+                </div>
+            )
+        case "signup":
+            return (
+                <div className='min-h-full relative flex flex-col justify-center'>
+                    <SignupCard />
+                </div>
+            )
         case "blog":
         case "page":
             return (

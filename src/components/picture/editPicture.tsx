@@ -10,16 +10,15 @@ type Props = {
 
 const EditPicture = (props: Props) => {
     return (
-        <div className='shadow rounded'>
-            <div className='relative overflow-hidden rounded h-[400px]'>
-                {
-                    props.src ?
-                        < Image className='object-cover' src={props.src} alt='avata' fill /> :
-                        < div className='h-full bg-slate-100 dark:bg-slate-900  flex flex-col justify-center text-center text-xl'>NO PICTURE</div>
-                }
-                <InsertPhotoOutlinedIcon className='!w-10 !h-10 p-1 absolute bottom-1 right-1 cursor-pointer hover:text-white hover:bg-orange-500 '
-                    onClick={() => props.setPictureModal && props.setPictureModal()} />
-            </div>
+
+        <div className='relative overflow-hidden rounded h-[400px]'>
+            {
+                props.src ?
+                    < Image className='object-contain' src={props.src} alt='avata' fill /> :
+                    < div className='h-full bg-slate-100 dark:bg-slate-900  flex flex-col justify-center text-center text-xl'>NO PICTURE</div>
+            }
+            <InsertPhotoOutlinedIcon className='!w-10 !h-10 p-1 absolute bottom-1 right-1 cursor-pointer hover:text-white hover:bg-orange-500 '
+                onClick={() => props.setPictureModal && props.setPictureModal()} />
         </div>
     )
 }

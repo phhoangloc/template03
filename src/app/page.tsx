@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import PersonIcon from '@mui/icons-material/Person';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import Cover from "@/components/home/cover";
 export default function Home() {
 
   const [currentMenu, setCurrentMenu] = useState<boolean>(store.getState().menu)
@@ -19,7 +20,7 @@ export default function Home() {
   })
   return (
     <div  >
-      hello
+      <Cover />
     </div>
   );
 }

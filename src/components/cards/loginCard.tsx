@@ -46,7 +46,7 @@ const LoginCard = ({ archive }: Props) => {
         }
     }
     return (
-        <div className='bg-white dark:bg-slate-800 m-auto w-11/12 max-w-[400px] text-center p-10 shadow-md '>
+        <div className='bg-white dark:bg-slate-800 m-auto w-11/12 max-w-[400px] text-center p-10 shadow-md dark:text-white '>
             <div className="row-span-2 h-12 flex flex-col justify-center text-2xl font-bold">
                 <h2>Login</h2>
             </div>
