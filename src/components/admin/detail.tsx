@@ -10,6 +10,9 @@ import { ModalType, setModal } from '@/redux/reducer/ModalReducer';
 import TextAreaTool from '../input/textareaTool';
 import { ApiCreateItem, ApiUpdateItem } from '@/api/user';
 import { setNotice } from '@/redux/reducer/noticeReducer';
+import moment from 'moment';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import Link from 'next/link';
 type Props = {
     path1: string,
     path2: string
@@ -43,6 +46,8 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
     const [_slug, set_slug] = useState<string>("")
     const [_content, set_content] = useState<string>("")
     const [_newContent, set_newContent] = useState<string>("")
+    const [_createdDate, set_createdDate] = useState<Date>()
+    const [_updateDate, set_updateDate] = useState<Date>()
 
     const [_saving, set_saving] = useState<boolean>(false)
 
@@ -50,7 +55,7 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
         name: _name,
         slug: _slug,
         coverId: _coverId,
-        content: _newContent || _content
+        content: _newContent || _content,
     }
 
     const toPage = useRouter()
@@ -63,6 +68,8 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
             set_slug(result.data[0].slug)
             set_coverId(result.data[0].coverId)
             set_content(result.data[0].content)
+            set_createdDate(result.data[0].createdAt)
+            set_updateDate(result.data[0].updateDate)
         }
     }
     useEffect(() => {
@@ -127,6 +134,10 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
         }
     }
 
+    const previewAnItem = async (p: string, g: string, id: string, body: any) => {
+        await ApiUpdateItem({ position: p, archive: g, id: id }, body)
+    }
+
     return (
         <div className='flex flex-wrap gap-4 '>
             <div className='w-full bg-white dark:bg-slate-800 shadow-md rounded h-12 flex flex-col justify-center px-2'>
@@ -136,24 +147,39 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
                     <p onClick={() => toPage.push(`/admin/${path1}/`)} className="hover:text-orange-500 cursor-pointer" >{path1}</p>
                 </div>
             </div>
-            <div className='w-full bg-white dark:bg-slate-800 shadow-md rounded flex flex-col justify-center px-2'>
-                <div className='flex h-12 justify-between'>
-                    {path2 === "news" ? <p className='flex flex-col justify-center'>add new {path1}</p> : <p className='flex flex-col justify-center'>edit blog</p>}
-                    <div className="flex gap-1">
+            <div className='w-full bg-white dark:bg-slate-800 shadow-md rounded h-12 flex flex-col justify-center px-2'>
+                <Link href={"/" + path1 + "/blog_preview"} target='__blank'><p>url <span className='hover:underline cursor-pointer opacity-75' onClick={() => previewAnItem(currentUser.position, path1, "1", { name: _name, coverId: _coverId, content: _newContent || _content })}>{"/admin/" + path1 + "/" + (_slug ? _slug : path2)}</span></p></Link>
+            </div>
+            <div className="w-full flex flex-wrap gap-4 xl:flex-nowrap flex-row-reverse ">
+                <div className='w-full xl:w-4/12 bg-white dark:bg-slate-800 shadow-md rounded flex flex-col justify-center px-2 h-max'>
+                    <div className="flex h-12 gap-1 ml-auto mr-0">
                         <Button name="cancel" onClick={() => toPage.back()} sx="!m-auto !w-24 !h-6  !text-sm" />
                         <Button name={path2 === "news" ? "create" : "save"} onClick={() => path2 === "news" ? createNewItem(currentUser.position, path1, body) : updateAnItem(currentUser.position, path1, _id, body)} sx="!m-0 !m-auto !w-24 !h-6  !text-sm" />
                     </div>
+                    {_createdDate ?
+                        <div className='flex flex-wrap max-w-sm ml-auto gap-1 h-6 flex-col justify-center'>
+                            <p className='opacity-50'>Created Date :</p>
+                            <p >{moment(_createdDate).format("YYYY/MM/DD")}</p>
+                        </div> : null}
+                    {_updateDate ? <div className='flex flex-wrap max-w-sm ml-auto gap-1 h-6 flex-col justify-center'>
+                        <p className='opacity-50'>Update Date :</p>
+                        <p >{moment(_updateDate).format("YYYY/MM/DD")}</p>
+                    </div> : null}
+                </div>
+                <div className="w-full grid gap-4 xl:w-8/12">
+
+                    <div className='w-full  h-max bg-white dark:bg-slate-800 shadow-md rounded p-1'>
+                        <EditPicture src={_coverName ? process.env.ftp_url + _coverName : undefined} setPictureModal={() => { store.dispatch(setModal({ value: "viewimage" })), set_isCoverId(true) }} />
+                    </div>
+                    <div className='w-full grid h-max bg-white dark:bg-slate-800 shadow-md rounded p-2 gap-2'>
+                        <Input name="title" onChange={(v) => set_name(v)} value={_name} />
+                        <Input name="slug" onChange={(v) => set_slug(v)} value={_slug} />
+                        <TextAreaTool value={_content} onChange={(v) => set_newContent(v)} />
+                    </div >
                 </div>
             </div>
-            <div className='w-full h-max bg-white dark:bg-slate-800 shadow-md rounded p-1'>
-                <EditPicture src={_coverName ? process.env.ftp_url + _coverName : undefined} setPictureModal={() => { store.dispatch(setModal({ value: "viewimage" })), set_isCoverId(true) }} />
-            </div>
-            <div className='w-full grid h-max bg-white dark:bg-slate-800 shadow-md rounded p-2 gap-2'>
 
-                <Input name="title" onChange={(v) => set_name(v)} value={_name} />
-                <Input name="slug" onChange={(v) => set_slug(v)} value={_slug} />
-                <TextAreaTool value={_content} onChange={(v) => set_newContent(v)} />
-            </div >
+
         </div>
 
     )

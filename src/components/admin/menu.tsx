@@ -22,15 +22,15 @@ export const Menu = (props: Props) => {
             link: "/admin"
         },
         {
-            name: "PAGES",
+            name: "BOOK",
             children: [
                 {
-                    name: "VIEW PAGES",
-                    link: "/admin"
+                    name: "VIEW BOOK",
+                    link: "/admin/book"
                 },
                 {
-                    name: "ADD NEW PAGES",
-                    link: "/admin"
+                    name: "ADD NEW BOOK",
+                    link: "/admin/book"
                 },
             ]
         },
