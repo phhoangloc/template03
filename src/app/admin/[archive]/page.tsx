@@ -40,6 +40,7 @@ const Page = ({ params }: Props) => {
                 </div>
             )
         case "blog":
+        case "book":
         case "page":
             return (
                 <Archive archive={params.archive} />

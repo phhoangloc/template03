@@ -6,9 +6,11 @@ type Props = {}
 export const Menu = (props: Props) => {
 
     const [currentMenu, setCurrentMenu] = useState<boolean>(store.getState().menu)
+    const [currentUser, setCurrentUser] = useState<any>(store.getState().user)
 
     const update = () => {
         store.subscribe(() => setCurrentMenu(store.getState().menu))
+        store.subscribe(() => setCurrentUser(store.getState().user))
     }
 
     useEffect(() => {
@@ -30,12 +32,13 @@ export const Menu = (props: Props) => {
                 },
                 {
                     name: "ADD NEW BOOK",
-                    link: "/admin/book"
+                    link: "/admin/book/news"
                 },
             ]
         },
         {
             name: "BLOG",
+            position: "user",
             children: [
                 {
                     name: "VIEW BLOG",
@@ -68,6 +71,16 @@ export const Menu = (props: Props) => {
                 },
             ]
         },
+        {
+            name: "USER",
+            position: "user",
+            children: [
+                {
+                    name: "VIEW USER",
+                    link: "/admin/user"
+                },
+            ]
+        },
     ]
     const toPage = useRouter()
     return (
@@ -78,7 +91,7 @@ export const Menu = (props: Props) => {
                 </div>
                 {
                     menus.map((item, index) =>
-                        < div key={index}>
+                        currentUser.position === item.position ? null : < div key={index}>
                             <div className={`h-12  p-2 flex flex-col justify-center  cursor-pointer opacity-50  ${_id === index ? "font-semibold !opacity-100" : ""} hover:opacity-100`}
                                 onClick={(e) => { set_id(index), e.stopPropagation(), item.link ? toPage.push(item.link) : null }}>
                                 {item.name}

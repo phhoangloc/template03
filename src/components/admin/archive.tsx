@@ -83,7 +83,7 @@ export const Archive = ({ archive }: Props) => {
         }
     }
     const deleteItem = (id: string) => {
-        store.dispatch(setAlert({ open: true, value: false, msg: "are you sure to want to delete this post" }))
+        store.dispatch(setAlert({ open: true, value: false, msg: "are you sure to want to delete this " + archive }))
         setId(id)
         setIsDelete(true)
     }
@@ -152,7 +152,7 @@ export const Archive = ({ archive }: Props) => {
                                 >
                                     {n.username || n.name}
                                 </h4>
-                                <p className="text-xs opacity-50"> {n.position || n.updateDate && moment(n.updateDate).format("MM/DD") || moment(n.createDate).format("MM/DD")}</p>
+                                <p className="text-xs opacity-50"> {n.position || n.updateDate && moment(n.updateDate).format("MM/DD") || moment(n.createDate).format("MM/DD")} - {n.host.username}</p>
                             </div>
 
                             <div className="w-max flex h-12">
