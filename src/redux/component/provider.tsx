@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import store from '../store'
 import { ApiCheckLogin } from '@/api/user'
 import { setUser } from '../reducer/UserReduce'
+import Loading from '@/components/cards/loading'
 type Props = {
     children: React.ReactNode
 }
@@ -44,9 +45,11 @@ const Provider = ({ children }: Props) => {
     }, [currentRefresh])
 
     return (
-        <div>
-            {_loading ? "loading..." : children}
-        </div>
+        _loading ?
+            <div className='bg-slate-50 dark:bg-slate-900 dark:text-white w-screen h-screen flex flex-col justify-center'>
+                <Loading />
+            </div>
+            : children
     )
 }
 

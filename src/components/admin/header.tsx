@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import store from '@/redux/store';
@@ -48,13 +48,13 @@ const Header = ({ }: Props) => {
         }
     ]
     return (
-        <div className="h-12 flex justify-between dark:text-white absolute w-full top-0">
+        <div className="h-12 flex justify-between dark:text-white  w-full top-0">
             <MenuIcon className="cursor-pointer !w-12 !h-12 p-2 text-orange-600 dark:text-white opacity-75 hover:opacity-100 lg:!hidden" onClick={() => store.dispatch(setMenu(true))} />
             <div className="h-full flex flex-col justify-center">
                 {params.archive ? params.archive.toString().toUpperCase() : "DASHBOARD"}
             </div>
             <div className='flex'>
-                <NotificationsIcon className="cursor-pointer !w-12 !h-12 p-2  text-orange-600 dark:text-white opacity-75 hover:opacity-100" />
+                <HomeIcon className="cursor-pointer !w-12 !h-12 p-2  text-orange-600 dark:text-white opacity-75 hover:opacity-100" onClick={() => toPage.push("/")} />
                 <IconDrop
                     icon={currentUser?.avata ? <Image src={process.env.ftp_url + currentUser.avata.name} fill className='object-cover cursor-pointer' alt='avata' /> : <PersonIcon className="cursor-pointer !w-full !h-full  text-orange-600 dark:text-white opacity-75 hover:opacity-100" />}
                     data={

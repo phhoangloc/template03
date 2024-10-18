@@ -12,7 +12,7 @@ export const TitleDrop = ({ data, title, func, sx }: TitleProps) => {
     const [drop, setDrop] = useState<boolean>(false)
     return (
         <div className={`relative ${sx}`}>
-            <div className='flex h-12 ' onClick={() => { setDrop(!drop), func && func() }}>
+            <div className='flex h-12 border-[1px] border-slate-200 dark:border-slate-700 rounded ' onClick={() => { setDrop(!drop), func && func() }}>
                 <div className="flex justify-center flex-col text-center w-full cursor-pointer ">
                     {title}
                 </div>
@@ -40,7 +40,7 @@ export const IconDrop = ({ data, icon, func, sx }: IconProps) => {
     const [drop, setDrop] = useState<boolean>(false)
     return (
         <div className={`relative ${sx}`}>
-            <div className='flex h-12 w-12 p-2 ' onClick={() => { setDrop(!drop), func && func() }}>
+            <div className='flex h-12 w-12 p-2  ' onClick={() => { setDrop(!drop), func && func() }}>
                 <div className="relative w-full h-full rounded-[50%] overflow-hidden">
                     {icon}
                 </div>

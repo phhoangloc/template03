@@ -5,17 +5,18 @@ import CloseIcon from '@mui/icons-material/Close';
 type Props = {
     sx?: string,
     src?: string,
+    cover?: boolean
     setPictureModal?: () => void
 }
 
 const EditPicture = (props: Props) => {
     return (
 
-        <div className='relative overflow-hidden rounded h-[400px]'>
+        <div className='w-full relative overflow-hidden rounded h-[400px]'>
             {
                 props.src ?
-                    < Image className='object-contain' src={props.src} alt='avata' fill /> :
-                    < div className='h-full bg-slate-100 dark:bg-slate-900  flex flex-col justify-center text-center text-xl'>NO PICTURE</div>
+                    < Image className={`bg-slate-100 dark:bg-slate-900 ${props.cover ? "object-cover" : 'object-contain'}`} src={props.src} alt='avata' fill /> :
+                    < div className='h-full bg-slate-100 dark:bg-slate-900 flex flex-col justify-center text-center text-xl'>NO PICTURE</div>
             }
             <InsertPhotoOutlinedIcon className='!w-10 !h-10 p-1 absolute bottom-1 right-1 cursor-pointer hover:text-white hover:bg-orange-500 '
                 onClick={() => props.setPictureModal && props.setPictureModal()} />
@@ -39,13 +40,13 @@ export const EditAvatar = (props: Props) => {
 
     )
 }
-type PropsMay = {
+type PropsMany = {
     sx?: string,
     src?: string[],
     setPictureModal?: () => void,
     onRemove?: (index: number) => void
 }
-export const ImportManyPicture = (props: PropsMay) => {
+export const ImportManyPicture = (props: PropsMany) => {
     return (
         <div className='shadow rounded w-full overflow-auto scroll-hidden'>
             <div className="flex w-max  my-1">

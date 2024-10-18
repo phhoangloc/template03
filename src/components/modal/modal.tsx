@@ -34,7 +34,7 @@ const ImageModalDetail = ({ data }: ImageProps) => {
   const [isDelete, setIsDelete] = useState<boolean>(false)
 
   useEffect(() => {
-    isCopyLink && navigator.clipboard.writeText(process.env.ftp_url + "locand/" + data.name);
+    isCopyLink && navigator.clipboard.writeText(process.env.ftp_url + data.name);
     isCopyLink && store.dispatch(setNotice({ open: true, success: false, msg: "copied" }))
     setTimeout(() => {
       store.dispatch(setNotice({ open: false, success: false, msg: "" }))
@@ -78,8 +78,8 @@ const ImageModalDetail = ({ data }: ImageProps) => {
       <div className="relative ">
         <Input name="name" value={data.name} onChange={() => { }} disabled={true} />
         <Input name="author" value={data.host.username} onChange={() => { }} disabled={true} />
-        <Input name="url" value={process.env.ftp_url + "template2/" + data.name} onChange={() => { }} disabled={true}
-          icon1={<ContentCopyIcon className='!w-11 !h-11 p-3 m-auto bg-white hover:text-orange-500 cursor-pointer roud' onClick={() => setIsCopyLink(true)} />} />
+        <Input name="url" value={process.env.ftp_url + data.name} onChange={() => { }} disabled={true}
+          icon1={<ContentCopyIcon className='!w-10 !h-10 p-2 m-auto bg-white hover:text-orange-500 cursor-pointer rounded-[50%]' onClick={() => setIsCopyLink(true)} />} />
         <div className='flex justify-between w-full mt-6'>
           <DeleteOutlineOutlinedIcon className='dark:text-white hover:text-orange-500 cursor-pointer' onClick={() => deleteImage(data.id)} />
           <p className=' dark:text-white hover:text-orange-500 cursor-pointer' onClick={() => store.dispatch(setModal({ value: "", data: {} }))} >close</p>

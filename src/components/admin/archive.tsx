@@ -11,7 +11,7 @@ import Image from 'next/image'
 import AddIcon from '@mui/icons-material/Add';
 import { setAlert } from '@/redux/reducer/alertReducer'
 import { AlertType } from '@/redux/reducer/alertReducer'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import SearchButton from '../button/searchButton'
 import { ApiDeleteItem, ApiItemUser, ApiUploadFile } from '@/api/user'
 import Input from '../input/input'
 import { setNotice } from '@/redux/reducer/noticeReducer'
@@ -132,14 +132,14 @@ export const Archive = ({ archive }: Props) => {
     }
     return (
         <div className='bg-white dark:bg-slate-800  rounded shadow-md p-4 grid gap-2 grid-cols-1'>
-            <div className='flex border-b-2 dark:border-slate-700'>
+            <div className='flex border-b-2 dark:border-slate-700 justify-between'>
                 <div className="flex h-12">
                     <h3 className='text-xl font-bold text-orange-600 dark:text-white h-full flex flex-col justify-center'>{archive.toUpperCase()} </h3>
                     <AddIcon className='!w-12 !h-full p-3 opacity-50 hover:opacity-100 cursor-pointer text-orange-600 dark:text-white' onClick={() => toPage.push(archive + "/news")} />
                 </div>
-                {/* <SearchBox placehoder='search' func={(v) => setSearch(v)} /> */}
+                <SearchButton placehoder='search' func={(v) => setSearch(v)} />
             </div>
-            <div className="h-12 flex flex-col justify-end font-bold">
+            <div className="h-12 flex flex-col justify-end font-bold opacity-50  ">
                 <h4>Title</h4>
             </div>
             {isLoading ? <p>loading...</p> :
@@ -152,7 +152,7 @@ export const Archive = ({ archive }: Props) => {
                                 >
                                     {n.username || n.name}
                                 </h4>
-                                <p className="text-xs opacity-50"> {n.position || n.updateDate && moment(n.updateDate).format("MM/DD") || moment(n.createDate).format("MM/DD")} - {n.host.username}</p>
+                                <p className="text-xs opacity-50"> {n.position || n.updateDate && moment(n.updateDate).format("MM/DD") || moment(n.createDate).format("MM/DD")} {n.host?.username ? " - " + n.host?.username : null}</p>
                             </div>
 
                             <div className="w-max flex h-12">
