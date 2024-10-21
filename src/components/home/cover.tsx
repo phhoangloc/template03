@@ -29,18 +29,18 @@ const Cover = (props: Props) => {
 
     useEffect(() => {
 
-        window.innerWidth < 575 && setInnerWidth("xs")
-        window.innerWidth >= 575 && setInnerWidth("sm")
-        window.innerWidth >= 768 && setInnerWidth("md")
-        window.innerWidth >= 992 && setInnerWidth("lg")
-        window.innerWidth >= 1200 && setInnerWidth("xl")
+        window.outerWidth < 575 && setInnerWidth("xs")
+        window.outerWidth >= 575 && setInnerWidth("sm")
+        window.outerWidth >= 768 && setInnerWidth("md")
+        window.outerWidth >= 992 && setInnerWidth("lg")
+        window.outerWidth >= 1200 && setInnerWidth("xl")
 
         const handleResize = () => {
-            window.innerWidth < 575 && setInnerWidth("xs")
-            window.innerWidth >= 575 && setInnerWidth("sm")
-            window.innerWidth >= 768 && setInnerWidth("md")
-            window.innerWidth >= 992 && setInnerWidth("lg")
-            window.innerWidth >= 1200 && setInnerWidth("xl")
+            window.outerWidth < 575 && setInnerWidth("xs")
+            window.outerWidth >= 575 && setInnerWidth("sm")
+            window.outerWidth >= 768 && setInnerWidth("md")
+            window.outerWidth >= 992 && setInnerWidth("lg")
+            window.outerWidth >= 1200 && setInnerWidth("xl")
         };
 
         window.addEventListener('resize', handleResize);
@@ -50,12 +50,13 @@ const Cover = (props: Props) => {
     }, [])
 
     useEffect(() => {
-        innerWidth === "xs" && getData("blog", 2)
+        innerWidth === "xs" && getData("blog", 1)
         innerWidth === "sm" && getData("blog", 2)
-        innerWidth === "md" && getData("blog", 3)
-        innerWidth === "lg" && getData("blog", 4)
+        innerWidth === "md" && getData("blog", 2)
+        innerWidth === "lg" && getData("blog", 3)
         innerWidth === "xl" && getData("blog", 5)
     }, [innerWidth])
+
 
     return (
         <div className='w-sreen h-screen relative bg-amber-50'>
@@ -66,9 +67,9 @@ const Cover = (props: Props) => {
                         <p className='text-3xl font-bold mb-2'>Nice to meet you, today.</p>
                         <p className='text-3xl font-bold'>Can I help you?</p>
                     </div>
-                    <div className="flex flex-wrap  mx-auto gap-1 my-4 w-11/12 justify-center">
-                        <Button name="Register" onClick={() => toPage.push("/signup")} sx="!m-0" />
-                        <Button name="Log In" onClick={() => toPage.push("/login")} sx="!m-0" />
+                    <div className="flex flex-wrap  mx-auto gap-1 my-4 w-11/12 justify-center p-2">
+                        <Button name="Register" onClick={() => toPage.push("/signup")} sx="!m-0 !shadow-lg" />
+                        <Button name="Log In" onClick={() => toPage.push("/login")} sx="!m-0 !shadow-lg" />
                     </div>
                 </div>
                 <div className='h-1/2 lg:h-full lg:flex lg:flex-col lg:justify-end'>
@@ -77,11 +78,11 @@ const Cover = (props: Props) => {
                         <Image src="/image/staff.png" width={500} height={500} className='w-auto h-5/6 ' alt="staff" />
                     </div>
                 </div>
-                <div className='absolute bottom-0 p-2 z-[2] w-2/3 max-w-screen-lg'>
-                    <div className="w-full h-max grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:md:grid-cols-5 gap-2">
+                <div className='absolute bottom-0 p-2 z-[2] max-w-screen-lg'>
+                    <div className="w-max h-max flex  gap-2 overflow-hidden p-2">
                         {
                             blog.map((item, index) =>
-                                <ParallaxCard key={index} item={item} />
+                                <ParallaxCard key={index} item={item} sx="!h-[256px] !aspect-square" onClick={() => toPage.push("/" + item.archive + "/" + item.slug)} />
                             )
                         }
                     </div>
