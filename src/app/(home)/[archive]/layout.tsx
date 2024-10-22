@@ -5,7 +5,7 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
     return (
-        <div>
+        <div className='bg-amber-100 dark:bg-slate-900 dark:text-white'>
             {children}
         </div>
     )

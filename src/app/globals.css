@@ -8,35 +8,40 @@ html {
 
 .dangerous_box h1 {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 1000;
 }
 
 .dangerous_box h2 {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 900;
 
 }
 
 .dangerous_box h3 {
   font-size: 1.15rem;
-  font-weight: 500;
+  font-weight: 800;
 
 }
 
 .dangerous_box h4 {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 800;
 
 }
 
 .dangerous_box h5 {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 800;
 
 }
 
+.dangerous_box figure em {
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+
 .dangerous_box ul {
-  padding-left: 25px;
+  padding-left: 15px;
 }
 
 .dangerous_box ul li {

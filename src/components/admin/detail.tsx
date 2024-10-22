@@ -151,7 +151,7 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
         set_saving(true)
         const result = await ApiUpdateItem({ position: p, archive: g, id: id }, body)
         if (result.success) {
-            store.dispatch(setNotice({ success: false, msg: result.msg, open: true }))
+            store.dispatch(setNotice({ success: true, msg: result.msg, open: true }))
             setTimeout(() => {
                 set_saving(false)
                 store.dispatch(setNotice({ success: false, msg: "", open: false }))
@@ -210,7 +210,7 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
                     </div>
                     <div className="flex h-12 gap-1 ml-auto mr-0">
                         <Button name="cancel" onClick={() => toPage.back()} sx="!m-auto !w-24 !h-6  !text-sm" />
-                        <Button name={path2 === "news" ? "create" : "save"} onClick={() => path2 === "news" ? createNewItem(currentUser.position, path1, body) : updateAnItem(currentUser.position, path1, _id, body)} sx="!m-0 !m-auto !w-24 !h-6  !text-sm" />
+                        <Button name={path2 === "news" ? "create" : "save"} onClick={() => path2 === "news" ? createNewItem(currentUser.position, path1, body) : updateAnItem(currentUser.position, path1, _id, body)} sx="!m-0 !m-auto !w-24 !h-6  !text-sm" disable={_saving} />
                     </div>
                     {_createdDate ?
                         <div className='flex flex-wrap max-w-sm ml-auto gap-1 h-6 flex-col justify-center'>

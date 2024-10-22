@@ -59,11 +59,11 @@ const Cover = (props: Props) => {
 
 
     return (
-        <div className='w-sreen h-screen relative bg-amber-50'>
+        <div className='w-sreen h-screen relative bg-amber-50 dark:bg-slate-950 dark:text-white'>
             <Image src="/image/library.webp" fill className='object-cover opacity-25 z-0' alt="cover" />
             <div className="w-full h-full max-w-[1600px] m-auto gap-2 relative z-[1] lg:grid  lg:grid-cols-2">
                 <div className='h-1/2 flex flex-col justify-center text-center lg:h-full'>
-                    <div className="bg-white rounded p-4 shadow-md max-w-max mx-auto w-11/12">
+                    <div className="bg-white dark:bg-slate-800 rounded p-4 shadow-md max-w-max mx-auto w-11/12">
                         <p className='text-3xl font-bold mb-2'>Nice to meet you, today.</p>
                         <p className='text-3xl font-bold'>Can I help you?</p>
                     </div>
@@ -79,7 +79,7 @@ const Cover = (props: Props) => {
                     </div>
                 </div>
                 <div className='absolute bottom-0 p-2 z-[2] max-w-screen-lg'>
-                    <div className="w-max h-max flex  gap-2 overflow-hidden p-2">
+                    <div className="w-max h-max flex  gap-4 overflow-hidden p-4">
                         {
                             blog.map((item, index) =>
                                 <ParallaxCard key={index} item={item} sx="!h-[256px] !aspect-square" onClick={() => toPage.push("/" + item.archive + "/" + item.slug)} />
