@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import store from '@/redux/store'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 type Props = {}
 
 export const Menu = (props: Props) => {
@@ -87,7 +88,7 @@ export const Menu = (props: Props) => {
         <div className={`${currentMenu ? "w-5/6" : "w-0"} h-full max-w-[275px] transition-all duration-300 delay-200  lg:w-full lg:max-w-full lg:rounded overflow-hidden bg-white dark:bg-slate-800`}>
             <div className="grid gap-1 dark:text-white">
                 <div className="h-12 p-2 font-bold text-xl flex flex-col justify-center cursor-pointer text-orange-600 dark:text-white">
-                    LOCAND
+                    <Link href="/" target='_blank'>LOCAND</Link>
                 </div>
                 {
                     menus.map((item, index) =>

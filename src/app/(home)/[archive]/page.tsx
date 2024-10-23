@@ -24,6 +24,7 @@ const page = ({ params }: Props) => {
     useEffect(() => {
         getContent()
     }, [])
+
     return (
         loading ? <Loading /> :
             content ?

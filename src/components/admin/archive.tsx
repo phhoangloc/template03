@@ -152,7 +152,7 @@ export const Archive = ({ archive }: Props) => {
                                 >
                                     {n.username || n.name}
                                 </h4>
-                                <p className="text-xs opacity-50"> {n.position || n.updateDate && moment(n.updateDate).format("MM/DD") || moment(n.createDate).format("MM/DD")} {n.host?.username ? " - " + n.host?.username : null}</p>
+                                <p className="text-xs opacity-50"> {n.position || n.updateDate && moment(n.updateDate).format("MM/DD") || moment(n.createdAt).format("MM/DD")} {n.host?.username ? " - " + n.host?.username : null}</p>
                             </div>
 
                             <div className="w-max flex h-12">

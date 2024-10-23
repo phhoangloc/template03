@@ -6,6 +6,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useSearchParams, useRouter } from 'next/navigation';
 import moment from 'moment';
+import HomeIcon from '@mui/icons-material/Home';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 type Props = {
     data: any,
 }
@@ -22,10 +24,12 @@ const Detail = ({ data }: Props) => {
                 <div className='h-12 md:w-12  flex justify-end px-2 lg:h-max lg:py-4 lg:px-0'>
                     <p></p>
                     <div className='w-max h-max'>
+                        <HomeIcon className='!w-10 !h-10 p-2 cursor-pointer hover:bg-inherit hover:text-white hover:opacity-100 !transition-all !duration-500 hover:p-1 bg-white text-slate-500 rounded-[50%] m-1 ' onClick={() => toPage.push("/")} />
                         <FacebookIcon className='!w-10 !h-10 p-2 cursor-pointer hover:bg-inherit hover:text-white hover:opacity-100 !transition-all !duration-500 hover:p-1 bg-white text-slate-500 rounded-[50%] m-1 ' />
                         <XIcon className='!w-10 !h-10 p-2 cursor-pointer hover:bg-inherit hover:text-white hover:opacity-100 !transition-all !duration-500 hover:p-1 bg-white text-slate-500 rounded-[50%] m-1 ' />
                         <InstagramIcon className='!w-10 !h-10 p-2 cursor-pointer hover:bg-inherit hover:text-white hover:opacity-100 !transition-all !duration-500 hover:p-1 bg-white text-slate-500 rounded-[50%] m-1 ' />
                         <LinkedInIcon className='!w-10 !h-10 p-2 cursor-pointer hover:bg-inherit hover:text-white hover:opacity-100 !transition-all !duration-500 hover:p-1 bg-white text-slate-500 rounded-[50%] m-1 ' />
+                        {data?.archive === "book" ? <FileDownloadIcon className='!w-10 !h-10 p-2 cursor-pointer hover:bg-inherit hover:text-white hover:opacity-100 !transition-all !duration-500 hover:p-1 bg-white text-slate-500 rounded-[50%] m-1 ' /> : null}
                     </div>
                 </div>
                 <div className='grid md:w-full-12 lg:grid-cols-4 p-4 gap-4 '>
@@ -39,16 +43,28 @@ const Detail = ({ data }: Props) => {
                             </div>
                             <div className=' '>
                                 <p className='font-bold text-2xl xl:text-3xl py-2 border-b-2 mb-2'>{data?.name}</p>
-                                <p className='opacity-75 text-sm'><span className='opacity-50'>Owner:</span> {data.host.username}</p>
+                                <p className='opacity-75 text-sm'><span className='opacity-50'>Owner:</span> {data?.host.username}</p>
                                 <p className='opacity- text-sm'><span className='opacity-50'>Public Date:</span> {moment(data?.createdAt).format("YYYY/MM/DD")}</p>
                             </div>
+
                             {
-                                data?.chapters?.length > 0 ?
+                                queryChapterIndex === null ? null :
+                                    <div className='font-bold text-2xl'>{data?.chapters?.[queryChapterIndex].name}</div>
+                            }
+                            <div className='dangerous_box text-justify' dangerouslySetInnerHTML={{ __html: queryChapterIndex ? data?.chapters?.[queryChapterIndex].content : data?.content }} />
+
+                        </div>
+
+                    </div>
+                    <div className="w-full col-span-3 lg:col-span-1 h-full">
+                        {
+                            data?.chapters?.length > 0 ?
+                                <div className='sticky top-4 bg-white dark:bg-slate-800 shadow-md rounded'>
                                     <div>
-                                        <div className='font-bold h-12 flex flex-col justify-center'>
+                                        <div className='font-bold h-12 flex flex-col justify-center px-4 '>
                                             <p className='opacity-75'>CHAPTERS</p>
                                         </div>
-                                        <div className="w-full h-72 bg-slate-50 dark:bg-slate-900 shadow-md rounded overflow-auto scroll_none px-4 pb-1">
+                                        <div className="w-full h-72 overflow-auto scroll_none px-4 pb-1">
                                             <div className={`cursor-pointer flex flex-col justify-center h-14 border-b-[1px] border-white dark:border-slate-700 ${queryChapterIndex === null ? "border-orange-600 text-orange-600" : ""}`} onClick={() => toPage.push("?")}>
                                                 Tại sao nên đọc
                                             </div>
@@ -59,16 +75,10 @@ const Detail = ({ data }: Props) => {
                                                 </div>)}
 
                                         </div>
-                                    </div> :
-                                    null
-                            }
-                            <div className="h-12"></div>
-                            <div className='dangerous_box text-justify' dangerouslySetInnerHTML={{ __html: queryChapterIndex ? data?.chapters?.[queryChapterIndex].content : data?.content }} />
-
-                        </div>
-
-                    </div>
-                    <div className="w-full col-span-1">
+                                    </div>
+                                </div> :
+                                null
+                        }
 
                     </div>
                 </div>

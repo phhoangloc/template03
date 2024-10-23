@@ -13,6 +13,9 @@ const font = Nunito_Sans({
 })
 export const metadata: Metadata = {
   title: "Locand",
+  icons: {
+    icon: '/icon/icon.png',
+  }
 };
 
 export default function RootLayout({

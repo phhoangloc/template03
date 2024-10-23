@@ -4,6 +4,7 @@ import Button from '../button/button'
 import { useRouter } from 'next/navigation'
 import { ApiItem } from '@/api/client'
 import { ParallaxCard } from '../cards/itemCard'
+import { useRef } from 'react'
 type Props = {}
 
 const Cover = (props: Props) => {
@@ -29,43 +30,35 @@ const Cover = (props: Props) => {
 
     useEffect(() => {
 
-        window.outerWidth < 575 && setInnerWidth("xs")
-        window.outerWidth >= 575 && setInnerWidth("sm")
-        window.outerWidth >= 768 && setInnerWidth("md")
-        window.outerWidth >= 992 && setInnerWidth("lg")
-        window.outerWidth >= 1200 && setInnerWidth("xl")
-
-        const handleResize = () => {
-            window.outerWidth < 575 && setInnerWidth("xs")
-            window.outerWidth >= 575 && setInnerWidth("sm")
-            window.outerWidth >= 768 && setInnerWidth("md")
-            window.outerWidth >= 992 && setInnerWidth("lg")
-            window.outerWidth >= 1200 && setInnerWidth("xl")
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
+        getData("blog", 10)
     }, [])
 
-    useEffect(() => {
-        innerWidth === "xs" && getData("blog", 1)
-        innerWidth === "sm" && getData("blog", 2)
-        innerWidth === "md" && getData("blog", 2)
-        innerWidth === "lg" && getData("blog", 3)
-        innerWidth === "xl" && getData("blog", 5)
-    }, [innerWidth])
 
+    const parallax: any = useRef()
+    const parallaxChild: any = useRef()
+
+    const [isScroll, setIsScroll] = useState<boolean>(false)
+    const [mouseDown, setMountDown] = useState<boolean>(false)
+    const [startX, setStartX] = useState<number>(0)
+    const [scrollLeft, setScrollLeft] = useState<number>(0)
+    const [scrollLeftAfter, setScrollLeftAfter] = useState<number>(0)
+
+
+    const onHandleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        setIsScroll(true)
+        // console.log(scrollLeft - ((e.pageX - startX)))
+        parallax.current.scrollLeft = scrollLeft - ((e.pageX - startX))
+        // parallax.current.scrollTop = scrollTop - ((e.pageY - startY))
+    }
 
     return (
         <div className='w-sreen h-screen relative bg-amber-50 dark:bg-slate-950 dark:text-white'>
-            <Image src="/image/library.webp" fill className='object-cover opacity-25 z-0' alt="cover" />
+            <Image src="/image/library.webp" fill className='object-cover opacity-15 z-0' alt="cover" />
             <div className="w-full h-full max-w-[1600px] m-auto gap-2 relative z-[1] lg:grid  lg:grid-cols-2">
                 <div className='h-1/2 flex flex-col justify-center text-center lg:h-full'>
                     <div className="bg-white dark:bg-slate-800 rounded p-4 shadow-md max-w-max mx-auto w-11/12">
                         <p className='text-3xl font-bold mb-2'>Nice to meet you, today.</p>
-                        <p className='text-3xl font-bold'>Can I help you?</p>
+                        <p className='text-3xl opacity-75'>would you like to read a book ?</p>
                     </div>
                     <div className="flex flex-wrap  mx-auto gap-1 my-4 w-11/12 justify-center p-2">
                         <Button name="Register" onClick={() => toPage.push("/signup")} sx="!m-0 !shadow-lg" />
@@ -78,11 +71,20 @@ const Cover = (props: Props) => {
                         <Image src="/image/staff.png" width={500} height={500} className='w-auto h-5/6 ' alt="staff" />
                     </div>
                 </div>
-                <div className='absolute bottom-0 p-2 z-[2] max-w-screen-lg'>
-                    <div className="w-max h-max flex  gap-4 overflow-hidden p-4">
+                <div className='absolute bottom-0 py-2 z-[2] w-[248px] sm:w-[492px] md:w-[744px] xl:w-[1240px]  overflow-hidden ml-2 '
+                    ref={parallax}
+                    onMouseDown={(e) => { setMountDown(true), setStartX(e.pageX), setScrollLeft(e.currentTarget.scrollLeft) }}
+                    onMouseMove={(e) => { mouseDown && onHandleMouseMove(e) }}
+                    onMouseUp={() => { setMountDown(false), setIsScroll(false) }}
+                    onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}
+                    style={{ scrollSnapType: mouseDown === false ? "x mandatory" : "inherit" }}
+                >
+                    <div className="w-max h-max flex  gap-2"
+                        ref={parallaxChild}
+                    >
                         {
                             blog.map((item, index) =>
-                                <ParallaxCard key={index} item={item} sx="!h-[256px] !aspect-square" onClick={() => toPage.push("/" + item.archive + "/" + item.slug)} />
+                                <ParallaxCard key={index} item={item} sx="!h-60 !aspect-square" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                             )
                         }
                     </div>
