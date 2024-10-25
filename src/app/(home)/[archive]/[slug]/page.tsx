@@ -1,6 +1,6 @@
 'use client'
 import { ApiItem } from '@/api/client'
-import Detail from '@/components/home/detail'
+import { Detail } from '@/components/home/detail'
 import React, { useEffect, useState } from 'react'
 
 type Props = {

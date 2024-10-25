@@ -14,7 +14,7 @@ const font = Nunito_Sans({
 export const metadata: Metadata = {
   title: "Locand",
   icons: {
-    icon: '/icon/icon.png',
+    icon: '/icon/robusta.png',
   }
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={font.className}>
-      <body className="scroll_none">
+      <body className="scroll_none" style={{ scrollBehavior: "smooth" }}>
         <Provider>
           <DecideModal />
           <NoticeModal />

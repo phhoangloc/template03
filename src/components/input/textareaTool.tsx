@@ -200,9 +200,6 @@ const TextAreaTool = (props: Props) => {
     return (
         <div className='my-1 border-[1px] border-slate-200 dark:border-slate-700 relative'>
             <div className='sticky p-1 bg-slate-50 dark:bg-slate-900 top-0'>
-                {/* <div className='flex h-12 justify-between border-b-[1px] border-slate-200 dark:border-slate-700'>
-                    <BurstModeIcon className='!w-10 !h-10 p-1 hover:bg-orange-500 hover:text-white rounded cursor-pointer' onClick={() => { props.onClick && props.onClick() }} />
-                </div> */}
 
                 <div className='relative border-b-[1px] border-slate-200 dark:border-slate-700'>
                     <div className='flex flex-wrap relative'>
@@ -222,7 +219,6 @@ const TextAreaTool = (props: Props) => {
                         <AddLinkIcon className={`!w-12 !h-12 p-3 hover:bg-orange-500 hover:text-white rounded cursor-pointer  ${entity && entity.getType() === "LINK" ? "bg-main" : ""}`} onClick={() => { setIsInputLink(!isInputLink) }} />
                         <LinkOffIcon className={`!w-12 !h-12 p-3 hover:bg-orange-500 hover:text-white rounded cursor-pointer  `} onClick={() => removeLink()} />
                         <AddPhotoAlternateIcon className={`!w-12 !h-12 p-3 hover:bg-orange-500 hover:text-white rounded cursor-pointer  `} onClick={() => setIsInputLinkImg(true)} />
-                        {/* <PlaylistAddIcon className={`svg40px br-5px `} onClick={() => addId("123")} /> */}
                     </div>
                     <div className={`bg-slate-50 dark:bg-slate-900 flex transition-all duration-200 absolute shadow-sm rounded cursor-pointer left-[-4px] p-1 ${isInputLink || isInputLinkImg ? "top-14 z-[1]" : "top-0 z-[-1] opacity-0"}`}>
                         <input

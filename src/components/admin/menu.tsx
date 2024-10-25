@@ -93,7 +93,7 @@ export const Menu = (props: Props) => {
                 {
                     menus.map((item, index) =>
                         currentUser.position === item.position ? null : < div key={index}>
-                            <div className={`h-12  p-2 flex flex-col justify-center  cursor-pointer opacity-50  ${_id === index ? "font-semibold !opacity-100" : ""} hover:opacity-100`}
+                            <div className={`h-12  p-2 flex flex-col justify-center  cursor-pointer  ${_id === index ? "font-semibold text-orange-600" : ""} hover:text-orange-500`}
                                 onClick={(e) => { set_id(index), e.stopPropagation(), item.link ? toPage.push(item.link) : null }}>
                                 {item.name}
                             </div>

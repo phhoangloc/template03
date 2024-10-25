@@ -12,14 +12,14 @@ type Props = {
     data: any,
 }
 
-const Detail = ({ data }: Props) => {
+export const Detail = ({ data }: Props) => {
     // const [_chapterIndex, set_chapterIndex] = useState<number>(-1)
 
     const query = useSearchParams()
     const toPage = useRouter()
     const queryChapterIndex = query.get("chapter")
     return (
-        <div className='w-full min-h-screen'>
+        <div className='w-full min-h-screen py-16'>
             <div className="w-full md:max-w-screen-md md:flex lg:max-w-screen-lg xl:max-w-screen-xl  m-auto">
                 <div className='h-12 md:w-12  flex justify-end px-2 lg:h-max lg:py-4 lg:px-0'>
                     <p></p>
@@ -34,8 +34,8 @@ const Detail = ({ data }: Props) => {
                 </div>
                 <div className='grid md:w-full-12 lg:grid-cols-4 p-4 gap-4 '>
                     <div className="w-full col-span-3 grid gap-4">
-                        <div className="w-full bg-white dark:bg-slate-800 shadow-md rounded grid gap-4 p-4 lg:p-8">
-                            <div className="relative overflow-hidden rounded w-full h-80 bg-white">
+                        <div className="w-full bg-white dark:bg-slate-800 shadow-md rounded grid gap-4 p-4 md:p-8 xl:p-12">
+                            <div className="relative overflow-hidden rounded w-full h-80 bg-white dark:bg-slate-900">
                                 {data?.cover.name ?
 
                                     <Image src={process.env.ftp_url + data?.cover.name} fill className={data?.archive === "book" ? 'object-contain' : 'object-cover'} alt="cover" /> :
@@ -51,7 +51,7 @@ const Detail = ({ data }: Props) => {
                                 queryChapterIndex === null ? null :
                                     <div className='font-bold text-2xl'>{data?.chapters?.[queryChapterIndex].name}</div>
                             }
-                            <div className='dangerous_box text-justify' dangerouslySetInnerHTML={{ __html: queryChapterIndex ? data?.chapters?.[queryChapterIndex].content : data?.content }} />
+                            <div className='dangerous_box text-justify ' dangerouslySetInnerHTML={{ __html: queryChapterIndex ? data?.chapters?.[queryChapterIndex].content : data?.content }} />
 
                         </div>
 
@@ -59,12 +59,12 @@ const Detail = ({ data }: Props) => {
                     <div className="w-full col-span-3 lg:col-span-1 h-full">
                         {
                             data?.chapters?.length > 0 ?
-                                <div className='sticky top-4 bg-white dark:bg-slate-800 shadow-md rounded'>
+                                <div className='sticky top-20 bg-white dark:bg-slate-800 shadow-md rounded'>
                                     <div>
                                         <div className='font-bold h-12 flex flex-col justify-center px-4 '>
                                             <p className='opacity-75'>CHAPTERS</p>
                                         </div>
-                                        <div className="w-full h-72 overflow-auto scroll_none px-4 pb-1">
+                                        <div className="w-full h-max overflow-auto scroll_none px-4 pb-1">
                                             <div className={`cursor-pointer flex flex-col justify-center h-14 border-b-[1px] border-white dark:border-slate-700 ${queryChapterIndex === null ? "border-orange-600 text-orange-600" : ""}`} onClick={() => toPage.push("?")}>
                                                 Tại sao nên đọc
                                             </div>
@@ -79,12 +79,9 @@ const Detail = ({ data }: Props) => {
                                 </div> :
                                 null
                         }
-
                     </div>
                 </div>
             </div>
         </div>
     )
 }
-
-export default Detail

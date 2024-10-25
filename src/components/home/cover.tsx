@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Button from '../button/button'
 import { useRouter } from 'next/navigation'
 import { ApiItem } from '@/api/client'
-import { ParallaxCard } from '../cards/itemCard'
+import { BlogCard } from '../cards/itemCard'
 import { useRef } from 'react'
 type Props = {}
 
@@ -11,7 +11,6 @@ const Cover = (props: Props) => {
 
     const toPage = useRouter()
 
-    const [book, setBook] = useState<any[]>([])
     const [blog, setBlog] = useState<any[]>([])
     const [innerWidth, setInnerWidth] = useState<string>("")
 
@@ -20,16 +19,13 @@ const Cover = (props: Props) => {
         const result = await ApiItem({ archive: a, limit: limit })
 
         if (result.success) {
-            a === "book" && setBook(result.data)
             a === "blog" && setBlog(result.data)
         } else {
-            setBook([])
             setBlog([])
         }
     }
 
     useEffect(() => {
-
         getData("blog", 10)
     }, [])
 
@@ -46,19 +42,17 @@ const Cover = (props: Props) => {
 
     const onHandleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         setIsScroll(true)
-        // console.log(scrollLeft - ((e.pageX - startX)))
         parallax.current.scrollLeft = scrollLeft - ((e.pageX - startX))
-        // parallax.current.scrollTop = scrollTop - ((e.pageY - startY))
     }
 
     return (
         <div className='w-sreen h-screen relative bg-amber-50 dark:bg-slate-950 dark:text-white'>
             <Image src="/image/library.webp" fill className='object-cover opacity-15 z-0' alt="cover" />
             <div className="w-full h-full max-w-[1600px] m-auto gap-2 relative z-[1] lg:grid  lg:grid-cols-2">
-                <div className='h-1/2 flex flex-col justify-center text-center lg:h-full'>
+                <div className='h-1/2 flex flex-col justify-end text-center lg:h-full lg:justify-center'>
                     <div className="bg-white dark:bg-slate-800 rounded p-4 shadow-md max-w-max mx-auto w-11/12">
                         <p className='text-3xl font-bold mb-2'>Nice to meet you, today.</p>
-                        <p className='text-3xl opacity-75'>would you like to read a book ?</p>
+                        <p className='text-3xl opacity-75'>would you like to enjopy a cup of coffee ?</p>
                     </div>
                     <div className="flex flex-wrap  mx-auto gap-1 my-4 w-11/12 justify-center p-2">
                         <Button name="Register" onClick={() => toPage.push("/signup")} sx="!m-0 !shadow-lg" />
@@ -71,20 +65,20 @@ const Cover = (props: Props) => {
                         <Image src="/image/staff.png" width={500} height={500} className='w-auto h-5/6 ' alt="staff" />
                     </div>
                 </div>
-                <div className='absolute bottom-0 py-2 z-[2] w-[248px] sm:w-[492px] md:w-[744px] xl:w-[1240px]  overflow-hidden ml-2 '
+                <div className='absolute bottom-0 py-2 z-[2] w-[248px] sm:w-[492px] md:w-[744px] xl:w-[984px] xxl:[w-1476px]  overflow-auto scroll_none ml-2 '
                     ref={parallax}
                     onMouseDown={(e) => { setMountDown(true), setStartX(e.pageX), setScrollLeft(e.currentTarget.scrollLeft) }}
                     onMouseMove={(e) => { mouseDown && onHandleMouseMove(e) }}
                     onMouseUp={() => { setMountDown(false), setIsScroll(false) }}
                     onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}
-                    style={{ scrollSnapType: mouseDown === false ? "x mandatory" : "inherit" }}
+                    style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
                 >
                     <div className="w-max h-max flex  gap-2"
                         ref={parallaxChild}
                     >
                         {
                             blog.map((item, index) =>
-                                <ParallaxCard key={index} item={item} sx="!h-60 !aspect-square" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                                <BlogCard key={index} item={item} sx="!h-60 !aspect-square" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                             )
                         }
                     </div>
