@@ -46,7 +46,7 @@ const Parallax = ({ data }: Props) => {
 
             <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4 md:gap-8 xl:gap-12 z-[1] min-h-full relative' >
                 {data.length ? data.map((item, index) =>
-                    <ParallaxCard sx="!w-44  md:!w-60 lg:!w-72 h-max" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                    <ParallaxCard sx="!w-44  md:!w-60 lg:!w-72 h-max cardIn" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                 ) :
                     <div> no data</div>
                 }

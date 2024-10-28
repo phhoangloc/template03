@@ -13,7 +13,9 @@ const Layout = ({ children }: Props) => {
         <div className='bg-amber-100 dark:bg-slate-900 dark:text-white'>
             <Menu />
             <Header />
-            {children}
+            <div className=" min-h-screen pt-16">
+                {children}
+            </div>
         </div>
     )
 }

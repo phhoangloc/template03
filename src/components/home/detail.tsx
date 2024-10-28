@@ -60,7 +60,7 @@ export const Detail = ({ data }: Props) => {
                         {
                             data?.chapters?.length > 0 ?
                                 <div className='sticky top-20 bg-white dark:bg-slate-800 shadow-md rounded'>
-                                    <div>
+                                    <div className='max-h-'>
                                         <div className='font-bold h-12 flex flex-col justify-center px-4 '>
                                             <p className='opacity-75'>CHAPTERS</p>
                                         </div>

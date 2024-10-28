@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react'
 import { ApiItem } from '@/api/client'
 import NotFound from '@/components/cards/notFound'
 import Loading from '@/components/cards/loading'
+import ArchiveItem from '@/components/home/archive'
 type Props = {
     params: { archive: string }
 }
 
 const page = ({ params }: Props) => {
+    const [data, setData] = useState<any[]>([])
     const [content, setContent] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -18,21 +20,39 @@ const page = ({ params }: Props) => {
             setContent(result.data[0].content)
             setLoading(false)
         } else {
-            setLoading(false)
+            const result = await ApiItem({ archive: params.archive })
+            if (result.success && result.data) {
+                setData(result.data)
+                setLoading(false)
+            } else {
+                setLoading(false)
+                setContent("")
+                setData([])
+            }
         }
     }
     useEffect(() => {
         getContent()
     }, [])
 
-    return (
-        loading ? <Loading /> :
-            content ?
-                <div className="w-full min-h-screen dangerous_box" dangerouslySetInnerHTML={{ __html: content }}>
-                </div> :
-                <div className='min-h-screen flex flex-col justify-center'>
-                    <NotFound />
+    console.log(data)
+    console.log(content)
+    if (content) {
+        return (
+            loading ? <Loading /> :
+                <div className="w-full dangerous_box" dangerouslySetInnerHTML={{ __html: content }}>
                 </div>
+        )
+    }
+    if (data.length) {
+        return (
+            loading ? <Loading /> : <ArchiveItem data={data} archive={params.archive} />
+        )
+    }
+    return (
+        <div className='min-h-screen flex flex-col justify-center'>
+            <NotFound />
+        </div>
     )
 }
 

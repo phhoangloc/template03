@@ -25,6 +25,20 @@ export const Menu = (props: Props) => {
             link: "/admin"
         },
         {
+            name: "PAGE",
+            position: "user",
+            children: [
+                {
+                    name: "VIEW PAGE",
+                    link: "/admin/page"
+                },
+                {
+                    name: "ADD NEW BLOG",
+                    link: "/admin/blog/news"
+                },
+            ]
+        },
+        {
             name: "BOOK",
             children: [
                 {
