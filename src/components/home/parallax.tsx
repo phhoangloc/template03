@@ -34,6 +34,7 @@ const Parallax = ({ data }: Props) => {
 
     const toPage = useRouter()
 
+
     return (
         <div ref={parallax}
             className='w-full h-screen scroll_none overflow-auto py-20 cursor-grab active:cursor-grabbing'
@@ -41,11 +42,11 @@ const Parallax = ({ data }: Props) => {
             onMouseMove={(e) => { mouseDown && onHandleMouseMove(e) }}
             onMouseUp={() => { setMountDown(false), setIsScroll(false) }}
             onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}>
-            <Image src="/image/library.webp" fill className='object-cover opacity-5 z-0' alt="cover" />
+            <Image src="/image/library.webp" fill className='object-cover opacity-5 z-0 !fixed' alt="cover" />
 
-            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4 md:gap-8 xl:gap-12 min-h-full z-[1] relative' >
+            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4 md:gap-8 xl:gap-12 z-[1] min-h-full relative' >
                 {data.length ? data.map((item, index) =>
-                    <ParallaxCard sx="!w-44  md:!w-60 lg:!w-72" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                    <ParallaxCard sx="!w-44  md:!w-60 lg:!w-72 h-max" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                 ) :
                     <div> no data</div>
                 }

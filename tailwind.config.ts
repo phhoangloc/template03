@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      'serif': ['__Roboto_Serif_ce05b0', '__Roboto_Serif_Fallback_ce05b0'],
+    },
     extend: {
       width: {
         'full-12': 'calc(100% - 3rem)',

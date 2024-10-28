@@ -42,7 +42,7 @@ export const Detail = ({ data }: Props) => {
                                     <div className="w-full h-full flex flex-col justify-center text-center">NO IMAGE</div>}
                             </div>
                             <div className=' '>
-                                <p className='font-bold text-2xl xl:text-3xl py-2 border-b-2 mb-2'>{data?.name}</p>
+                                <p className='font-bold text-2xl xl:text-3xl py-2 border-b-2 mb-2 font-serif'>{data?.name}</p>
                                 <p className='opacity-75 text-sm'><span className='opacity-50'>Owner:</span> {data?.host.username}</p>
                                 <p className='opacity- text-sm'><span className='opacity-50'>Public Date:</span> {moment(data?.createdAt).format("YYYY/MM/DD")}</p>
                             </div>
@@ -69,7 +69,7 @@ export const Detail = ({ data }: Props) => {
                                                 Tại sao nên đọc
                                             </div>
                                             {data.chapters.map((chapter: any, index: number) =>
-                                                <div className={`cursor-pointer flex flex-col justify-center h-14 border-b-[1px] border-white dark:border-slate-700 ${queryChapterIndex && index === Number(queryChapterIndex) ? "border-orange-600 text-orange-600" : ""}`} key={index} onClick={() => toPage.push("?chapter=" + index)}>
+                                                <div className={`cursor-pointer flex flex-col justify-center h-max py-2  border-b-[1px] border-white dark:border-slate-700 ${queryChapterIndex && index === Number(queryChapterIndex) ? "border-orange-600 text-orange-600" : ""}`} key={index} onClick={() => toPage.push("?chapter=" + index)}>
                                                     <p>{chapter.name}</p>
                                                     <p className='text-xs opacity-50'>{moment(chapter.updateDate).format("YYYY/MM/DD")}</p>
                                                 </div>)}

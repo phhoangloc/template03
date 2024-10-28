@@ -4,6 +4,7 @@
 
 html {
   letter-spacing: 0.25px;
+  /* font-family: '__Roboto_Serif_Fallback_ce05b0'; */
 }
 
 .dangerous_box h1 {
@@ -20,6 +21,7 @@ html {
 .dangerous_box h3 {
   font-size: 1.15rem;
   font-weight: 800;
+
 
 }
 
@@ -54,4 +56,20 @@ html {
 
 .scroll_none::-webkit-scrollbar {
   display: none;
+}
+
+.cardIn {
+  animation: cardIn 1s;
+}
+
+@keyframes cardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }

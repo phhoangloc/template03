@@ -7,9 +7,15 @@ import DecideModal from "@/components/modal/decide.modal";
 import NoticeModal from "@/components/modal/notice.modal";
 import { Modal } from "@/components/modal/modal";
 
-const font = Nunito_Sans({
+const nunito = Nunito_Sans({
   subsets: ['latin'],
   display: 'swap',
+  // weight: ["100", "300", "400", "500", "700", "900"]
+})
+const serif = Roboto_Serif({
+  subsets: ['latin'],
+  display: 'swap',
+  // weight: ["100", "300", "400", "500", "700", "900"]
 })
 export const metadata: Metadata = {
   title: "Locand",
@@ -24,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={font.className}>
+    <html lang="en" className={nunito.className}>
       <body className="scroll_none" style={{ scrollBehavior: "smooth" }}>
         <Provider>
           <DecideModal />

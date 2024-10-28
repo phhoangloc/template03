@@ -12,6 +12,7 @@ import ListBookCard from "@/components/cards/listCard";
 import Header from "@/components/home/header";
 import { Menu } from "@/components/home/menu";
 import Parallax from "@/components/home/parallax";
+import Footer from "@/components/home/footer";
 
 export default function Home() {
   const [book, setBook] = useState<any[]>([])
@@ -37,6 +38,8 @@ export default function Home() {
       <Menu />
       <Header />
       <Parallax data={[...book, ...blog]} />
+      <div className="h-1"></div>
+      <Footer />
       {/* <Cover /> */}
       {/* <AfterLoading scrollY={scrollY} outerHeight={outerHeight} /> */}
       {/* <ListBookCard place="home" data={book} /> */}
