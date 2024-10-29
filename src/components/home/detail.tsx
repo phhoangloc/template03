@@ -34,19 +34,19 @@ export const Detail = ({ data }: Props) => {
                 </div>
                 <div className='grid md:w-full-12 lg:grid-cols-4 p-4 gap-4 '>
                     <div className="w-full col-span-3 grid gap-4">
-                        <div className="w-full bg-white dark:bg-slate-800 shadow-md rounded grid gap-4 p-4 md:p-8 xl:p-12">
-                            <div className="relative overflow-hidden rounded w-full h-80 bg-white dark:bg-slate-900">
-                                {data?.cover.name ?
+                        <div className="w-full bg-white dark:bg-slate-800 shadow-md rounded grid gap-12 p-4 md:p-8 xl:p-12 grid-cols-1">
 
-                                    <Image src={process.env.ftp_url + data?.cover.name} fill className={data?.archive === "book" ? 'object-contain' : 'object-cover'} alt="cover" /> :
-                                    <div className="w-full h-full flex flex-col justify-center text-center">NO IMAGE</div>}
-                            </div>
                             <div className=' '>
                                 <p className='font-bold text-2xl xl:text-3xl py-2 border-b-2 mb-2 font-serif'>{data?.name}</p>
                                 <p className='opacity-75 text-sm'><span className='opacity-50'>Owner:</span> {data?.host.username}</p>
                                 <p className='opacity- text-sm'><span className='opacity-50'>Public Date:</span> {moment(data?.createdAt).format("YYYY/MM/DD")}</p>
                             </div>
+                            <div className="relative overflow-hidden w-full h-80 bg-white dark:bg-slate-900">
+                                {data?.cover.name ?
 
+                                    <Image src={process.env.ftp_url + data?.cover.name} fill className={data?.archive === "book" ? 'object-contain' : 'object-cover'} alt="cover" /> :
+                                    <div className="w-full h-full flex flex-col justify-center text-center">NO IMAGE</div>}
+                            </div>
                             {
                                 queryChapterIndex === null ? null :
                                     <div className='font-bold text-2xl'>{data?.chapters?.[queryChapterIndex].name}</div>
