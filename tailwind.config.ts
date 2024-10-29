@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      'serif': ['__Roboto_Serif_ce05b0', '__Roboto_Serif_Fallback_ce05b0'],
+      'serif': ['__Alegreya_SC_da81c5', '__Alegreya_SC_Fallback_da81c5'],
     },
     extend: {
       width: {

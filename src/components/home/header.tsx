@@ -28,24 +28,24 @@ const Header = ({ }: Props) => {
         window.addEventListener('wheel', (e) => handleWheel(e));
         return () => {
             window.removeEventListener('wheel', (e) => handleWheel(e));
-
             window.removeEventListener('scroll', () => { setScrollY(window.scrollY), setOuterHeight(window.outerHeight) });
         };
     }, []);
 
     const toPage = useRouter()
     return (
-        <div className={` fixed w-screen top-0 left-0  transition-all duration-500 z-[2] p-2   ${scrollUp ? "-translate-y-full opacity-0" : "translate-y-0 opacity-1"}`}>
+        <div className={` fixed w-screen top-0 left-0  transition-all duration-500 z-10 p-2   ${scrollUp ? "-translate-y-full opacity-0" : "translate-y-0 opacity-1"}`}>
             <div className={`rounded flex justify-between max-w-screen-xxl m-auto p-2`}>
                 <div className='h-12 flex'>
                     <MenuIcon className='!w-12 !h-12 p-2 md:!hidden cursor-pointer' onClick={() => store.dispatch(setMenu(true))} />
-                    <div className='flex text-4xl h-full font-bold leading-[48px]'>L<Image src="/image/robusta.png" width={20} height={20} className='w-auto h-4/5 my-auto mx-1' alt='bean' />CAND</div>
+                    <div className='flex text-4xl h-full font-bold leading-[48px] cursor-pointer' style={{ textShadow: "0px 0px 3px #888" }} onClick={() => toPage.push("/")}>L<Image src="/image/robusta.png" width={20} height={20} className='w-auto h-4/5 my-auto mx-1' alt='bean' />CAND</div>
                 </div>
                 <div className="hidden md:flex rounded  ">
                     {
                         menus.map((item, index) =>
-                            < div key={index} className={`h-12  px-4 flex flex-col justify-center  cursor-pointer bg-white dark:bg-slate-900  mx-2 shadow-md border-[1px] border-slate-200 dark:border-slate-700 rounded`}
-                                onClick={(e) => { e.stopPropagation(), item.link ? toPage.push(item.link) : null }}>
+                            < div key={index} className={`h-12  px-4 flex flex-col justify-center  cursor-pointe mx-2 font-bold cursor-pointer`}
+                                onClick={(e) => { e.stopPropagation(), item.link ? toPage.push(item.link) : null }}
+                                style={{ textShadow: "0px 0px 2px #888" }}>
                                 {item.name}
                             </div>
 

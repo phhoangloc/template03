@@ -19,7 +19,7 @@ export const Detail = ({ data }: Props) => {
     const toPage = useRouter()
     const queryChapterIndex = query.get("chapter")
     return (
-        <div className='w-full min-h-screen py-16'>
+        <div className='w-full min-h-screen'>
             <div className="w-full md:max-w-screen-md md:flex lg:max-w-screen-lg xl:max-w-screen-xl  m-auto">
                 <div className='h-12 md:w-12  flex justify-end px-2 lg:h-max lg:py-4 lg:px-0'>
                     <p></p>

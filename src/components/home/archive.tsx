@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ParallaxCard } from '../cards/itemCard'
+import { CardItem } from '../cards/itemCard'
 import { useRouter } from 'next/navigation'
 type Props = {
     archive: string
@@ -34,10 +34,10 @@ const ArchiveItem = ({ archive, data }: Props) => {
                 onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}
                 style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
             >
-                <div className="w-100% grid grid-cols-2 md:grid-cols-3 gap-2" ref={parallaxChild}>
+                <div className="w-100% grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-4" ref={parallaxChild}>
                     {
                         data.map((item, index) =>
-                            <ParallaxCard key={index} item={item} type='card' onClick={() => toPage.push("/" + item.archive + "/" + item.slug)} />
+                            <CardItem sx='h-96' key={index} item={item} onClick={() => toPage.push("/" + item.archive + "/" + item.slug)} />
                         )
                     }
                 </div>

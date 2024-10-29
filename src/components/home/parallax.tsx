@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ParallaxCard } from '../cards/itemCard'
+import { ParallaxMagazine } from '../cards/itemCard'
 
 type Props = {
     data: any[]
@@ -44,9 +44,9 @@ const Parallax = ({ data }: Props) => {
             onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}>
             <Image src="/image/library.webp" fill className='object-cover opacity-5 z-0 !fixed' alt="cover" />
 
-            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4 md:gap-8 xl:gap-12 z-[1] min-h-full relative' >
+            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4  z-[1] min-h-full relative' >
                 {data.length ? data.map((item, index) =>
-                    <ParallaxCard sx="!w-44  md:!w-60 lg:!w-72 h-max cardIn" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                    <ParallaxMagazine sx="!h-[400px] cardIn" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                 ) :
                     <div> no data</div>
                 }

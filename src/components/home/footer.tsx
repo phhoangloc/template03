@@ -18,12 +18,15 @@ const Footer = (props: Props) => {
     }, []);
 
     return (
-        <div className={`w-full fixed h-72 overflow-hidden transition-all duration-500 flex flex-col justify-end ${scrollY > 0 && scrollY + _innerHeight === clientHieght ? "bottom-[0%]" : "bottom-[-100%]"} `}>
+        <>
+            <div className="h-72"></div>
+            <div className={`w-full fixed h-72 overflow-hidden transition-all duration-500 flex flex-col justify-end ${scrollY > 0 && scrollY + _innerHeight === clientHieght ? "bottom-[0%]" : "bottom-[-100%]"} `}>
 
-            <Image src="/image/staff.png" width={500} height={500} className={`h-full w-auto absolute bottom-0 right-0`} alt="staff" />
+                <Image src="/image/staff.png" width={500} height={500} className={`h-full w-auto absolute bottom-0 right-0`} alt="staff" />
 
-            <p className='text-center text-sm leading-6'>copyright onf Inc.</p>
-        </div>
+                <p className='text-center text-sm leading-6'>copyright onf Inc.</p>
+            </div>
+        </>
 
     )
 }

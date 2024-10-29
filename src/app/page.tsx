@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import Cover from "@/components/home/cover";
 import Image from "next/image";
 import { ApiItem } from "@/api/client";
-import { BlogCard, BookCard } from "@/components/cards/itemCard";
 import { useRouter } from "next/navigation";
 import { styleText } from "util";
 import { Opacity } from "@mui/icons-material";
@@ -38,7 +37,7 @@ export default function Home() {
       <Menu />
       <Header />
       <Parallax data={[...book, ...blog]} />
-      <div className="h-1"></div>
+      {/* <div className="h-72"></div> */}
       <Footer />
       {/* <Cover /> */}
       {/* <AfterLoading scrollY={scrollY} outerHeight={outerHeight} /> */}
