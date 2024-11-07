@@ -11,7 +11,7 @@ const Layout = ({ children }: Props) => {
 
 
     return (
-        <div className='bg-amber-100 dark:bg-slate-900 dark:text-white'>
+        <div className='bg-amber-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200'>
             <Menu />
             <Header />
             <div className=" min-h-screen pt-20">

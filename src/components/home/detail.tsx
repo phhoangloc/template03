@@ -51,7 +51,7 @@ export const Detail = ({ data }: Props) => {
                                 queryChapterIndex === null ? null :
                                     <div className='font-bold text-2xl'>{data?.chapters?.[queryChapterIndex].name}</div>
                             }
-                            <div className='dangerous_box text-justify ' dangerouslySetInnerHTML={{ __html: queryChapterIndex ? data?.chapters?.[queryChapterIndex].content : data?.content }} />
+                            <div className='dangerous_box text-justify text-slate-800 dark:text-slate-200 ' dangerouslySetInnerHTML={{ __html: queryChapterIndex ? data?.chapters?.[queryChapterIndex].content : data?.content }} />
 
                         </div>
 

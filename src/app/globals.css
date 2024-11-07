@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  letter-spacing: 0.25px;
+  letter-spacing: 0.5px;
   /* font-family: '__Roboto_Serif_Fallback_ce05b0'; */
 }
 

@@ -33,7 +33,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="bg-amber-50 dark:bg-slate-900 dark:text-white">
+    <div className="bg-amber-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
       <Menu />
       <Header />
       <Parallax data={[...book, ...blog]} />

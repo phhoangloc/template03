@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { BookCard } from './itemCard'
+// import { BookCard } from './itemCard'
 import { useRouter } from 'next//navigation'
 type Props = {
     place: string,
@@ -44,7 +44,7 @@ const ListBookCard = ({ place, data }: Props) => {
                         <div className="w-max h-max flex  gap-2" ref={parallaxChild}>
                             {
                                 data.map((item, index) =>
-                                    <BookCard key={index} item={item} sx="!w-[188px]" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                                    // <BookCard key={index} item={item} sx="!w-[188px]" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                                 )
                             }
                         </div>

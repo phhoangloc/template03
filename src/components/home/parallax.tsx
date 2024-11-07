@@ -16,9 +16,9 @@ const Parallax = ({ data }: Props) => {
     const [isScroll, setIsScroll] = useState<boolean>(false)
     const [mouseDown, setMountDown] = useState<boolean>(false)
     const [startX, setStartX] = useState<number>(0)
+    const [startY, setStartY] = useState<number>(0)
     const [scrollTop, setScrollTop] = useState<number>(0)
     const [scrollLeft, setScrollLeft] = useState<number>(0)
-    const [startY, setStartY] = useState<number>(0)
 
     const onHandleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         setIsScroll(true)
