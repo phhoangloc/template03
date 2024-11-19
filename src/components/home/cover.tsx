@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Button from '../button/button'
 import { useRouter } from 'next/navigation'
 import { ApiItem } from '@/api/client'
-import { BlogCard } from '../cards/itemCard'
+// import { BlogCard } from '../cards/itemCard'
 import { useRef } from 'react'
 type Props = {}
 
@@ -76,11 +76,11 @@ const Cover = (props: Props) => {
                     <div className="w-max h-max flex  gap-2"
                         ref={parallaxChild}
                     >
-                        {
+                        {/* {
                             blog.map((item, index) =>
-                                <BlogCard key={index} item={item} sx="!h-60 !aspect-square" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                                // <BlogCard key={index} item={item} sx="!h-60 !aspect-square" onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                             )
-                        }
+                        } */}
                     </div>
                 </div>
             </div>

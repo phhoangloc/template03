@@ -35,8 +35,6 @@ const page = ({ params }: Props) => {
         getContent()
     }, [])
 
-    console.log(data)
-    console.log(content)
     if (content) {
         return (
             loading ? <Loading /> :

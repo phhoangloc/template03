@@ -1,13 +1,7 @@
 'use client'
-import { useState, useEffect, useRef } from "react";
-import Cover from "@/components/home/cover";
-import Image from "next/image";
+import { useState, useEffect } from "react";
+
 import { ApiItem } from "@/api/client";
-import { useRouter } from "next/navigation";
-import { styleText } from "util";
-import { Opacity } from "@mui/icons-material";
-import AfterLoading from "@/components/home/afterLoading";
-import ListBookCard from "@/components/cards/listCard";
 import Header from "@/components/home/header";
 import { Menu } from "@/components/home/menu";
 import Parallax from "@/components/home/parallax";
@@ -37,11 +31,7 @@ export default function Home() {
       <Menu />
       <Header />
       <Parallax data={[...book, ...blog]} />
-      {/* <div className="h-72"></div> */}
       <Footer />
-      {/* <Cover /> */}
-      {/* <AfterLoading scrollY={scrollY} outerHeight={outerHeight} /> */}
-      {/* <ListBookCard place="home" data={book} /> */}
     </div >
   );
 }

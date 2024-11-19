@@ -24,12 +24,8 @@ const LoginCard = ({ archive }: Props) => {
     const toPage = useRouter()
 
     const login = async (data: { username: string, password: string }) => {
-
         const result = await ApiLogin(data)
-
         if (result.success) {
-
-
             store.dispatch(setNotice({ success: result.success, msg: result.message, open: true }))
             setTimeout(() => {
                 store.dispatch(setNotice({ success: result.success, msg: "", open: false }))
@@ -37,7 +33,6 @@ const LoginCard = ({ archive }: Props) => {
                 store.dispatch(setRefresh())
                 toPage.push("/" + archive)
             }, 3000)
-
         } else {
             store.dispatch(setNotice({ success: result.success, msg: result.message, open: true }))
             setTimeout(() => {
@@ -57,7 +52,7 @@ const LoginCard = ({ archive }: Props) => {
             <div className="h-12 flex flex-col justify-center">
                 <p className='opacity-50 hover:opacity-100 cursor-pointer hover:text-orange-600 flex w-max m-auto'>Log in by google</p>
             </div>
-            <div className="h-12 flex flex-col justify-center   text-slate-500">
+            <div className="h-12 flex flex-col justify-center text-slate-500">
                 <p>You do not have an account</p>
                 <Link className='opacity-75 hover:opacity-100 hover:text-orange-600' href={"signup"}>Sign Up!</Link>
             </div>

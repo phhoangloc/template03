@@ -10,25 +10,25 @@ html {
 .dangerous_box h1 {
   font-size: 1.5rem;
   font-weight: 1000;
+  margin-bottom: 24px;
 }
 
 .dangerous_box h2 {
   font-size: 1.25rem;
   font-weight: 900;
-
+  margin-bottom: 20px;
 }
 
 .dangerous_box h3 {
   font-size: 1.15rem;
   font-weight: 800;
-
-
+  margin-bottom: 16px;
 }
 
 .dangerous_box h4 {
   font-size: 1rem;
   font-weight: 800;
-
+  margin-bottom: 12px;
 }
 
 .dangerous_box h5 {
@@ -37,13 +37,24 @@ html {
 
 }
 
+.dangerous_box p,
+.dangerous_box div,
+.dangerous_box li {
+  margin-bottom: 8px;
+
+}
+
+.dangerous_box figure img {
+  width: 100%;
+}
+
 .dangerous_box figure em {
   opacity: 0.75;
   font-size: 0.9rem;
 }
 
 .dangerous_box ul {
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 .dangerous_box ul li {

@@ -1,3 +1,4 @@
+import { orange } from "@mui/material/colors";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -10,6 +11,7 @@ const config: Config = {
     fontFamily: {
       'serif': ['__Alegreya_SC_da81c5', '__Alegreya_SC_Fallback_da81c5'],
     },
+
     extend: {
       width: {
         'full-12': 'calc(100% - 3rem)',

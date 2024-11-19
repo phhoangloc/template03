@@ -44,9 +44,9 @@ const Parallax = ({ data }: Props) => {
             onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}>
             <Image src="/image/library.webp" fill className='object-cover opacity-5 z-0 !fixed' alt="cover" />
 
-            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4  z-[1] min-h-full relative' >
+            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4 md:gap-8 z-[1] min-h-full relative' >
                 {data.length ? data.map((item, index) =>
-                    <ParallaxMagazine sx="!h-[400px] cardIn" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                    <ParallaxMagazine sx="!h-[325px] md:!h-[350px] cardIn hover:scale-105 hover:shadow-lg transittion-all duration-200" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                 ) :
                     <div> no data</div>
                 }

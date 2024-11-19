@@ -240,55 +240,55 @@ export const EditDetailbySlug = ({ path1, path2 }: Props) => {
                                 <TextAreaTool value={_content} onChange={(v) => set_newContent(v)} />
                             </div >
                             :
-                            _chapters.length ?
-                                <div className='w-full grid grid-cols-12 h-max bg-white dark:bg-slate-800 shadow-md rounded p-2 gap-2'>
-                                    <div className="flex justify-between h-12 col-span-12">
-                                        <p className='h-full flex flex-col justify-center'>CHAPTER</p>
-                                        <AddIcon className='!w-12 !h-12 p-3 cursor-pointer' onClick={() => createChapter({ name: "chapter " + (_chapters.length + 1), bookId: _id })} />
-                                    </div>
-                                    <div className='h-[448px] w-full overflow-auto scroll_none col-span-12 md:col-span-6'>
-                                        {_chapters.map((chapter, index) =>
-                                            <div key={index}>
-                                                <div className='flex justify-between'>
-                                                    {
-                                                        _chapterIndex === index ? <input
-                                                            className={`bg-inherit h-10 p-0 transition-all duration-200 border-2 rounded  border-orange-600 w-full px-4`}
-                                                            type="text"
-                                                            defaultValue={chapter.name}
-                                                            onFocus={(e) => e.target.style.outline = 'none'}
-                                                            onChange={(e) => {
-                                                                set_chapterName(e.target.value)
-                                                            }}
-                                                        /> :
-                                                            <p className='h-12 flex flex-col justify-center hover:text-orange-600 cursor-pointer' onClick={() => { set_chapterIndex(index), set_chapterId(chapter.id), set_coverChapterId(chapter.coverId), chapter.coverId ? null : set_coverChapterName("") }} >{chapter.name}</p>
-                                                    }
+                            // _chapters.length ?
+                            <div className='w-full grid grid-cols-12 h-max bg-white dark:bg-slate-800 shadow-md rounded p-2 gap-2'>
+                                <div className="flex justify-between h-12 col-span-12">
+                                    <p className='h-full flex flex-col justify-center'>CHAPTER</p>
+                                    <AddIcon className='!w-12 !h-12 p-3 cursor-pointer' onClick={() => createChapter({ name: "chapter " + (_chapters.length + 1), bookId: _id })} />
+                                </div>
+                                <div className='h-[448px] w-full overflow-auto scroll_none col-span-12 md:col-span-6'>
+                                    {_chapters.map((chapter, index) =>
+                                        <div key={index}>
+                                            <div className='flex justify-between'>
+                                                {
+                                                    _chapterIndex === index ? <input
+                                                        className={`bg-inherit h-10 p-0 transition-all duration-200 border-2 rounded  border-orange-600 w-full px-4`}
+                                                        type="text"
+                                                        defaultValue={chapter.name}
+                                                        onFocus={(e) => e.target.style.outline = 'none'}
+                                                        onChange={(e) => {
+                                                            set_chapterName(e.target.value)
+                                                        }}
+                                                    /> :
+                                                        <p className='h-12 flex flex-col justify-center hover:text-orange-600 cursor-pointer' onClick={() => { set_chapterIndex(index), set_chapterId(chapter.id), set_coverChapterId(chapter.coverId), chapter.coverId ? null : set_coverChapterName("") }} >{chapter.name}</p>
+                                                }
 
-                                                    <div className='flex'>
-                                                        {_chapterIndex === index ?
-                                                            _isChapterUpdate ?
-                                                                <RefreshIcon className='!w-12 !h-12 p-3 cursor-pointer hover:text-orange-600' /> :
-                                                                <CheckIcon className='!w-12 !h-12 p-3 cursor-pointer hover:text-orange-600' onClick={() => updateChapter(_chapterId, { content: _chapterContent, coverId: _coverChapterId, name: _chapterName || chapter.name })} />
-                                                            : null}
-                                                        <RemoveIcon className='!w-12 !h-12 p-3 cursor-pointer hover:text-orange-600' onClick={() => deleteChapter(chapter.id)} />
-                                                    </div>
+                                                <div className='flex'>
+                                                    {_chapterIndex === index ?
+                                                        _isChapterUpdate ?
+                                                            <RefreshIcon className='!w-12 !h-12 p-3 cursor-pointer hover:text-orange-600' /> :
+                                                            <CheckIcon className='!w-12 !h-12 p-3 cursor-pointer hover:text-orange-600' onClick={() => updateChapter(_chapterId, { content: _chapterContent, coverId: _coverChapterId, name: _chapterName || chapter.name })} />
+                                                        : null}
+                                                    <RemoveIcon className='!w-12 !h-12 p-3 cursor-pointer hover:text-orange-600' onClick={() => deleteChapter(chapter.id)} />
                                                 </div>
                                             </div>
-                                        )}
-                                    </div>
-                                    <div className="col-span-12 md:col-span-6">
-
-                                        {
-                                            _coverChapterName ?
-                                                <EditPicture src={process.env.ftp_url + _coverChapterName} setPictureModal={() => { store.dispatch(setModal({ value: "viewimage" })), set_isCoverChapterId(true) }} /> :
-                                                <EditPicture src={undefined} setPictureModal={() => { store.dispatch(setModal({ value: "viewimage" })), set_isCoverChapterId(true) }} />
-
-                                        }
-                                    </div>
-                                    <div className="col-span-12">
-                                        <TextAreaTool value={_chapters[_chapterIndex]?.content || ""} onChange={(v) => set_chapterContent(v)} />
-                                    </div>
+                                        </div>
+                                    )}
                                 </div>
-                                : null
+                                <div className="col-span-12 md:col-span-6">
+
+                                    {
+                                        _coverChapterName ?
+                                            <EditPicture src={process.env.ftp_url + _coverChapterName} setPictureModal={() => { store.dispatch(setModal({ value: "viewimage" })), set_isCoverChapterId(true) }} /> :
+                                            <EditPicture src={undefined} setPictureModal={() => { store.dispatch(setModal({ value: "viewimage" })), set_isCoverChapterId(true) }} />
+
+                                    }
+                                </div>
+                                <div className="col-span-12">
+                                    <TextAreaTool value={_chapters[_chapterIndex]?.content || ""} onChange={(v) => set_chapterContent(v)} />
+                                </div>
+                            </div>
+                            // : null
                         }
                     </div>
                 </div>

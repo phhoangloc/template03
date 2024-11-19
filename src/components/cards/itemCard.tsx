@@ -46,7 +46,7 @@ export const ParallaxMagazine = ({ item, sx, onClick }: ParallaxCardType) => {
         <div className={`relative select-none overflow-hidden cursor-pointe  ${sx ? sx : ""}`} onMouseUp={() => { onClick && onClick() }}>
             <div className={`absolute top-0 left-0 w-full h-full z-[1] transition-all duration-500 flex flex-col justify-center p-4 `}>
             </div>
-            <div className='h-5/6 w-max overflow-hidden text-center m-auto relative shadow-lg bg-white dark:bg-slate-700 rounded' onMouseEnter={() => set_onMouse(true)} onMouseLeave={() => set_onMouse(false)}>
+            <div className='h-full w-max overflow-hidden text-center m-auto relative shadow-lg bg-white dark:bg-slate-700 rounded' onMouseEnter={() => set_onMouse(true)} onMouseLeave={() => set_onMouse(false)}>
                 <div className="relative h-full aspect-[4/5] px-2">
                     <div className="relative h-1/2  overflow-hidden flex flex-col justify-center p-4 border-b-2 border-slate-200 dark:border-slate-600" >
                         {item.cover ?
