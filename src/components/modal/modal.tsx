@@ -233,13 +233,13 @@ export const Modal = () => {
     case "viewimage_detail":
       return (
         currentModal.data ?
-          <div className='fixed w-screen h-screen top-0 left-0 backdrop-brightness-50 backdrop-blur-sm z-[19] flex flex-col justify-center p-2'>
+          <div className='fixed w-screen h-screen top-0 left-0 backdrop-brightness-50 backdrop-blur-sm z-[11] flex flex-col justify-center p-2'>
             <ImageModalDetail data={currentModal.data} />
           </div> : null
       )
     case "viewimage":
       return (
-        <div className='fixed w-screen h-screen top-0 left-0 backdrop-brightness-50 backdrop-blur-sm z-[19] overflow-scroll scroll_none p-2'>
+        <div className='fixed w-screen h-screen top-0 left-0 backdrop-brightness-50 backdrop-blur-sm z-[11] overflow-scroll scroll_none p-2'>
           <ImageModal />
         </div>
       )

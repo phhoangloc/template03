@@ -12,7 +12,7 @@ const Login = (props: Props) => {
 
 
     return (
-        <div className='min-h-screen bg-amber-50 relative flex flex-col justify-center'>
+        <div className='min-h-screen bg-slate-50 dark:bg-slate-900 dark:text-white relative flex flex-col justify-center'>
             <SignupCard />
         </div>
     )
