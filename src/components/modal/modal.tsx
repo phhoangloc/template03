@@ -197,13 +197,13 @@ const ImageModal = () => {
   return (
     <div className='w-full dark:text-white'>
       <div className="grid grid-cols-12 gap-2">
-        <div className=' relative col-span-4 md:col-span-3 lg:col-span-2  aspect-square overflow-hidden rounded flex flex-col justify-center text-center cursor-pointer shadow-lg  bg-white dark:bg-slate-800 '>
+        <div className=' relative col-span-3 md:col-span-2 xl:col-span-1   aspect-square overflow-hidden rounded flex flex-col justify-center text-center cursor-pointer shadow-lg  bg-white dark:bg-slate-800 '>
           {loadingButton ? "LOADING..." :
             <UploadButton name="ADD IMAGE" func={(e) => { getFile(e), setFile(undefined), setFiles(undefined) }} />}
         </div>
         {
           items.map((item, index) =>
-            <div key={index} className='col-span-4 md:col-span-3 lg:col-span-2 relative aspect-square sm overflow-hidden rounded cursor-pointer bg-white dark:bg-slate-800' onClick={() => store.dispatch(setModal({ value: "", id: item.id }))}>
+            <div key={index} className='col-span-3 md:col-span-2 xl:col-span-1 relative aspect-square sm overflow-hidden rounded cursor-pointer bg-white dark:bg-slate-800' onClick={() => store.dispatch(setModal({ value: "", id: item.id }))}>
               <Image className='opacity-90 hover:scale-110 hover:opacity-100 transition-all duration-200 ' quality={100} src={process.env.ftp_url + item.name} alt='pic' fill priority style={{ objectFit: "cover" }} />
             </div>
           )
@@ -239,7 +239,7 @@ export const Modal = () => {
       )
     case "viewimage":
       return (
-        <div className='fixed w-screen h-screen top-0 left-0 backdrop-brightness-50 backdrop-blur-sm z-[19] flex flex-col justify-center p-2'>
+        <div className='fixed w-screen h-screen top-0 left-0 backdrop-brightness-50 backdrop-blur-sm z-[19] overflow-scroll scroll_none p-2'>
           <ImageModal />
         </div>
       )

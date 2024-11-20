@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ParallaxMagazine } from '../cards/itemCard'
+import { ParallaxCard } from '../cards/itemCard'
 
 type Props = {
     data: any[]
@@ -42,11 +42,11 @@ const Parallax = ({ data }: Props) => {
             onMouseMove={(e) => { mouseDown && onHandleMouseMove(e) }}
             onMouseUp={() => { setMountDown(false), setIsScroll(false) }}
             onMouseLeave={() => { setMountDown(false), setIsScroll(false) }}>
-            <Image src="/image/library.webp" fill className='object-cover opacity-5 z-0 !fixed' alt="cover" />
+            <Image src="/image/library.webp" fill className='object-cover opacity-5 z-0 !fixed pointer-events-none' alt="cover" />
 
-            <div ref={parallaxChild} className='w-[4000px] flex flex-wrap justify-center gap-4 md:gap-8 z-[1] min-h-full relative' >
+            <div ref={parallaxChild} className='w-[4000px]  flex flex-wrap justify-center gap-4 md:gap-8 z-[1]  relative' >
                 {data.length ? data.map((item, index) =>
-                    <ParallaxMagazine sx="!h-[325px] md:!h-[350px] cardIn hover:scale-105 hover:shadow-lg transittion-all duration-200" item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
+                    <ParallaxCard item={item} key={index} onClick={() => isScroll === false ? toPage.push("/" + item.archive + "/" + item.slug) : null} />
                 ) :
                     <div> no data</div>
                 }
