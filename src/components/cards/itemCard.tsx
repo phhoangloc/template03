@@ -44,7 +44,7 @@ export const CardBook = ({ item, sx, onClick }: ParallaxCardType) => {
     const [_onMouse, set_onMouse] = useState<boolean>(false)
 
     return (
-        <div className={`w-52 md:w-60 lg:w-64 cardIn  relative select-none overflow-hidden cursor-pointe  ${sx ? sx : ""}`} onMouseUp={() => { onClick && onClick() }}>
+        <div className={`w-52 md:w-60 lg:w-64 cardIn  relative select-none overflow-hidden cursor-pointe  ${sx ? sx : ""}`} onMouseDown={(e) => e.stopPropagation()} onMouseUp={(e) => { e.stopPropagation() }} onClick={() => onClick && onClick()}>
             <div className={`absolute top-0 left-0 w-full h-full z-[1] transition-all duration-500 flex flex-col justify-center p-4 `} onMouseEnter={() => set_onMouse(true)} onMouseLeave={() => set_onMouse(false)} >
             </div>
             <div className="w-full h-full flex flex-col justify-end p-4">
@@ -68,7 +68,7 @@ export const CardBlog = ({ item, sx, onClick }: ParallaxCardType) => {
     const [_onMouse, set_onMouse] = useState<boolean>(false)
 
     return (
-        <div className={`w-max cardIn  relative select-none overflow-hidden cursor-pointer  ${sx ? sx : ""}`} onMouseUp={() => { onClick && onClick() }}>
+        <div className={`w-max cardIn  relative select-none overflow-hidden cursor-pointer  ${sx ? sx : ""}`} onMouseDown={(e) => e.stopPropagation()} onMouseUp={(e) => { e.stopPropagation() }} onClick={() => onClick && onClick()}>
             <div className={`absolute top-0 left-0 w-full h-full z-[1] transition-all duration-500 flex flex-col justify-center`} onMouseEnter={() => set_onMouse(true)} onMouseLeave={() => set_onMouse(false)} >
             </div>
             <div className={`w-full h-full flex flex-col justify-end p-4`}>

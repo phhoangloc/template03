@@ -31,10 +31,7 @@ const Parallax = ({ data }: Props) => {
         parallaxChild.current?.clientHeight ? parallax.current.scrollTop = `${(parallaxChild.current?.clientHeight - window.innerHeight) / 2}` : null
     }, [parallaxChild.current?.clientWidth, parallaxChild.current?.clientHeight])
 
-
     const toPage = useRouter()
-
-
     return (
         <div ref={parallax}
             className='w-full h-screen scroll_none overflow-auto py-20 cursor-grab active:cursor-grabbing'
